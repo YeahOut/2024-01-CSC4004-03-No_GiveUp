@@ -77,12 +77,18 @@ body {
 
 /* intro page CSS */
 
+.wave {
+  position: relative;
+  right: 18px;
+  bottom: 10px;
+}
+
 #Mainlogo1 {
   margin: 0;
   font-family: "YangJin";
   font-size: 52.87px;
   position: relative;
-  top: 120px;
+  top: 10px;
   left: 10px;
   background: linear-gradient(135deg, #1400ff, #6fbef8 27%, #53cde8);
   color: transparent;
@@ -92,7 +98,7 @@ body {
 #Mainlogo2 {
   font-family: "YangJin";
   font-size: 19.2px;
-  top: 120px;
+  top: 10px;
   background: linear-gradient(to right bottom, #1400ff, #6fbef8, #53cde8);
   color: transparent;
   background-clip: border-box;
@@ -102,7 +108,7 @@ body {
   font-size: 20px;
   font-weight: 550;
   position: relative;
-  top: 107px;
+  top: 7px;
   left: 20px;
   letter-spacing: 0.6px;
 }
@@ -111,7 +117,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  top: 107px;
+  top: 7px;
   left: 13px;
   letter-spacing: 0.3px;
 }
@@ -120,7 +126,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  top: 107px;
+  top: 7px;
   left: 20px;
   letter-spacing: 0.3px;
 }
@@ -135,7 +141,7 @@ div {
   bottom: 150px;
 }
 .rotate {
-  animation: rotation 540s;
+  animation: rotation 1300s;
 }
 .linear {
   animation-timing-function: linear;
@@ -154,7 +160,7 @@ div {
 img.linear {
   position: relative;
   right: 75px;
-  bottom: 120px;
+  bottom: 220px;
 }
 
 #signup {
@@ -166,7 +172,7 @@ img.linear {
   font-size: 23px;
   color: #eeeeee;
   position: relative;
-  top: 140px;
+  top: 50px;
   right: 10px;
   border: 0;
   outline: 0;
@@ -181,7 +187,7 @@ img.linear {
   font-size: 23px;
   color: #eeeeee;
   position: relative;
-  top: 140px;
+  top: 50px;
   right: 10px;
   background: linear-gradient(to right, #9ba2e7, #121743);
   border: 0;
@@ -196,7 +202,7 @@ img.linear {
   font-size: 23px;
   color: white;
   position: relative;
-  top: 140px;
+  top: 50px;
   right: 10px;
   background: linear-gradient(to right, #5796d0, #10314f);
   border: 0;
@@ -211,7 +217,7 @@ img.linear {
   font-size: 23px;
   color: white;
   position: relative;
-  top: 140px;
+  top: 50px;
   right: 10px;
   background: linear-gradient(to right, #52cce7, #2e768c);
   border: 0;
