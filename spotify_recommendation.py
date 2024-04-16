@@ -34,6 +34,7 @@ for track in tracks:
     plt.show()
 
 '''
+Get Recommendation[’tracks’]의 자료구조
 {'album': {
   'album_type': 'SINGLE', 
   'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/5Q0U6ogBrMX2oxmxy5OTzU'}, 'href': 'https://api.spotify.com/v1/artists/5Q0U6ogBrMX2oxmxy5OTzU', 'id': '5Q0U6ogBrMX2oxmxy5OTzU', 'name': 'SISTAR19', 'type': 'artist', 'uri': 'spotify:artist:5Q0U6ogBrMX2oxmxy5OTzU'}], 
