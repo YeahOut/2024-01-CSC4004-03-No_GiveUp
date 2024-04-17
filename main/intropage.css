@@ -23,7 +23,10 @@
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
 .main {
   margin: 0;
   padding: 0;
@@ -34,63 +37,31 @@
   align-items: center;
 }
 .contents {
-  width: 380px;
+  width: 390px;
   height: 844px;
   overflow: hidden;
 }
-/* 각 페이지 위 로고와 모달 아이콘 */
 
-#중앙로고 {
-  display: inline;
-  font-size: 23.4px;
-  font-family: "Yangjin";
-  background: linear-gradient(to right bottom, #1400ff, #6fbef8 60%, #53cde8);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-}
+/*****/
+
 .logo {
-  width: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 30px;
-}
-#모달아이콘 {
-  width: 35px;
-  height: 30px;
-  margin-left: auto;
-  margin-right: 25px;
-  margin-top: 25px;
-}
-
-.wave {
-  position: relative;
-  right: 18px;
-  bottom: 10px;
-}
-
-#Mainlogo1 {
   margin: 0;
   font-family: "YangJin";
-  font-size: 52.87px;
-  position: relative;
-  top: 10px;
-  left: 10px;
   background: linear-gradient(135deg, #1400ff, #6fbef8 27%, #53cde8);
   color: transparent;
   background-clip: border-box;
   -webkit-background-clip: text;
 }
+
+#Mainlogo1 {
+  font-size: 52.87px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
 #Mainlogo2 {
-  font-family: "YangJin";
   font-size: 19.2px;
   top: 10px;
-  background: linear-gradient(to right bottom, #1400ff, #6fbef8, #53cde8);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
 }
 .sub {
   font-size: 20px;
@@ -100,19 +71,11 @@
   left: 20px;
   letter-spacing: 0.6px;
 }
-#introduce1 {
+
+.introduce {
   margin: 0;
   font-size: 15px;
-  font-weight: 300;
-  position: relative;
-  top: 7px;
-  left: 13px;
-  letter-spacing: 0.3px;
-}
-#introduce2 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 300;
+  font-weight: 500;
   position: relative;
   top: 7px;
   left: 20px;
@@ -148,66 +111,31 @@
 img.linear {
   position: relative;
   right: 75px;
-  bottom: 220px;
+  bottom: 240px;
 }
 
-#signup {
-  font-family: "PyeongChangPeace";
+.button {
+  font-family: "Pretendard";
   font-weight: 700;
-  padding: 27px;
-  padding-left: 90px;
-  padding-right: 110px;
-  font-size: 23px;
-  color: #eeeeee;
+  padding: 34px;
+  padding-right: 300px;
+  font-size: 25px;
+  color: white;
   position: relative;
   top: 50px;
   right: 10px;
   border: 0;
   outline: 0;
-  background: linear-gradient(to right, #a99fe2, #2b2453);
+}
+#signup {
+  background-color: #326afa;
 }
 #signin {
-  font-family: "PyeongChangPeace";
-  font-weight: 700;
-  padding: 27px;
-  padding-left: 60px;
-  padding-right: 100px;
-  font-size: 23px;
-  color: #eeeeee;
-  position: relative;
-  top: 50px;
-  right: 10px;
-  background: linear-gradient(to right, #9ba2e7, #121743);
-  border: 0;
-  outline: 0;
+  background-color: #658ffb;
 }
 #ourteam {
-  font-family: "PyeongChangPeace";
-  font-weight: 700;
-  padding: 27px;
-  padding-left: 45px;
-  padding-right: 90px;
-  font-size: 23px;
-  color: white;
-  position: relative;
-  top: 50px;
-  right: 10px;
-  background: linear-gradient(to right, #5796d0, #10314f);
-  border: 0;
-  outline: 0;
+  background-color: #98b4fc;
 }
 #howtouse {
-  font-family: "PyeongChangPeace";
-  font-weight: 700;
-  padding: 27px;
-  padding-left: 35px;
-  padding-right: 150px;
-  font-size: 23px;
-  color: white;
-  position: relative;
-  top: 50px;
-  right: 10px;
-  background: linear-gradient(to right, #52cce7, #2e768c);
-  border: 0;
-  outline: 0;
+  background-color: #cbd9fd;
 }
