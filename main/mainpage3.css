@@ -1,0 +1,138 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "PyeongChang";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.ttf")
+      format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "PyeongChang";
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+}
+
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}
+
+/*******/
+
+.logo {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+  left: 30px;
+}
+.modal {
+  width: 35px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}
+.icon {
+  text-align: center;
+  position: relative;
+  top: 80px;
+}
+.text {
+  text-align: center;
+  position: relative;
+  top: 110px;
+}
+.complete {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.select {
+  font-size: 16px;
+}
+#grid {
+  display: grid;
+  font-family: "PyeongChang";
+  font-size: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 30px;
+  text-align: center;
+  position: relative;
+  top: 350px;
+}
+
+.feature {
+  font-weight: 300;
+}
+.value {
+  font-weight: 700;
+}
+#go_recommend {
+  width: 315px;
+  height: 51px;
+  border: 0;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #5d5fef;
+  color: #eeeeee;
+
+  position: relative;
+  left: 35px;
+  top: 390px;
+}

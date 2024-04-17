@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="mainpage1.css" />
   </head>
   <body>
-    <div class="main">
+    <div class="flex">
       <div class="contents">
         <header>
-          <div class="logo">
-            <p id="중앙로고">MyV</p>
-          </div>
-          <img id="모달아이콘" src="모달_아이콘.png" />
+          <img class="logo" src="logo.svg" width="60px" height="30px" />
+          <img class="modal" src="모달_아이콘.png" />
         </header>
-        <p id="녹음하기">녹음하기</p>
-        <button id="녹음버튼"><img src="마이크_이모지.png" /></button>
-        <p id="녹음타이머">00:00</p>
-        <input
-          id="저장버튼"
-          type="button"
-          value="Save"
-          onclick="location.href='mainpage2.html'"
-        />
+        <main>
+          <p class="record">녹음하기</p>
+          <span class="timer_js_timer">00:00</span>
+          <button id="recording_button"><img src="마이크_이모지.png" /></button>
+          <!-- <script scr="mainpage1.js"></script> -->
+        </main>
+        <footer>
+          <input
+            id="save_button"
+            type="button"
+            value="Save"
+            onclick="location.href='mainpage2.html'"
+          />
+        </footer>
       </div>
     </div>
   </body>

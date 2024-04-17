@@ -2,29 +2,15 @@
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
-@font-face {
-  font-family: "YangJin";
-  font-weight: normal;
-  font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
-      format("truetype");
-  font-display: swap;
-}
-
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
 }
-.main {
+.flex {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -46,24 +32,16 @@ header {
   /* background-color: black; */
 }
 
-#중앙로고 {
-  display: inline;
-  font-size: 23.4px;
-  font-family: "Yangjin";
-  background: linear-gradient(to right bottom, #1400ff, #6fbef8 60%, #53cde8);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-}
 .logo {
   width: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 40px;
   left: 30px;
 }
-#모달아이콘 {
+.modal {
   width: 35px;
   height: 30px;
   margin-left: auto;
@@ -79,47 +57,67 @@ header {
 
 /* 녹음페이지 1 CSS */
 
-#녹음하기 {
+.record {
   display: inline;
   font-size: 20px;
   font-weight: bold;
   position: relative;
   left: 153px;
-  top: 130px;
+  top: 70px;
 }
-#녹음버튼 {
+#recording_button {
   width: 130px;
   height: 130px;
-  position: relative;
-  left: 50px;
-  top: 270px;
+  border-radius: 100px;
   background-color: #efefff;
   border: solid 10px #5d5fef;
-  box-shadow: outset 10px 5px #efefff;
-  border-radius: 100px;
+  position: relative;
+  top: 220px;
 }
-#녹음타이머 {
+.timer_js_timer {
   display: inline;
   font-size: 16px;
   font-weight: 200;
   letter-spacing: 1px;
   color: #5d5fef;
   position: relative;
-  right: 43px;
-  top: 360px;
+  left: 95px;
+  top: 300px;
 }
 
-#저장버튼 {
+#save_button {
   width: 315px;
   height: 51px;
+  border: 0;
+  border-radius: 100px;
   font-size: 18px;
   background-color: #5d5fef;
   color: #eeeeee;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-  border-radius: 100px;
+
   position: relative;
-  left: 30px;
-  top: 450px;
+  left: 35px;
+  top: 390px;
 }
+
+/* Ellipse 2
+
+position: absolute;
+width: 132px;
+height: 132px;
+left: 124px;
+top: 275px;
+
+background: #5a7eff;
+opacity: 0.36;
+ */
+
+/* Ellipse 3 
+position: absolute;
+width: 110px;
+height: 110px;
+left: 135px;
+top: 286px;
+
+background: #EFEFFF;
+box-shadow: -4px 0px 4px rgba(255, 255, 255, 0.5), 4px 0px 4px rgba(255, 255, 255, 0.5), 0px -4px 3px rgba(255, 255, 255, 0.25), 0px 4px 3px rgba(0, 0, 0, 0.25);
+filter: blur(0.5px); */

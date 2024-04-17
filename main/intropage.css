@@ -27,7 +27,7 @@
   padding: 0;
 }
 
-.main {
+.flex {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -44,45 +44,42 @@
 
 /*****/
 
-.logo {
-  margin: 0;
-  font-family: "YangJin";
-  background: linear-gradient(135deg, #1400ff, #6fbef8 27%, #53cde8);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-}
-
-#Mainlogo1 {
-  font-size: 52.87px;
+.Mainlogo1 {
   position: relative;
   top: 10px;
-  left: 10px;
+  left: 15px;
 }
-#Mainlogo2 {
-  font-size: 19.2px;
-  top: 10px;
+.Mainlogo2 {
+  width: 50px;
+  height: 21px;
+  position: relative;
+  top: 5px;
+  right: 13px;
 }
 .sub {
   font-size: 20px;
   font-weight: 550;
   position: relative;
-  top: 7px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   letter-spacing: 0.6px;
 }
 
 .introduce {
-  margin: 0;
+  padding: 6px;
   font-size: 15px;
   font-weight: 500;
   position: relative;
-  top: 7px;
+  top: 20px;
   left: 20px;
   letter-spacing: 0.3px;
 }
+.introduce2 {
+  position: relative;
+  right: 16px;
+}
 
-.record {
+.vinyle {
   width: 200px;
   height: 200px;
   border: 6px solid #eeeeee;

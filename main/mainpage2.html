@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="mainpage2.css" />
   </head>
   <body>
-    <div class="main">
+    <div class="flex">
       <div class="contents">
         <header>
-          <div class="logo">
-            <p id="중앙로고">MyV</p>
-          </div>
-          <img id="모달아이콘" src="모달_아이콘.png" />
+          <img class="logo" src="logo.svg" width="60px" height="30px" />
+          <img class="modal" src="모달_아이콘.png" />
         </header>
+        <main>
+          <div class="analyze_move">
+            <img src="analyze_movement.png" />
+          </div>
+          <div class="text">
+            <p class="analyzing">분석중 입니다.</p>
+            <p class="waiting">잠시만 기다려 주세요.</p>
+          </div>
+        </main>
       </div>
     </div>
   </body>

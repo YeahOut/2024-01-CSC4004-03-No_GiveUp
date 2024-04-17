@@ -21,9 +21,11 @@
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.main {
+.flex {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -47,24 +49,16 @@ header {
 
 /*******/
 
-#중앙로고 {
-  display: inline;
-  font-size: 23.4px;
-  font-family: "Yangjin";
-  background: linear-gradient(to right bottom, #1400ff, #6fbef8 60%, #53cde8);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-}
 .logo {
   width: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 40px;
   left: 30px;
 }
-#모달아이콘 {
+.modal {
   width: 35px;
   height: 30px;
   margin-left: auto;
@@ -76,4 +70,25 @@ header {
   display: flex;
   justify-content: center;
   /* background-color: black; */
+}
+
+/*****/
+.analyze_move {
+  text-align: center;
+  position: relative;
+  top: 200px;
+}
+.text {
+  text-align: center;
+  position: relative;
+  top: 300px;
+}
+.analyzing {
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.waiting {
+  font-size: 18px;
+  color: #878787;
 }
