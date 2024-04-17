@@ -1,0 +1,79 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 380px;
+  height: 844px;
+  overflow: hidden;
+}
+
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}
+
+/*******/
+
+#중앙로고 {
+  display: inline;
+  font-size: 23.4px;
+  font-family: "Yangjin";
+  background: linear-gradient(to right bottom, #1400ff, #6fbef8 60%, #53cde8);
+  color: transparent;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+}
+.logo {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30px;
+}
+#모달아이콘 {
+  width: 35px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}

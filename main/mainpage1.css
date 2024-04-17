@@ -1,0 +1,125 @@
+/* 폰트 불러오기 */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 380px;
+  height: 844px;
+  overflow: hidden;
+}
+
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}
+
+#중앙로고 {
+  display: inline;
+  font-size: 23.4px;
+  font-family: "Yangjin";
+  background: linear-gradient(to right bottom, #1400ff, #6fbef8 60%, #53cde8);
+  color: transparent;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+}
+.logo {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30px;
+}
+#모달아이콘 {
+  width: 35px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+header {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  /* background-color: black; */
+}
+
+/* 녹음페이지 1 CSS */
+
+#녹음하기 {
+  display: inline;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  left: 153px;
+  top: 130px;
+}
+#녹음버튼 {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  left: 50px;
+  top: 270px;
+  background-color: #efefff;
+  border: solid 10px #5d5fef;
+  box-shadow: outset 10px 5px #efefff;
+  border-radius: 100px;
+}
+#녹음타이머 {
+  display: inline;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: #5d5fef;
+  position: relative;
+  right: 43px;
+  top: 360px;
+}
+
+#저장버튼 {
+  width: 315px;
+  height: 51px;
+  font-size: 18px;
+  background-color: #5d5fef;
+  color: #eeeeee;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 100px;
+  position: relative;
+  left: 30px;
+  top: 450px;
+}

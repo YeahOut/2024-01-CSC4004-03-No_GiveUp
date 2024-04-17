@@ -18,44 +18,26 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "PyeongChangPeace";
-  font-weight: 300;
-  font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Light.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Light.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Light.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Light.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Light.ttf")
-      format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "PyeongChangPeace";
-  font-weight: 700;
-  font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Bold.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Bold.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Bold.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Bold.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChangPeace-Bold.ttf")
-      format("truetype");
-  font-display: swap;
-}
-
-body {
+* {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
-
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 380px;
+  height: 844px;
+  overflow: hidden;
+}
 /* 각 페이지 위 로고와 모달 아이콘 */
 
 #중앙로고 {
@@ -66,16 +48,22 @@ body {
   color: transparent;
   background-clip: border-box;
   -webkit-background-clip: text;
-  position: fixed;
-  left: 60px;
+}
+.logo {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30px;
 }
 #모달아이콘 {
-  position: fixed;
-  left: 320px;
-  top: 25px;
+  width: 35px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 25px;
 }
-
-/* intro page CSS */
 
 .wave {
   position: relative;
@@ -131,7 +119,7 @@ body {
   letter-spacing: 0.3px;
 }
 
-div {
+.record {
   width: 200px;
   height: 200px;
   border: 6px solid #eeeeee;
@@ -222,51 +210,4 @@ img.linear {
   background: linear-gradient(to right, #52cce7, #2e768c);
   border: 0;
   outline: 0;
-}
-
-/* 녹음페이지 1 CSS */
-
-#녹음하기 {
-  display: inline;
-  font-size: 20px;
-  font-weight: bold;
-  position: relative;
-  left: 153px;
-  top: 130px;
-}
-#녹음버튼 {
-  width: 130px;
-  height: 130px;
-  position: relative;
-  left: 50px;
-  top: 270px;
-  background-color: #efefff;
-  border: solid 10px #5d5fef;
-  box-shadow: outset 10px 5px #efefff;
-  border-radius: 100px;
-}
-#녹음타이머 {
-  display: inline;
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 1px;
-  color: #5d5fef;
-  position: relative;
-  right: 43px;
-  top: 360px;
-}
-
-#저장버튼 {
-  width: 315px;
-  height: 51px;
-  font-size: 18px;
-  background-color: #5d5fef;
-  color: #eeeeee;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-  border-radius: 100px;
-  position: relative;
-  left: 30px;
-  top: 450px;
 }
