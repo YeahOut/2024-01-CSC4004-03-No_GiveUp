@@ -105,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "ko-kr"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
@@ -123,3 +123,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#AWS S3 연결하기
+AWS_ACCESS_KEY_ID = 'access key'
+AWS_SECRET_ACCESS_KEY = 'access key'
+AWS_STORAGE_BUCKET_NAME = 'myv-aws-bucket'
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+
+# Media 파일을 S3에 저장
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3MediaStorage'
+MEDIA_URL = f'https://arn:aws:s3:::myv-aws-bucket.s3.amazonaws.com/userVoice/'
