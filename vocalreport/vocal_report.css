@@ -1,0 +1,75 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.flex {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents {
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+    height: 85px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.modal {
+  width: 35px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+
+#report_main_container {
+    max-width: 80%;
+    height: 590px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+#report_paragraph {
+    max-width: 80%;
+    margin: 0;
+}
+
+.report_main {
+    background-color: rgb(255, 244, 239);
+}
+
+.report_graph {
+    width: 100%;
+    height: 50%;
+}
+
+.kakao_share_button {
+    width: 80%;
+    margin: 0 auto;
+}
