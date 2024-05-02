@@ -27,45 +27,18 @@
   padding: 0;
 }
 
-/* BackGroundColor */
-.background_color {
+.flex {
+  margin: 0;
+  padding: 0;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #cbd9fd;
-  background-size: 100%;
-  background-repeat: repeat;
 }
-
-/* Wrapper */
-.flex {
-  padding-top: 60px;
-  margin: 0 auto;
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 420px;
-  background-color: white;
-  font-family: NotoSansRegular;
-  color: black; /* 이 부분은 테마에서 가져오는 것이 아니므로 하드코딩됩니다. */
-  background-image: url("/background.png");
-  background-size: 100%;
-  background-repeat: repeat;
-}
-
-/* Content */
 .contents {
-  flex-grow: 1;
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 390px;
+  height: 844px;
   overflow: hidden;
 }
 
@@ -225,7 +198,7 @@
   bottom: 150px;
 }
 .rotate {
-  animation: rotation 1300s;
+  animation: rotation 3300s;
 }
 .linear {
   animation-timing-function: linear;
