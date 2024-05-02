@@ -256,14 +256,7 @@ footer {
   animation-fill-mode: forwards;
 }
 
-@keyframes waving1 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
+
 
 @keyframes waving2 {
   0% {
@@ -272,4 +265,16 @@ footer {
   100% {
     transform: translateX(100%);
   }
+}
+
+@keyframes waving1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+ul{
+  padding:0px;
 }
