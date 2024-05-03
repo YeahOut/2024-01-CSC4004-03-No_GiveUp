@@ -71,7 +71,12 @@ body {
 
 .report_graph {
   width: 100%;
-  height: 50%;
+  height: 35%;
+}
+
+.graph_legend {
+  width: 60%;
+  height: 20%;
 }
 
 .kakao_share_button {
