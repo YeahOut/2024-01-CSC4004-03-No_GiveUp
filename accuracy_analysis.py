@@ -112,8 +112,8 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
     plt.fill_between(t_usr[best_idx:best_idx + term_len - 1],
                      f0_usr[best_idx:best_idx + term_len - 1], color='aqua', alpha=0.5, label="가장 정확한 구간")
 
-    plt.legend()
-    #plt.savefig('./vocal_report.png', bbox_inches='tight')
+    #plt.legend()
+    plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
     return score, min_note, max_note, best_idx
 
 
