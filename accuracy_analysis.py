@@ -14,7 +14,6 @@ def spleet(org_file_name):
     if (os.path.isfile("./output")):
         shutil.rmtree("./output")
     stems = 5
-    path = "./"
     file_name = org_file_name
 
     spl = r'spleeter separate -p spleeter:' + \
@@ -28,7 +27,6 @@ def spleet(org_file_name):
     if (os.path.isfile(file_name + ".wav")):
         os.remove(file_name + ".wav")
     os.rename("vocals.wav", file_name + ".wav")
-
 
 def get_start_pos(f1_org, f1_usr, t_org, t_usr):
     # 두 함수 미분
@@ -72,12 +70,9 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
                  (math.sqrt(np.inner(f0_org, f0_org)) * math.sqrt(np.inner(f0_usr, f0_usr))))
     score = (math.exp(cos_theta + 1) - 1) / (math.exp(2) - 1)
 
-
-    # get best, worst term
+    # get best term
     best_idx = 0
-    worst_idx = 0
     best_score = -1
-    worst_score = -1
     term_len = track_len // 5
 
     for i in range(0, track_len - term_len):
@@ -85,10 +80,6 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
         if (cur_score > best_score):
             best_score = cur_score
             best_idx = i
-        if (cur_score < worst_score):
-            worst_score = cur_score
-            worst_idx = i
-
 
     # log->선형 스케일 변환
     f0_org = 1200 * (np.log2(f0_org / 440) + 3)
@@ -158,9 +149,9 @@ if __name__ == "__main__":
     best_st=t_usr[best_idx]
     best_ed = t_usr[best_idx+len(f0_usr)//5]
 
-    print("사용자가 부른 부분은 음원의", int(t0), "초부터입니다")
+    print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
     print("점수 :", int(score * 100))
     print("최고음 :", max_note)
     print("최저음 :", min_note)
-    print("가장 잘부른 구간 :", best_st, "~" ,best_ed, "초")
+    print("가장 잘부른 구간 : {:.1f}초 ~ {:.1f}초".format(best_st, best_ed))
     plt.show()
