@@ -104,7 +104,6 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
         if f0_usr[i] < 0:
             f0_usr[i] = np.nan
 
-
     # plot
     plt.plot(t_usr, f0_org, 'r', label="비교 음원")
     plt.plot(t_usr, f0_usr, 'b', label="사용자 음원")
@@ -114,7 +113,7 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
                      f0_usr[best_idx:best_idx + term_len - 1], color='aqua', alpha=0.5, label="가장 정확한 구간")
 
     plt.legend()
-    #plt.savefig('./my_figure_tight.png', bbox_inches='tight')
+    #plt.savefig('./vocal_report.png', bbox_inches='tight')
     return score, min_note, max_note, best_idx
 
 
@@ -123,7 +122,7 @@ if __name__ == "__main__":
     font_name = font_manager.FontProperties(fname=font_path).get_name()
     matplotlib.rc('font', family=font_name)
 
-    org = "kaze_younha"
+    org = "kaze_younha_sliced"
     usr = "kaze_mine"
 
     # 반주 & 보컬 분리
@@ -135,7 +134,6 @@ if __name__ == "__main__":
     usr_name = usr + ".wav"
     y_org, sr_org = librosa.load(org_name)
     y_usr, sr_usr = librosa.load(usr_name)
-    y_org = y_org[:len(y_org) // 2]
     f0_org, voiced_flag_org, voiced_prob_org = librosa.pyin(y=y_org, fmin=60, fmax=2000, sr=sr_org)
     f0_usr, voiced_flag_usr, voiced_prob_usr = librosa.pyin(y=y_usr, fmin=60, fmax=2000, sr=sr_usr)
     frames_org = range(len(f0_org))
