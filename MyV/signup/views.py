@@ -6,3 +6,6 @@ def signup1(request):
 
 def signup2(request):
     return render(request, 'signup/signup2.html')
+
+def signup3(request):
+    return render(request, 'signup/signup3.html')
