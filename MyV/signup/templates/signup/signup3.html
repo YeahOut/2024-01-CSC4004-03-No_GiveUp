@@ -67,13 +67,15 @@
                 </div>
             </div>
 
-            <div class="file-container">
+
+            <form id="file-upload-form" class="file-container" action="{% url 'upload_view' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}  <!-- CSRF 토큰 추가 -->
                 <div class="minsound">
                     <div class="minsound btn">
                         <label for="min-file">
                             <div class="btn-upload">최저음 올리기</div>
                         </label>
-                        <input id="min-file" type="file" accept=".m4a,.mp3,.wav">  <!-- 파일 업로드 -->
+                        <input id="min-file" type="file" name="min_file" accept=".m4a,.mp3,.wav">
                     </div>
                     <input type="checkbox" id="min-checkbox" style="display: none;">
                     <label for="min-checkbox" class="custom-checkbox"></label>
@@ -83,12 +85,12 @@
                         <label for="max-file">
                             <div class="btn-upload">최고음 올리기</div>
                         </label>
-                        <input id="max-file" type="file" accept=".m4a,.mp3,.wav">  <!-- 파일 업로드 -->
+                        <input id="max-file" type="file" name="max_file" accept=".m4a,.mp3,.wav">
                     </div>
                     <input type="checkbox" id="max-checkbox" style="display: none;">
                     <label for="max-checkbox" class="custom-checkbox"></label>
                 </div>
-            </div>
+            </form>
 
             <div class="textbox2">
                 <p id="last">당신의 최고음 최저음을 기반으로</p>
@@ -100,25 +102,74 @@
         </div>
     </div>
 
-    <script>
-        // 파일 업로드 안 하고 클릭했을 때 작동하지 않게 하기
-        document.getElementById('min-checkbox').addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-
-        document.getElementById('max-checkbox').addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-
-        // 파일 업로드 이벤트 리스너
-        document.getElementById('min-file').addEventListener('change', function() {
-            document.getElementById('min-checkbox').checked = true; // 파일 업로드 시 체크
-        });
-
-        document.getElementById('max-file').addEventListener('change', function() {
-            document.getElementById('max-checkbox').checked = true; // 파일 업로드 시 체크
-        });
-    </script>
-
     </body>
 </html>
+
+
+
+<script>
+    // 파일 업로드 안 하고 클릭했을 때 작동하지 않게 하기
+    document.getElementById('min-checkbox').addEventListener('click', function(event) {
+        event.preventDefault();
+    });
+    document.getElementById('max-checkbox').addEventListener('click', function(event) {
+        event.preventDefault();
+    });
+
+    ////ajax min file만 수정
+    document.getElementById('min-file').addEventListener('change', function() {
+        // FormData 객체로 폼 데이터를 수집
+        var form = document.getElementById('file-upload-form');
+        var formData = new FormData(form);
+
+        // CSRF 토큰 추가
+        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // AJAX 요청 생성
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);  // 폼의 'action' 속성에 POST 요청
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);  // CSRF 토큰 추가
+
+        // 요청에 대한 응답 처리
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log("File uploaded successfully");
+            } else {
+                console.log("Failed to upload file");
+            }
+        };
+
+        // AJAX 요청으로 폼 데이터 전송
+        xhr.send(formData);
+        document.getElementById('min-checkbox').checked = true; // 파일 업로드 시 체크
+    });
+
+    ////ajax - max file
+    document.getElementById('max-file').addEventListener('change', function() {
+        // FormData 객체로 폼 데이터를 수집
+        var form = document.getElementById('file-upload-form');
+        var formData = new FormData(form);
+
+        // CSRF 토큰 추가
+        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // AJAX 요청 생성
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);  // 폼의 'action' 속성에 POST 요청
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);  // CSRF 토큰 추가
+
+        // 요청에 대한 응답 처리
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log("max File uploaded successfully");
+            } else {
+                console.log("max Failed to upload file");
+            }
+        };
+
+        // AJAX 요청으로 폼 데이터 전송
+        xhr.send(formData);
+        document.getElementById('max-checkbox').checked = true; // 파일 업로드 시 체크
+    });
+
+</script>

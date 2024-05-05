@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myauth',
     'login',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -126,11 +127,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AWS S3 연결하기
-AWS_ACCESS_KEY_ID = 'access key'
-AWS_SECRET_ACCESS_KEY = 'access key'
-AWS_STORAGE_BUCKET_NAME = 'myv-aws-bucket'
-AWS_S3_REGION_NAME = 'ap-northeast-2'
+
 
 # Media 파일을 S3에 저장
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3MediaStorage'
-MEDIA_URL = f'https://arn:aws:s3:::myv-aws-bucket.s3.amazonaws.com/userVoice/'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://arn:aws:s3:::myv-aws-bucket.s3.amazonaws.com/'
