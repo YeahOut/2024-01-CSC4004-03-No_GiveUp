@@ -61,7 +61,8 @@
             <div class="slider-text"><span>선호하는 분위기</span></div>
             <div>
               <input
-                class="slider"
+                id="slider-1"
+                class="slider-1"
                 type="range"
                 min="0"
                 max="10"
@@ -81,7 +82,8 @@
             <div class="slider-text"><span>곡의 에너지</span></div>
             <div>
               <input
-                class="slider"
+                id="slider-2"
+                class="slider-2"
                 type="range"
                 min="0"
                 max="10"
@@ -101,7 +103,8 @@
             <div class="slider-text"><span>선호하는 음악의 빠르기</span></div>
             <div>
               <input
-                class="slider"
+                id="slider-3"
+                class="slider-3"
                 type="range"
                 min="0"
                 max="10"
@@ -123,7 +126,7 @@
             class="next-step-button"
             type="submit"
             value="다음 단계로 넘어가기"
-            onclick="location.href='signup3.html'"
+            onclick="location.href='../signup_Maxmin/signup_maxmin.html'"
           />
         </footer>
       </div>
@@ -131,17 +134,38 @@
   </body>
 </html>
 
-<!--
-
-                <p id="rangeValue">5</p>
-            <script>
-              document
-                .querySelector('input[type="range"]')
-                .addEventListener("input", function (event) {
-                  const rangeValue = event.target.value;
-                  document.getElementById("rangeValue").innerText = rangeValue;
-                  // 값 변경에 따른 추가적인 작업 수행
-                });
-            </script>
-            
--->
+<script>
+  document
+    .querySelector(".slider-1")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+  document
+    .querySelector(".slider-2")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+  document
+    .querySelector(".slider-3")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+</script>
