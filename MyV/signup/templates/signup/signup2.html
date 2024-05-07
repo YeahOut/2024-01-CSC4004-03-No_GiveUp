@@ -62,12 +62,13 @@
                         <div class="slider-text"><span>선호하는 분위기</span></div>
                         <div>
                             <input
-                                class="slider"
+                                class="slider-1"
+                                id="slider-1"
                                 type="range"
                                 min="0"
                                 max="10"
                                 value="5"
-                                step="1"
+                                steps="1"
                             />
                         </div>
                         <div>
@@ -82,12 +83,13 @@
                         <div class="slider-text"><span>곡의 에너지</span></div>
                         <div>
                             <input
-                                class="slider"
+                                class="slider-2"
+                                id = "slider-2"
                                 type="range"
                                 min="0"
                                 max="10"
                                 value="5"
-                                step="1"
+                                steps="1"
                             />
                         </div>
                         <div>
@@ -102,12 +104,13 @@
                         <div class="slider-text"><span>선호하는 음악의 빠르기</span></div>
                         <div>
                             <input
-                                class="slider"
+                                class="slider-3"
+                                id = "slider-3"
                                 type="range"
                                 min="0"
                                 max="10"
                                 value="5"
-                                step="1"
+                                steps="1"
                             />
                         </div>
                         <div>
@@ -131,3 +134,39 @@
         </div>
     </body>
 </html>
+
+<script>
+  document
+    .querySelector(".slider-1")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+  document
+    .querySelector(".slider-2")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+  document
+    .querySelector(".slider-3")
+    .addEventListener("input", function (event) {
+      var gradient_value = 100 / event.target.attributes.max.value;
+      event.target.style.background =
+        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253)  " +
+        gradient_value * event.target.value +
+        "%, rgb(214, 237, 253) 100%)";
+    });
+</script>
