@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="URF-8" />
+    <meta name="viewport" content="widte=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+            <div class="container">
+            <ul class="box1">
+              <li class="wave1" id="w11">
+                <img src="v/wc1.png">
+              </li>
+              <li class="wave2" id="w12">
+                <img src="v/wc2.png">
+              </li>
+              <li class="wave3" id="w13">
+                <img src="v/wc3.png">
+              </li>
+              <li class="wave4" id="w14">
+                <img src="v/wc4.png">
+              </li>
+              <ul>
+                <ul class="box2">
+                  <li class="wave1" id="w21">
+                    <img src="v/wc1.png">
+                  </li>
+                  <li class="wave2" id="w22">
+                    <img src="v/wc2.png">
+                  </li>
+                  <li class="wave3" id="w23">
+                    <img src="v/wc3.png">
+                  </li>
+                  <li class="wave4" id="w24">
+                    <img src="v/wc4.png">
+                  </li>
+                  <ul>
+                  </div>
+            <input
+              class="back_btn"
+              type="image"
+              src="backbutton.svg"
+              onclick="location.href='../main/intropage.html'"
+            />
+            <div class="header-content">
+              <img id="logo" src="logo.svg" width="104px" height="43px" />
+              <h2 class="title">로그인</h2>
+            </div>
+          </header>
+        <form id="login-form">
+          <div>
+            <label for="singin-id">아이디</label>
+            <br />
+            <input
+              class="login-input"
+              id="singin-id"
+              name="id"
+              type="email"
+              placeholder="Email"
+            />
+          </div>
+          <div>
+            <label for="singin-password">비밀번호</label>
+            <br />
+            <input
+              class="login-input"
+              id="singin-password"
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div>
+            <button id="submit-button">Login</button>
+          </div>
+        </form>
+        <footer class="find-id">
+          <p class ="forget-id">아이디를 잊어버렸나요?</p>
+          <p class = "find-password">
+            <a href=""> 비밀번호 찾기 </a>
+          </p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

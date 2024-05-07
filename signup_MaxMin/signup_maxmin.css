@@ -1,0 +1,280 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+}
+
+.back_btn{
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.header-content{
+  display: flex;
+  justify-content: center;
+  /*승연이꺼 추가*/
+  position: relative;
+  bottom: 20px;
+}
+
+.header-content h2 {
+  /*padding-left: 5px;*/
+  margin-bottom: 0;
+}
+
+/*최고음과 최저음을 녹음한 파일을 업로드 해주세요 텍스트*/ 
+.textbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+}
+.textbox p {
+  font-weight: 500;
+  margin: 0 0 26px 0;
+}
+.textbox2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+#last{
+  margin: 3px 0 0 0 ;
+}
+
+/*주의해주세요 핑크 박스 부분*/ 
+.warningBox {
+  margin:0 0 40px 0;
+  width: 309px;
+  height: 90px;
+  padding: 0px 8px 8px 8px;
+  border-radius: 10px;
+  background-color:rgba(255, 238, 238, 0.7); /* 0.7은 투명도 70%를 의미 */
+}
+.warning_text{
+  display: inline-flex;
+  justify-items: center;
+}
+.warning_text h3 {
+  padding:5px 0 0 5px;
+  margin:0;
+  color: #FF1515;
+}
+.warningBox p {
+  margin: 5px 0 0 0 ;
+}
+
+/*파일 업로드 버튼 부분*/ 
+.file-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.btn-upload {
+  width: 166px;
+  height: 45px;
+  font-size: 20px;
+  color:#fff;
+  background: #8DADFF;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: #5E59FF;
+    color: #fff;
+  }
+}
+
+.minsound, .maxsound{
+  /*업로드 버튼 커스텀하기*/
+  display: inline-flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+#min-file, #max-file{
+  /*파입업로드 버튼 숨기기*/
+  display: none;
+}
+
+.custom-checkbox {
+  margin: 0 0 20px 20px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #8DADFF;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.custom-checkbox:before {
+  content: '';  /* 빈 콘텐츠로 체크박스 표시를 제어 */
+}
+
+input[type='checkbox']:checked + .custom-checkbox:before {
+  content: '✔';  /* 선택되었을 때 체크 마크 표시 */
+  color: #5F5BD9;  /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
+}
+
+footer {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  
+}
+.next-step-button {
+  top: 470px;
+  width: 300px;
+  height: 50px;
+  color: white;
+  background-color: #5e59ff;
+  border: 0;
+  border-radius: 5px;
+}
+
+/*애니메이션*/
+
+.container {
+  position: relative;
+  display: flex;
+  width: 1000px;
+  height: 155px; /*170->155 수정*/
+  overflow: hidden;
+}
+
+.wave1 {
+  z-index: 0;
+  top: -5px;
+}
+.wave2 {
+  z-index: 1;
+  top: -10px;
+}
+.wave3 {
+  z-index: 2;
+}
+.wave4 {
+  z-index: 3;
+}
+
+.wave1,
+.wave2,
+.wave3,
+.wave4 {
+  position: absolute;
+  display: flex;
+  height: 100px;
+}
+
+#w11 {
+  animation: waving1;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w12 {
+  animation: waving1;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w13 {
+  animation: waving1;
+  animation-iteration-count: infinite;
+  animation-duration: 2.3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w14 {
+  animation: waving1;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w21 {
+  animation: waving2;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w22 {
+  animation: waving2;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w23 {
+  animation: waving2;
+  animation-iteration-count: infinite;
+  animation-duration: 2.3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#w24 {
+  animation: waving2;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+
+
+@keyframes waving2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes waving1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+ul{
+  padding:0px;
+}
