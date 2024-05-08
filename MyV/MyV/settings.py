@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'myauth',
     'login',
     'storages',
+    'modal',
 ]
 
 MIDDLEWARE = [
