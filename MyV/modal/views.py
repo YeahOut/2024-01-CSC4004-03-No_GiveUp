@@ -27,3 +27,6 @@ def upload_analyze_file(request):
             return HttpResponse("Files uploaded successfully")
 
     return HttpResponse("Failed to upload files")
+
+def vocalResult(request):
+    return render(request,'modal/analyze_result.html')
