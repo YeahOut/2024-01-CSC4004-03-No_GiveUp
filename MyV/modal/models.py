@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+class UploadAnalyzeFile(models.Model):
+    mySound_file = models.FileField(upload_to='vocalReportSource/')
+    compareSound_file = models.FileField(upload_to='vocalReportSource/')
