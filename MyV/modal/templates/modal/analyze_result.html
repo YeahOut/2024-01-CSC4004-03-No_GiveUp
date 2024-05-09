@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -18,15 +17,20 @@
         </header>
         <main class="report">
           <h2>보컬 보고서</h2>
-          <h3>ㅇㅇㅇ님의 보컬 분석 결과입니다</h3>
+          <h3>김동국님의 보컬 분석 결과입니다</h3>
           <div id="report_main_container">
             <div class="report_main">
                 <hr style="border:1px color= silver;">
                 <div id="report_paragraph_container">
                     <p id="report_paragraph">보고서 내용</p>
                 </div>
-                <h3 class="report_name_score">ㅇㅇㅇ님의 총 점수 : </h3>
-                <h3 class="report_score">0/100 점 </h3>
+                <h3 class="report_name_score">김동국님의 총 점수 : </h3>
+                <h3 class="report_score">80/100 점 </h3>
+                <p>안녕하세요 <b>김동국</b>님!</p>
+                <p>김동국님의 최고음은 <b>{{ max }}</b> 이며
+                    최저음은 <b>{{ min }}</b>입니다.</p>
+                <p>성향은 <b>밝음</b>이며, 음역대는 <b>{{ avg }}</b>입니다. </p>
+
             </div>
             <img class="report_graph" src="{% static 'modal/images/vocal_report_graph.png' %}">
             <img class="graph_legend" src="{% static 'modal/images/graph_legend.png' %}">
