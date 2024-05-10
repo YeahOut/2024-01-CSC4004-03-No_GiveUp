@@ -77,6 +77,11 @@ body {
   height: 35%;
 }
 
+.graph_legend {
+  width: 100px;
+  height: 80px;
+}
+
 .kakao_share_button {
   width: 80%;
   margin: 0 auto;

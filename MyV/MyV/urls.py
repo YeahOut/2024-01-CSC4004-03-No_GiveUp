@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myauth.urls')),
     path('myauth/', include('myauth.urls')),
+    path('modal/',include('modal.urls')),
 ]
