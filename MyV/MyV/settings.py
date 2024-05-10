@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'myauth',
     'login',
     'storages',
+    'modal',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AWS S3 연결하기
 
-
 # Media 파일을 S3에 저장
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = f'https://arn:aws:s3:::myv-aws-bucket.s3.amazonaws.com/'
+#MEDIA_URL = f'https://arn:aws:s3:::myv-aws-bucket.s3.amazonaws.com/'
+
+
+####미디어 파일 접근
+# 로컬에서 미디어 파일에 접근하면 장고가 media 디렉토리를 기반으로 이동할 수 있게 한다.
+MEDIA_URL = 'media/'
+import os
+# 미디어 파일이 저장될 서버상의 실제 경로 (내 로컬)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
