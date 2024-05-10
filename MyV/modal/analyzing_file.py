@@ -18,9 +18,9 @@ from django.conf import settings
 
 # def vocalAnalyze() :
 #     s3 = boto3.client('s3')
-#     file_name=('static/비교대상음원_최고음_김동국.wav')
+#     file_name=('static/비교대상음원_최고음_김동국.wav')
 #     bucket = 'myv-aws-bucket'
-#     key='vocalReportSource/비교대상음원_최고음_김동국.wav'
+#     key='vocalReportSource/비교대상음원_최고음_김동국.wav'
 #     # 버킷 이름 / 다운로드 할 객체 지정 / 다운로드할 위치와 파일명
 #     client = boto3.client('s3')
 #     client.download_file(bucket,key,file_name)
@@ -46,13 +46,13 @@ def vocalAnalyze(bucket_name, key):
 
 def process_file():
     org = "kaze_younha_sliced"
-    usr = "kaze_mine"
-
+    usr = 'kaze_mine'
     # 반주 & 보컬 분리
     spleet(org)
     # spleet(usr)
 
     plt.figure(figsize=(12, 4))
+    print("asdasd")
     org_name = os.path.join(settings.MEDIA_ROOT, org + ".wav")
     usr_name = os.path.join(settings.MEDIA_ROOT, usr + ".wav")
     y_org, sr_org = librosa.load(org_name)
@@ -90,41 +90,22 @@ def process_file():
     return max_note, min_note, int(t0), best_st, best_ed
 
 def spleet(org_file_name):
-    # MEDIA_ROOT의 하위 폴더에 output을 생성해야 장고가 접근 가능하므로 변경
-    output_dir = os.path.join(settings.MEDIA_ROOT, 'output')
-    if os.path.exists(output_dir):
-        shutil.rmtree(output_dir)
+    if (os.path.isfile("./output")):
+        shutil.rmtree("./output")
     stems = 5
     file_name = org_file_name
 
-    # spl = r'spleeter separate -p spleeter:' + \
-    #       str(stems) + r'stems -o output ' + file_name + '.mp3'
     spl = r'spleeter separate -p spleeter:' + \
-          str(stems) + r'stems -o {output_dir} ' + file_name + '.mp3'
+          str(stems) + r'stems -o output ' + file_name + '.mp3'
+    os.system(spl)
 
-
-    # Spleeter 실행 결과 확인
-    result = os.system(spl)  # 0이면 성공
-    if result != 0:
-        raise Exception("Spleeter 실행 오류")
-
-    # 결과 파일 경로 확인
-    src = os.path.join(output_dir, org_file_name, "vocals.wav")
-    print(f"Checking if file exists: {src}")  # 디버깅 메시지
-
-    if not os.path.isfile(src):
-        raise FileNotFoundError(f"File not found: {src}")
-
-    # 파일 복사 및 폴더 정리
-    dst = os.path.join(settings.MEDIA_ROOT, f"{org_file_name}.wav")
+    src = "./output/" + file_name + "/vocals.wav"
+    dst = "./"
     shutil.copy2(src, dst)
-
-    # rmtree 작동 확인
-    #shutil.rmtree(output_dir)
-
-    # if os.path.isfile(dst):
-    #     os.remove(dst)  # 기존 파일이 존재하면 삭제
-    os.rename(src, dst)  # 보컬 파일을 원하는 이름으로 변경
+    shutil.rmtree("./output")
+    if (os.path.isfile(file_name + ".wav")):
+        os.remove(file_name + ".wav")
+    os.rename("vocals.wav", file_name + ".wav")
 
 def get_start_pos(f1_org, f1_usr, t_org, t_usr):
     # 두 함수 미분
@@ -204,6 +185,5 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
     #plt.legend()
     #plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
     return score, min_note, max_note, best_idx
-
 
 
