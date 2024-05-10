@@ -52,10 +52,12 @@ def upload_analyze_file(request):
 #     return render(request,'modal/analyze_ing.html')
 
 def vocalResult(request):
-    context = maxminAnalysis(request)
-    # max_note, min_note, start_t, best_st, best_ed = process_file()
-    # context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
+    #context = maxminAnalysis(request)
+    max_note, min_note, start_t, best_st, best_ed = process_file()
+    context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
     return render(request, 'modal/analyze_result.html', context)
+
+
 
 #로컬에 있는 음원으로 최고최저 분석하는 함수
 def maxminAnalysis(request):

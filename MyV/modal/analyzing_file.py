@@ -99,7 +99,9 @@ def spleet(org_file_name):
 
     # spl = r'spleeter separate -p spleeter:' + \
     #       str(stems) + r'stems -o output ' + file_name + '.mp3'
-    spl = f'spleeter separate -p spleeter:{stems}stems -o {output_dir} {file_name}.mp3'
+    spl = r'spleeter separate -p spleeter:' + \
+          str(stems) + r'stems -o {output_dir} ' + file_name + '.mp3'
+
 
     # Spleeter 실행 결과 확인
     result = os.system(spl)  # 0이면 성공
