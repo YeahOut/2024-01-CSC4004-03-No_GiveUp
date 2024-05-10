@@ -16,7 +16,7 @@ import math
 
 # Create your views here.
 def index(request):
-    return render(request, 'myauth/index.html')
+    return render(request, 'myauth/intropage.html')
 
 #librosa 처리 후 렌더링 테스트
 def maxminAnalysis(request):
