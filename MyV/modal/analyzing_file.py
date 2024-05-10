@@ -14,7 +14,7 @@ import os
 import shutil
 import math
 from django.conf import settings
-
+from spleeter.separator import Separator
 
 # def vocalAnalyze() :
 #     s3 = boto3.client('s3')
@@ -24,7 +24,6 @@ from django.conf import settings
 #     # 버킷 이름 / 다운로드 할 객체 지정 / 다운로드할 위치와 파일명
 #     client = boto3.client('s3')
 #     client.download_file(bucket,key,file_name)
-
 
 
 def vocalAnalyze(bucket_name, key):
@@ -45,16 +44,21 @@ def vocalAnalyze(bucket_name, key):
 
 
 def process_file():
-    org = "kaze_younha_sliced"
-    usr = 'kaze_mine'
+    org = os.path.join(settings.BASE_DIR, "kaze_younha_sliced/vocals")
+    usr = os.path.join(settings.BASE_DIR, "media/audio", "kaze_mine")
+
     # 반주 & 보컬 분리
-    spleet(org)
+    #spleet(org)
     # spleet(usr)
 
+    separator = Separator('spleeter:5stems')
+    audio_file = os.getcwd()+"/media/audio/kaze_younha_sliced.mp3"
+    separator.separate_to_file(audio_file, os.getcwd())
+
     plt.figure(figsize=(12, 4))
-    print("asdasd")
-    org_name = os.path.join(settings.MEDIA_ROOT, org + ".wav")
-    usr_name = os.path.join(settings.MEDIA_ROOT, usr + ".wav")
+    print("#################분리완#################")
+    org_name = org + ".wav"
+    usr_name = usr + ".wav"
     y_org, sr_org = librosa.load(org_name)
     y_usr, sr_usr = librosa.load(usr_name)
     f0_org, voiced_flag_org, voiced_prob_org = librosa.pyin(y=y_org, fmin=60, fmax=2000, sr=sr_org)
@@ -99,10 +103,10 @@ def spleet(org_file_name):
           str(stems) + r'stems -o output ' + file_name + '.mp3'
     os.system(spl)
 
-    src = "./output/" + file_name + "/vocals.wav"
-    dst = "./"
+    src = os.path.join(settings.BASE_DIR, 'modal/output') + file_name + "/vocals.wav"
+    dst = os.path.join(settings.BASE_DIR, 'modal')
     shutil.copy2(src, dst)
-    shutil.rmtree("./output")
+    shutil.rmtree(os.path.join(settings.BASE_DIR, 'modal/output'))
     if (os.path.isfile(file_name + ".wav")):
         os.remove(file_name + ".wav")
     os.rename("vocals.wav", file_name + ".wav")
@@ -185,5 +189,4 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
     #plt.legend()
     plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
     return score, min_note, max_note, best_idx
-
 
