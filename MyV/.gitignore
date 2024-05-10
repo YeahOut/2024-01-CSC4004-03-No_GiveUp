@@ -3,6 +3,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+MyV/MyV/__pycache__/settings.cpython-310.pyc
+MyV/MyV/__pycache__/urls.cpython-310.pyc
 
 # C extensions
 *.so
