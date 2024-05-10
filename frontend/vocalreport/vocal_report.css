@@ -8,6 +8,9 @@
   padding: 0;
 }
 
+.backbutton {
+    margin-left:10px;
+}
 .flex {
   margin: 0;
   padding: 0;
@@ -53,7 +56,7 @@ body {
 
 #report_main_container {
   max-width: 80%;
-  height: 590px;
+  height: 550px;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -74,12 +77,11 @@ body {
   height: 35%;
 }
 
-.graph_legend {
-  width: 60%;
-  height: 20%;
-}
-
 .kakao_share_button {
   width: 80%;
   margin: 0 auto;
+}
+
+#report_name_score h3, #report_name_score h3{
+    margin : 0 0 0 0;
 }
