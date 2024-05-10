@@ -175,15 +175,15 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
             f0_usr[i] = np.nan
 
     # plot
-    plt.plot(t_usr, f0_org, 'r', label="비교 음원")
-    plt.plot(t_usr, f0_usr, 'b', label="사용자 음원")
-    plt.axhline(max_hz, t_usr[0], t_usr[-1], color='seagreen', linestyle='--', label="최고음")
-    plt.axhline(min_hz, t_usr[0], t_usr[-1], color='orange', linestyle='--', label="최저음")
+    plt.plot(t_usr, f0_org, color='orangered', label="비교 음원")
+    plt.plot(t_usr, f0_usr, color='deepskyblue', label="사용자 음원")
+    plt.axhline(max_hz, t_usr[0], t_usr[-1], color='lightskyblue', linestyle='--', label="최고음")
+    plt.axhline(min_hz, t_usr[0], t_usr[-1], color='lightsalmon', linestyle='--', label="최저음")
     plt.fill_between(t_usr[best_idx:best_idx + term_len - 1],
-                     f0_usr[best_idx:best_idx + term_len - 1], color='aqua', alpha=0.5, label="가장 정확한 구간")
+                     f0_usr[best_idx:best_idx + term_len - 1], color='lawngreen', alpha=0.3, label="가장 정확한 구간")
 
     #plt.legend()
-    #plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
+    plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
     return score, min_note, max_note, best_idx
 
 
