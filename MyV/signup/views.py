@@ -12,6 +12,7 @@ def signup2(request):
 def signup3(request):
     return render(request, 'signup/signup3.html')
 
+#S3에 파일 업로드하기
 def upload_view(request):
     if request.method == 'POST':
         max_file = request.FILES.get('max_file', None)
