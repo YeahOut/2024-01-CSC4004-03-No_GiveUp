@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="mainpage1.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div>
+            <img class="logo" src="logo.svg" width="60px" height="30px" />
+          </div>
+        </header>
+        <main>
+          <p class="record">녹음하기</p>
+          <span class="timer_js_timer">00:00</span>
+          <button id="recording_button"><img src="마이크_이모지.png" /></button>
+        </main>
+        <footer>
+          <input
+            id="save_button"
+            type="button"
+            value="Save"
+            onclick="location.href='mainpage2.html'"
+          />
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const modal = document.querySelector(".modal");
+  const btnOpenModal = document.querySelector(".btn-open-modal");
+  const btnCloseModal = document.querySelector(".btn-close-modal");
+
+  btnOpenModal.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+  btnCloseModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+</script>

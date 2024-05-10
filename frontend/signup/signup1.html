@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="signup1.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="container">
+          <ul class="box1">
+            <li class="wave1" id="w11">
+              <img src="v/wc1.png">
+            </li>
+            <li class="wave2" id="w12">
+              <img src="v/wc2.png">
+            </li>
+            <li class="wave3" id="w13">
+              <img src="v/wc3.png">
+            </li>
+            <li class="wave4" id="w14">
+              <img src="v/wc4.png">
+            </li>
+            <ul>
+              <ul class="box2">
+                <li class="wave1" id="w21">
+                  <img src="v/wc1.png">
+                </li>
+                <li class="wave2" id="w22">
+                  <img src="v/wc2.png">
+                </li>
+                <li class="wave3" id="w23">
+                  <img src="v/wc3.png">
+                </li>
+                <li class="wave4" id="w24">
+                  <img src="v/wc4.png">
+                </li>
+                <ul>
+                </div>
+          <input
+            class="back_btn"
+            type="image"
+            src="backbutton.svg"
+            onclick="location.href='../main/intropage.html'"
+          />
+          <div class="header-content">
+            <img id="logo" src="logo.svg" width="104px" height="43px" />
+            <h2 class="title">회원가입</h2>
+          </div>
+        </header>
+        <main id="signup-form">
+          <div>
+            <input
+              class="signup-input"
+              id="singup-username"
+              name="user_name"
+              type="text"
+              placeholder="이름을 입력하세요."
+            />
+          </div>
+          <div>
+            <input
+              class="signup-input"
+              id="singup-id"
+              name="id"
+              type="email"
+              placeholder="이메일을 입력하세요."
+            />
+          </div>
+          <div>
+            <input
+              class="signup-input"
+              id="singup-phone"
+              name="phone"
+              type="text"
+              placeholder="핸드폰 번호를 입력하세요."
+              maxlength="11"
+            />
+          </div>
+          <div>
+            <input
+              class="signup-input"
+              id="singup-password"
+              name="password"
+              type="password"
+              placeholder="비밀번호를 입력하세요."
+            />
+          </div>
+          <div>
+            <input
+              class="signup-input"
+              id="singup-chk-password"
+              name="password-chk"
+              type="password"
+              placeholder="비밀번호를 한번 더 입력하세요."
+            />
+          </div>
+        </main>
+        <footer>
+          <input
+            class="next-step-button"
+            type="submit"
+            value="다음 단계로 넘어가기"
+            onclick="location.href='signup2.html'"
+          />
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
