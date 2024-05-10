@@ -64,17 +64,26 @@ body {
 }
 
 #report_paragraph {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0;
+  text-align: left;
 }
 
 .report_main {
-  background-color: rgb(255, 244, 239);
+  background-color: rgb(255, 255, 255);
 }
 
 .report_graph {
   width: 100%;
   height: 35%;
+}
+
+.report_score {
+  margin: 10px;
+}
+
+.report_legend {
+  width: 100%;
 }
 
 .kakao_share_button {
