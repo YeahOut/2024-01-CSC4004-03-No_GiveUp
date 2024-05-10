@@ -10,14 +10,14 @@
     <div class="flex">
       <div class="contents">
         <header>
-          <img class="logo" src="logo.svg" width="60px" height="30px" />
-          <img class="modal" src="모달_아이콘.png" />
+          <div>
+            <img class="logo" src="logo.svg" width="60px" height="30px" />
+          </div>
         </header>
         <main>
           <p class="record">녹음하기</p>
           <span class="timer_js_timer">00:00</span>
           <button id="recording_button"><img src="마이크_이모지.png" /></button>
-          <!-- <script scr="mainpage1.js"></script> -->
         </main>
         <footer>
           <input
@@ -31,3 +31,16 @@
     </div>
   </body>
 </html>
+
+<script>
+  const modal = document.querySelector(".modal");
+  const btnOpenModal = document.querySelector(".btn-open-modal");
+  const btnCloseModal = document.querySelector(".btn-close-modal");
+
+  btnOpenModal.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+  btnCloseModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+</script>

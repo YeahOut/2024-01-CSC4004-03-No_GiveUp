@@ -39,20 +39,35 @@ header {
   align-items: center;
   position: relative;
   margin-top: 40px;
-  left: 30px;
+  left: 0px;
 }
-.modal {
+.modal-open {
   width: 35px;
   height: 30px;
   margin-left: auto;
   margin-right: 25px;
   margin-top: 25px;
 }
-header {
-  height: 85px;
+
+.modal {
+  position: relative;
   display: flex;
+
   justify-content: center;
-  /* background-color: black; */
+  top: 0;
+  left: 0%;
+
+  width: 250px;
+  height: 550px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.btn-open-modal {
+  position: relative;
+  right: 30%;
+  border: none;
+  background-color: #eeeeee;
 }
 
 /* 녹음페이지 1 CSS */
