@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="mypage.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="header-contents">
+            <img class="backbutton" src="backbutton.svg" /><img
+              class="logo"
+              src="logo.svg"
+            />
+          </div>
+          <div class="mobile_btn">
+            <input type="checkbox" id="hamburger" />
+            <label for="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+            <div class="sidebar">
+              <img class="user-img" src="modal-face.svg" width="100px" />
+              <div class="modaltext">
+                <div class="user-info">
+                  <p class="info1">MyV 회원</p>
+                  <p class="info2">최예인</p>
+                </div>
+                <ul class="nav_mobile">
+                  <li><a href="#">마이페이지</a></li>
+                  <li><a href="#">사용 방법</a></li>
+                  <li><a href="#">보컬 분석</a></li>
+                  <li><a href="#">팀 소개</a></li>
+                </ul>
+                <div class="wave">
+                  <img src="wave.png" height="223px" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="title">마이페이지</div>
+          <div class="user">
+            <img src="modal-face.svg" width="145px" />
+            <p>김동국</p>
+          </div>
+
+          <div id="grid">
+            <div class="button-form">
+              <button
+                class="button"
+                onclick="location.href='../main/mainpage1.html'"
+              >
+                <img src="mic.svg" />
+                <p>음역대 변경</p>
+              </button>
+            </div>
+            <div class="button-form">
+              <button class="button" onclick="location.href='#'">
+                <img src="heart.svg" />
+                <p>성향 변경</p>
+              </button>
+            </div>
+            <div class="button-form">
+              <button class="button" onclick="location.href='#'">
+                <img src="analyze.svg" />
+                <p>보컬 분석</p>
+              </button>
+            </div>
+            <div class="button-form">
+              <button class="button" onclick="location.href='#'">
+                <img src="playlist.svg" />
+                <p>나만의<br />playlist</p>
+              </button>
+            </div>
+            <div class="button-form">
+              <button class="button" onclick="location.href='#'">
+                <img src="user.svg" />
+                <p>회원정보<br />수정</p>
+              </button>
+            </div>
+          </div>
+        </main>
+        <img class="wave-img" src="wave.png" />
+      </div>
+    </div>
+  </body>
+</html>
