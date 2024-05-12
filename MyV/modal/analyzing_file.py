@@ -16,14 +16,19 @@ import math
 from django.conf import settings
 from spleeter.separator import Separator
 
-# def vocalAnalyze() :
-#     s3 = boto3.client('s3')
-#     file_name=('static/비교대상음원_최고음_김동국.wav')
-#     bucket = 'myv-aws-bucket'
-#     key='vocalReportSource/비교대상음원_최고음_김동국.wav'
-#     # 버킷 이름 / 다운로드 할 객체 지정 / 다운로드할 위치와 파일명
-#     client = boto3.client('s3')
-#     client.download_file(bucket,key,file_name)
+def vocalAnalyze() :
+    s3 = boto3.resource('s3')
+    for bucket in s3.buckets.all():
+        print(bucket.name)
+    
+    #s3 버킷에 있는 파일 다운로드 하기
+    bucket_name = 'myv-aws-bucket'
+    bucket = s3.Bucket(bucket_name)
+
+    #파일 다운로드하기
+    obj_file= 'vocalReportSource/비교대상음원_최고음_김동국.wav'
+    save_file=os.getcwd()+'/media/비교대상음원_최고음_김동국.wav'
+    bucket.download_file(obj_file,save_file)
 
 
 def vocalAnalyze(bucket_name, key):
@@ -44,21 +49,27 @@ def vocalAnalyze(bucket_name, key):
 
 
 def process_file():
-    org = os.path.join(settings.BASE_DIR, "kaze_younha_sliced/vocals")
-    usr = os.path.join(settings.BASE_DIR, "media/audio", "kaze_mine")
-
     # 반주 & 보컬 분리
     #spleet(org)
-    # spleet(usr)
-
+    #spleet(usr)
     separator = Separator('spleeter:5stems')
+    #분리할 음원 파일 경로 만들기 
     audio_file = os.getcwd()+"/media/audio/kaze_younha_sliced.mp3"
+    #분리할 음원의 경로를 전달해서, 음원 분리하고, 현재 디렉토리 (os.getcwd())에 분리한 음원 파일 폴더 생성하기 
+    #이 폴더는 추후에 다 사용한 후에는 삭제가 되어야 한다. --> os.remove로 처리할 부분
     separator.separate_to_file(audio_file, os.getcwd())
+
+    #os.getcwd()가 os.path.join base_dir와 동일한 역할
+    org = os.path.join(settings.BASE_DIR, "kaze_younha_sliced/vocals")
+    #->"kaze_younha_sliced/vocals" 이게 sperator로 분리해서 만들어진 폴더/vocals(자체 생성하는 보컬파일 이름)의 경로 (확장자 제외)
+    usr = os.path.join(settings.BASE_DIR, "media/audio", "kaze_mine")
 
     plt.figure(figsize=(12, 4))
     print("#################분리완#################")
-    org_name = org + ".wav"
+    org_name = org + ".wav" #librosa에서 돌릴 음원파일의 경로 (즉 분리된 음원 이름까지 경로를 가져오고, wav를 붙여서 확장자 변경)
     usr_name = usr + ".wav"
+    
+    ##리브로사 분석 시작##
     y_org, sr_org = librosa.load(org_name)
     y_usr, sr_usr = librosa.load(usr_name)
     f0_org, voiced_flag_org, voiced_prob_org = librosa.pyin(y=y_org, fmin=60, fmax=2000, sr=sr_org)
@@ -84,6 +95,9 @@ def process_file():
     score, min_note, max_note, best_idx = accuracy_analysis(t_usr, idx, f0_org, f0_usr)
     best_st = t_usr[best_idx]
     best_ed = t_usr[best_idx + len(f0_usr) // 5]
+
+    print("#################제거완료#################")
+    #os.remove(os.getcwd()+'/kaze_younha_sliced')
 
     print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
     print("점수 :", int(score * 100))

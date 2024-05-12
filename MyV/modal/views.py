@@ -5,7 +5,7 @@ from .analyzing_file import process_file
 # Create your views here.
 
 from django.conf import settings
-import librosa
+import librosa, boto3
 import librosa.display
 import librosa.feature
 import matplotlib
@@ -57,6 +57,20 @@ def vocalResult(request):
     context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
     return render(request, 'modal/analyze_result.html', context)
 
+def downloadFile(request):
+    s3 = boto3.resource('s3')
+    for bucket in s3.buckets.all():
+        print(bucket.name)
+    
+    #s3 버킷에 있는 파일 다운로드 하기
+    bucket_name = 'myv-aws-bucket'
+    bucket = s3.Bucket(bucket_name)
+
+    #파일 다운로드하기
+    obj_file= 'test.wav'
+    save_file=os.getcwd()+'/media/비교대상음원_최고음_김동국.wav'
+    bucket.download_file(obj_file,save_file)
+    return HttpResponse("download 성공~")
 
 
 #로컬에 있는 음원으로 최고최저 분석하는 함수
