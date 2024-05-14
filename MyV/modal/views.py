@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import UploadAnalyzeFile
-from .analyzing_file import process_file
+from .analyzing_file import process_file, vocalAnalyze
 # Create your views here.
 
 from django.conf import settings
@@ -16,6 +16,7 @@ import sys
 import os
 import shutil
 import math
+
 def analyzePage(request):
     return render(request,'modal/analyze.html')
 
@@ -43,32 +44,31 @@ def upload_analyze_file(request):
 
     return HttpResponse("Failed to upload files")
 
-# def analyze_ing(request):
-#     # 사용 예:
-#     # bucket = 'myv-aws-bucket'
-#     # key = 'vocalReportSource/비교대상음원_최고음_김동국.wav'
-#     # vocalAnalyze(bucket, key)
-#     process_file()
-#     return render(request,'modal/analyze_ing.html')
 
 def vocalResult(request):
     #context = maxminAnalysis(request)
-    max_note, min_note, start_t, best_st, best_ed = process_file()
-    context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
+    downloaded = vocalAnalyze() #음원 다운로드 받기
+    if (downloaded==1):
+        max_note, min_note, start_t, best_st, best_ed = process_file()
+        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
     return render(request, 'modal/analyze_result.html', context)
 
+
+##views.py로 바로 확인하기 위한 함수 >> analyzing_file.py에서 활용할 예정
 def downloadFile(request):
     s3 = boto3.resource('s3')
     for bucket in s3.buckets.all():
         print(bucket.name)
     
-    #s3 버킷에 있는 파일 다운로드 하기
+    #s3 버킷 정보 가져오기
     bucket_name = 'myv-aws-bucket'
     bucket = s3.Bucket(bucket_name)
+    print("###test###")
+    print(bucket)
 
-    #파일 다운로드하기
-    obj_file= 'test.wav'
-    save_file=os.getcwd()+'/media/비교대상음원_최고음_김동국.wav'
+    #파일 다운로드 진행하기
+    obj_file= 'vocalReportSource/사용자음원_kaze_mine.wav' #디렉토리 버킷 접근하기
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', '비교대상음원_최고음_김동국.wav') #저장위치 및 파일 이름 설정
     bucket.download_file(obj_file,save_file)
     return HttpResponse("download 성공~")
 

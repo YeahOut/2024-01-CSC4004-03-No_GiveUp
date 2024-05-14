@@ -21,32 +21,17 @@ def vocalAnalyze() :
     for bucket in s3.buckets.all():
         print(bucket.name)
     
-    #s3 버킷에 있는 파일 다운로드 하기
+    #s3 버킷 정보 가져오기
     bucket_name = 'myv-aws-bucket'
     bucket = s3.Bucket(bucket_name)
+    print("###test###")
+    print(bucket)
 
-    #파일 다운로드하기
-    obj_file= 'vocalReportSource/비교대상음원_최고음_김동국.wav'
-    save_file=os.getcwd()+'/media/비교대상음원_최고음_김동국.wav'
+    #파일 다운로드 진행하기
+    obj_file = 'vocalReportSource/사용자음원_kaze_mine.wav' #디렉토리 버킷 접근하기
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', '비교대상음원_최고음_김동국.wav') #저장위치 및 파일 이름 설정
     bucket.download_file(obj_file,save_file)
-
-
-def vocalAnalyze(bucket_name, key):
-    # 임시 파일 생성
-    with tempfile.NamedTemporaryFile(delete=True) as temp_file:
-        s3_client = boto3.client('s3')
-
-        try:
-            # S3 버킷에서 임시 파일로 다운로드
-            s3_client.download_file(bucket_name, key, temp_file.name)
-            print(f"파일이 성공적으로 다운로드되었습니다: {temp_file.name}")
-
-            # 파일 처리 로직
-            #process_file(temp_file.name)
-
-        except Exception as e:
-            print(f"파일 다운로드 중 오류 발생: {e}")
-
+    return 1;
 
 def process_file():
     # 반주 & 보컬 분리
@@ -54,7 +39,7 @@ def process_file():
     #spleet(usr)
     separator = Separator('spleeter:5stems')
     #분리할 음원 파일 경로 만들기 
-    audio_file = os.getcwd()+"/media/audio/kaze_younha_sliced.mp3"
+    audio_file = os.getcwd()+"/media/vocalReportSrc/kaze_younha_sliced.mp3"
     #분리할 음원의 경로를 전달해서, 음원 분리하고, 현재 디렉토리 (os.getcwd())에 분리한 음원 파일 폴더 생성하기 
     #이 폴더는 추후에 다 사용한 후에는 삭제가 되어야 한다. --> os.remove로 처리할 부분
     separator.separate_to_file(audio_file, os.getcwd())
@@ -62,7 +47,7 @@ def process_file():
     #os.getcwd()가 os.path.join base_dir와 동일한 역할
     org = os.path.join(settings.BASE_DIR, "kaze_younha_sliced/vocals")
     #->"kaze_younha_sliced/vocals" 이게 sperator로 분리해서 만들어진 폴더/vocals(자체 생성하는 보컬파일 이름)의 경로 (확장자 제외)
-    usr = os.path.join(settings.BASE_DIR, "media/audio", "kaze_mine")
+    usr = os.path.join(settings.BASE_DIR, "media/vocalReportSrc", "kaze_mine")
 
     plt.figure(figsize=(12, 4))
     print("#################분리완#################")
