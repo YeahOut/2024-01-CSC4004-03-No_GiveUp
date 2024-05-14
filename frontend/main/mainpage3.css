@@ -208,6 +208,12 @@
   bottom: 571px;
   left: 306px;
 }
+.audio{
+  position: relative;
+  bottom: 540px;
+  left: 40px;
+}
+
 
 #grid {
   display: grid;
