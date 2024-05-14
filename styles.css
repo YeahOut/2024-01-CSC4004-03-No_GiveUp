@@ -1,0 +1,87 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@font-face {
+  font-family: "PyeongChang";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.ttf")
+      format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "PyeongChang";
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.ttf")
+      format("truetype");
+  font-display: swap;
+}
+* {
+    font-family: "Pretendard Variable", Pretendard, -apple-system,
+      BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .flex {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contents {
+    width: 390px;
+    height: 844px;
+    overflow: hidden;
+  }
+  .header {
+    width: 844px;
+    height: 100px;
+  }
+  .header-contents {
+    position: relative;
+    left: 5%;
+    top: 30px;
+  }
+  .logo {
+    width: 65px;
+    padding-left: 15px;
+  }
+  .check {
+    text-align: center;
+    position: relative;
+    top: 80px;
+  }
+  .text {
+    text-align: center;
+    position: relative;
+    top: 110px;
+  }
+  .complete {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .select {
+    font-size: 16px;
+  }
+  .index{
+    text-align: right
+  }
