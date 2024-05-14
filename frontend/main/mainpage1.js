@@ -1,4 +1,4 @@
-const timer = document.querySelector(".js-timer");
+const timer = document.querySelector(".timer-js-timer");
 const toggleBtn = document.querySelector("recording_button");
 
 let TIME = 0;
