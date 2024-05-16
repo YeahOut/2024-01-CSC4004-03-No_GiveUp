@@ -303,7 +303,8 @@ input[id="hamburger"]:checked + label + div {
   display: inline;
   font-weight: bold;
   line-height: 40px;
-  margin: 0px;
+  margin-left: 0px;
+
   padding-right: 25px;
   text-align: center;
   text-decoration: none;
@@ -313,9 +314,9 @@ input[id="hamburger"]:checked + label + div {
 .sidebar li a:hover,
 .sidebar ul li:hover a {
   text-decoration: none;
-  color: #5dfded;
-  padding: 0;
-  margin: 0;
+  color: #5d5fef;
+  padding-left: 5px;
+  margin: 0px;
   border: 0px;
 }
 
@@ -341,7 +342,6 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   top: 10%;
 }
-
 .wave {
   transform: translateY(50%) rotate(119deg);
   position: relative;
