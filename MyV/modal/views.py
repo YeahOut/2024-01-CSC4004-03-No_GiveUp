@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import UploadAnalyzeFile
-from .analyzing_file import process_file, vocalAnalyze
+from .analyzing_file import process_file, downloadFile
 # Create your views here.
 
 from django.conf import settings
@@ -25,29 +25,30 @@ def upload_analyze_file(request):
     if request.method == 'POST':
         mySound_file = request.FILES.get('mysound_file', None)
         compareSound_file = request.FILES.get('comparesound_file', None)
-
-        if mySound_file:
-            new_name = '사용자음원_' + mySound_file.name  # 파일 이름 앞에 max_붙이기
-            mySound_file.name = new_name
-
-            upload = UploadAnalyzeFile(mySound_file=mySound_file)
-            upload.save()  # 모델 저장하기 (필수!)
-
-        if compareSound_file:
-            new_name = '비교대상음원_' + compareSound_file.name
+        
+        new_name = '사용자음원_' + mySound_file.name  # 파일 이름 앞에 max_붙이기
+        mySound_file.name = new_name
+    
+        
+        new_name = '비교대상음원_' + compareSound_file.name
             # 파일 이름 앞에 min_붙이기 (사용자마다 구분할 수 있도록 사용자 아이디도 앞에 추가해야할 것 같다.)
-            compareSound_file.name = new_name
+        compareSound_file.name = new_name
 
-            upload = UploadAnalyzeFile(compareSound_file=compareSound_file)
-            upload.save()
-            return HttpResponse("Files uploaded successfully")
-
+        upload = UploadAnalyzeFile(mySound_file=mySound_file,
+                                   fMySound_name=mySound_file.name,
+                                   compareSound_file=compareSound_file, 
+                                   fCompareSound_name=compareSound_file.name)
+        upload.save()
+        return HttpResponse("Files uploaded successfully")
+    
     return HttpResponse("Failed to upload files")
 
 
 def vocalResult(request):
     #context = maxminAnalysis(request)
-    downloaded = vocalAnalyze() #음원 다운로드 받기
+    downloaded = downloadFile(mineSound, compareSound) #음원 다운로드 받기
+    print("##전달 성공##")
+
     if (downloaded==1):
         max_note, min_note, start_t, best_st, best_ed = process_file()
         context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
@@ -68,7 +69,9 @@ def downloadFile(request):
 
     #파일 다운로드 진행하기
     obj_file= 'vocalReportSource/사용자음원_kaze_mine.wav' #디렉토리 버킷 접근하기
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', '비교대상음원_최고음_김동국.wav') #저장위치 및 파일 이름 설정
+    userName = '김지민'
+    mysound = '비교대상음원_최고음_'+userName+'.wav' #버킷에서 다운로드 할 파일 이름을 다운할 때 바꿀 수 있는데, 그 부분임.
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', mysound) #저장위치 및 파일 이름 설정
     bucket.download_file(obj_file,save_file)
     return HttpResponse("download 성공~")
 
