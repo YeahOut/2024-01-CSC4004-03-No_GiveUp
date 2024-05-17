@@ -147,10 +147,18 @@ input[type='checkbox']:checked + .custom-checkbox:before {
 }
 
 footer {
-  margin-top: 90px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
-
+}
+.file-upload-button{
+  justify-content: center;
+  display: flex;
+  width: 150px;
+  height: 30px;
+  color: black;
+  border: 0;
+  border-radius: 5px;
 }
 .next-step-button {
   margin-top:45 px;

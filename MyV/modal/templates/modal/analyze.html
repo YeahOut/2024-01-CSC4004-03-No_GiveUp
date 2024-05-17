@@ -47,7 +47,7 @@
                         <label for="mysound-file">
                             <div class="btn-upload">본인 음원 올리기</div>
                         </label>
-                        <input id="mysound-file" type="file" name="mysound_file" accept=".m4a,.mp3,.wav">
+                        <input id="mysound-file" type="file" name="mysound_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'mySound')">
                     </div>
                     <input type="checkbox" id="mysound-checkbox" style="display: none;">
                     <label for="mysound-checkbox" class="custom-checkbox"></label>
@@ -57,14 +57,15 @@
                         <label for="comparesound-file">
                             <div class="btn-upload">비교 음원 올리기</div>
                         </label>
-                        <input id="comparesound-file" type="file" name="comparesound_file" accept=".m4a,.mp3,.wav">
+                        <input id="comparesound-file" type="file" name="comparesound_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'compareSound')">
                     </div>
                     <input type="checkbox" id="comparesound-checkbox" style="display: none;">
                     <label for="comparesound-checkbox" class="custom-checkbox"></label>
                 </div>
+                <input class="file-upload-button" type="submit" value="파일 제출하기" onclick="handleSubmit(event)"/>
             </form>
             <footer>
-                <input class="next-step-button" type="submit" value="파일 제출하기" onclick="location.href='{% url 'vocalResult' %}'" />
+                <input class="next-step-button" type="submit" value="보컬 분석 결과 보기" onclick="location.href='{% url 'vocalResult' %}'" />
             </footer>
         </div>
     </div>
@@ -75,68 +76,75 @@
 
 
 <script>
-    // 파일 업로드 안 하고 클릭했을 때 작동하지 않게 하기
-    document.getElementById('mysound-checkbox').addEventListener('click', function(event) {
-        event.preventDefault();
-    });
-    document.getElementById('comparesound-checkbox').addEventListener('click', function(event) {
-        event.preventDefault();
-    });
+    let mySoundFile = null;
+    let compareSoundFile = null;
 
-    ////ajax for mysound file
-    document.getElementById('mysound-file').addEventListener('change', function() {
-        // FormData 객체로 폼 데이터를 수집
-        var form = document.getElementById('file-upload-form');
-        var formData = new FormData(form);
-
-        // CSRF 토큰 추가
-        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
-        // AJAX 요청 생성
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', form.action, true);  // 폼의 'action' 속성에 POST 요청
-        xhr.setRequestHeader('X-CSRFToken', csrftoken);  // CSRF 토큰 추가
-
-        // 요청에 대한 응답 처리
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log("File uploaded successfully");
+    function handleFileSelect(event, fileType) {
+            const file = event.target.files[0];
+            if (file) {
+                if (fileType === 'mySound') {
+                    mySoundFile = file;
+                    document.getElementById('mysound-checkbox').checked = true;
+                } else if (fileType === 'compareSound') {
+                    compareSoundFile = file;
+                    document.getElementById('comparesound-checkbox').checked = true;
+                }
             } else {
-                console.log("Failed to upload file");
+                if (fileType === 'mySound') {
+                    mySoundFile = null;
+                    document.getElementById('mysound-checkbox').checked = false;
+                } else if (fileType === 'compareSound') {
+                    compareSoundFile = null;
+                    document.getElementById('comparesound-checkbox').checked = false;
+                }
             }
-        };
+        }
 
-        // AJAX 요청으로 폼 데이터 전송
-        xhr.send(formData);
-        document.getElementById('mysound-checkbox').checked = true; // 파일 업로드 시 체크
+    // 파일 제출 처리
+    function handleSubmit(event) {
+        event.preventDefault(); //채워야지만 보낼 수 있도록 하기 위함 
+
+        if (mySoundFile && compareSoundFile) {
+            const formData = new FormData();
+            formData.append('mysound_file', mySoundFile);
+            formData.append('comparesound_file', compareSoundFile);
+
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch("{% url 'upload_analyze_file' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrftoken // CSRF 토큰 추가
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('파일이 성공적으로 업로드되었습니다.');
+                } else {
+                    alert('업로드에 실패했습니다. 서버 응답: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(result => {
+                console.log('서버 응답:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('에러가 발생했습니다: ' + error.message);
+            });
+        } else {
+            alert('두 개의 파일을 모두 선택해주세요.');
+        }
+    }
+
+    // 체크박스 클릭 방지
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('mysound-checkbox').addEventListener('click', function(event) {
+            event.preventDefault();
+        });
+        document.getElementById('comparesound-checkbox').addEventListener('click', function(event) {
+            event.preventDefault();
+        });
     });
-
-    ////ajax for comparesound file
-    document.getElementById('comparesound-file').addEventListener('change', function() {
-        // FormData 객체로 폼 데이터를 수집
-        var form = document.getElementById('file-upload-form');
-        var formData = new FormData(form);
-
-        // CSRF 토큰 추가
-        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
-        // AJAX 요청 생성
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', form.action, true);  // 폼의 'action' 속성에 POST 요청
-        xhr.setRequestHeader('X-CSRFToken', csrftoken);  // CSRF 토큰 추가
-
-        // 요청에 대한 응답 처리
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log("max File uploaded successfully");
-            } else {
-                console.log("max Failed to upload file");
-            }
-        };
-
-        // AJAX 요청으로 폼 데이터 전송
-        xhr.send(formData);
-        document.getElementById('comparesound-checkbox').checked = true; // 파일 업로드 시 체크
-    });
-
 </script>
