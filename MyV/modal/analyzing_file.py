@@ -13,10 +13,11 @@ import sys
 import os
 import shutil
 import math
-from django.conf import settings
+import plotly.graph_objects as go
+from pydub import AudioSegment
 from spleeter.separator import Separator
 
-def vocalAnalyze() :
+def downloadFile() :
     s3 = boto3.resource('s3')
     for bucket in s3.buckets.all():
         print(bucket.name)
@@ -28,9 +29,15 @@ def vocalAnalyze() :
     print(bucket)
 
     #파일 다운로드 진행하기
-    obj_file = 'vocalReportSource/사용자음원_kaze_mine.wav' #디렉토리 버킷 접근하기
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', '비교대상음원_최고음_김동국.wav') #저장위치 및 파일 이름 설정
-    bucket.download_file(obj_file,save_file)
+    mine_obj_file= 'vocalReportSource/usr.wav' #디렉토리 버킷 접근하기
+    compare_obj_file='vocalReportSource/org.wav'
+    print("###버킷 접근 성공###")
+    
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'usr.wav') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(mine_obj_file,save_file)
+
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'org.wav') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(compare_obj_file,save_file)
     return 1;
 
 def process_file():
@@ -177,15 +184,49 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
         if f0_usr[i] < 0:
             f0_usr[i] = np.nan
 
-    # plot
-    plt.plot(t_usr, f0_org, color='orangered', label="비교 음원")
-    plt.plot(t_usr, f0_usr, color='deepskyblue', label="사용자 음원")
-    plt.axhline(max_hz, t_usr[0], t_usr[-1], color='lightskyblue', linestyle='--', label="최고음")
-    plt.axhline(min_hz, t_usr[0], t_usr[-1], color='lightsalmon', linestyle='--', label="최저음")
-    plt.fill_between(t_usr[best_idx:best_idx + term_len - 1],
-                     f0_usr[best_idx:best_idx + term_len - 1], color='lawngreen', alpha=0.3, label="가장 정확한 구간")
-
-    #plt.legend()
-    plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
+    # plot update 0517
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=t_org, y=f0_org, fill='tozeroy', name='비교 음원'))
+    fig.add_trace(go.Scatter(x=t_usr, y=f0_usr, fill='tozeroy', name='사용자 음원'))
+    fig.add_hline(y=max_hz, line_dash="dash", label=dict(text="최고음"))
+    fig.add_hline(y=min_hz, line_dash="dash", label=dict(text="최저음"))
+    fig.add_vrect(x0=t_usr[best_idx], x1=t_usr[best_idx+term_len-1], fillcolor='green',
+                  opacity=0.25, line_width=0, label=dict(text="가장 정확한 구간"))
+    fig.update_layout(legend_yanchor='top', legend_y=0.99, legend_xanchor='left', legend_x=0.01,
+                      margin_l=0, margin_r=0, margin_b=0, margin_t=0)
+    fig.write_image('./vocal_report_graph.png')
+    fig.show()
     return score, min_note, max_note, best_idx
 
+##0517 update
+def org_convert_format():
+    is_org_m4a = False
+    if (os.path.isfile("./org.m4a")):
+        is_org_m4a = True
+
+    if(~is_org_m4a):
+        org_audio = AudioSegment.from_file("./org.m4a", format="m4a")
+        org_audio.export("./org.mp3", format="mp3")
+
+def usr_convert_format():
+    is_usr_m4a = False
+    if (os.path.isfile("./usr.m4a")):
+        is_usr_m4a = True
+
+    if(~is_usr_m4a):
+        org_audio = AudioSegment.from_file("./usr.m4a", format="m4a")
+        org_audio.export("./usr.mp3", format="mp3")
+
+def remove_prefiles():
+    if (os.path.isfile("org.wav")):
+        os.remove("org.wav")
+    if (os.path.isfile("org.mp3")):
+        os.remove("org.mp3")
+    if (os.path.isfile("org.m4a")):
+        os.remove("org.m4a")
+    if (os.path.isfile("usr.wav")):
+        os.remove("usr.wav")
+    if (os.path.isfile("usr.mp3")):
+        os.remove("usr.mp3")
+    if (os.path.isfile("usr.m4a")):
+        os.remove("usr.m4a")

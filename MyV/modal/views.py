@@ -27,7 +27,7 @@ def upload_analyze_file(request):
         compareSound_file = request.FILES.get('comparesound_file', None)
         
         ##파일 이름 변경##
-        # 파일 이름에서 확장자를 분리하기
+        # 파일 이름에서 확장자 분리하기
         mySound_name, mySound_ext = os.path.splitext(mySound_file.name)
         compareSound_name, compareSound_ext = os.path.splitext(compareSound_file.name)
 
@@ -37,12 +37,13 @@ def upload_analyze_file(request):
         
         mySound_file.name = new_mySound_name
         compareSound_file.name = new_compareSound_name
-
+        #인스턴스 중복되는거 방지하기
         upload = UploadAnalyzeFile(mySound_file=mySound_file,
                                    fMySound_name=mySound_file.name,
                                    compareSound_file=compareSound_file, 
                                    fCompareSound_name=compareSound_file.name)
         upload.save()
+        
         return HttpResponse("Files uploaded successfully")
     
     return HttpResponse("Failed to upload files")
@@ -50,35 +51,15 @@ def upload_analyze_file(request):
 
 def vocalResult(request):
     #context = maxminAnalysis(request)
-    downloaded = downloadFile(mineSound, compareSound) #음원 다운로드 받기
+    downloaded = downloadFile() #음원 다운로드 받기
     print("##전달 성공##")
 
     if (downloaded==1):
         max_note, min_note, start_t, best_st, best_ed = process_file()
         context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
+    else :
+        print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)
-
-
-##views.py로 바로 확인하기 위한 함수 >> analyzing_file.py에서 활용할 예정
-def downloadFile(request):
-    s3 = boto3.resource('s3')
-    for bucket in s3.buckets.all():
-        print(bucket.name)
-    
-    #s3 버킷 정보 가져오기
-    bucket_name = 'myv-aws-bucket'
-    bucket = s3.Bucket(bucket_name)
-    print("###test###")
-    print(bucket)
-
-    #파일 다운로드 진행하기
-    obj_file= 'vocalReportSource/사용자음원_kaze_mine.wav' #디렉토리 버킷 접근하기
-    userName = '김지민'
-    mysound = '비교대상음원_최고음_'+userName+'.wav' #버킷에서 다운로드 할 파일 이름을 다운할 때 바꿀 수 있는데, 그 부분임.
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', mysound) #저장위치 및 파일 이름 설정
-    bucket.download_file(obj_file,save_file)
-    return HttpResponse("download 성공~")
-
 
 #로컬에 있는 음원으로 최고최저 분석하는 함수
 def maxminAnalysis(request):
