@@ -215,6 +215,12 @@
 }
 
 
+.audio {
+  position: relative;
+  bottom: 540px;
+  left: 40px;
+}
+
 #grid {
   display: grid;
   font-family: "PyeongChang";
@@ -224,7 +230,7 @@
   row-gap: 30px;
   text-align: center;
   position: relative;
-  bottom: 460px;
+  bottom: 520px;
 }
 
 #grid .feature {
@@ -246,7 +252,7 @@
 
   position: relative;
   left: 35px;
-  bottom: 460px;
+  bottom: 500px;
 }
 
 /**modal css**/
