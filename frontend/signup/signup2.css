@@ -256,9 +256,33 @@
   font-size: 0.1px;
   -webkit-transform: scale(0.83);
   display: inline-block;
-  padding-right: 100px;
+  padding-right: 105px;
 }
 .steps-right {
+  font-size: 0.1px;
+  -webkit-transform: scale(0.83);
+  display: inline-block;
+}
+
+.steps-left0 {
+  font-size: 0.1px;
+  -webkit-transform: scale(0.83);
+  display: inline-block;
+  padding-right: 120px;
+}
+.steps-right0 {
+  font-size: 0.1px;
+  -webkit-transform: scale(0.83);
+  display: inline-block;
+}
+
+.steps-left1 {
+  font-size: 0.1px;
+  -webkit-transform: scale(0.83);
+  display: inline-block;
+  padding-right: 165px;
+}
+.steps-right1 {
   font-size: 0.1px;
   -webkit-transform: scale(0.83);
   display: inline-block;
