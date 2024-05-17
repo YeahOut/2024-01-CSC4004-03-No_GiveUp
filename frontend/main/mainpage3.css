@@ -208,7 +208,7 @@
   bottom: 571px;
   left: 306px;
 }
-.audio{
+#audio{
   position: relative;
   bottom: 540px;
   left: 40px;
@@ -234,7 +234,7 @@
 #grid .value {
   font-weight: 700;
 }
-#go_recommend {
+#go_playlist {
   width: 315px;
   height: 51px;
   border: 0;
@@ -246,7 +246,7 @@
 
   position: relative;
   left: 35px;
-  bottom: 460px;
+  bottom: 500px;
 }
 
 /**modal css**/

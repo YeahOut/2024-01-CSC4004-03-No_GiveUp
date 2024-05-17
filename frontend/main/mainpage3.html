@@ -14,7 +14,7 @@
             <img class="logo" src="logo.svg" />
           </div>
           <div class="mobile_btn">
-            <input type="checkbox" id="hamburger" />
+            <input type="checkbox" id="hamburger"/>
             <label for="hamburger">
               <span></span>
               <span></span>
@@ -49,53 +49,51 @@
             <p class="select">마음에 드는 곡 한 곡을 선택해주세요.</p>
           </div>
 
-          <div id="grid1">
+          <div id="grid1"> 
             <div class="album-form">
               <div class="af">
-                <button class="album-cover1">
+                <button type="button" class="album-cover1">
                   <img src="cover.jpg" width=" 120px" />
                 </button>
               </div>
               <div class="af">
-                <button class="album-cover2">
+                <button type="button" class="album-cover2">
                   <img src="cover.jpg" width=" 130px" />
                 </button>
               </div>
               <div class="af">
-                <button class="album-cover3">
+                <button type="button" class="album-cover3">
                   <img src="cover.jpg" width=" 120px" />
                 </button>
               </div>
             </div>
           </div>
           <div>
-            <a class="cover1"></a>
+            <a class="cover1" id="af1" onclick="song_select(this.id);"></a>
           </div>
           <div>
-            <a class="cover2"></a>
+            <a class="cover2" id="af2" onclick="song_select(this.id);"></a>
           </div>
           <div>
-            <a class="cover3"></a>
+            <a class="cover3" id="af3" onclick="song_select(this.id);"></a>
           </div>
 
           <div class="song-info1">
-            <p class="title">제목</p>
+            <p class="title" id="title1">제목</p>
             <br />
-            <p class="singer">가수</p>
+            <p class="singer" id="singer1">가수</p>
           </div>
           <div class="song-info2">
-            <p class="title">제목</p>
+            <p class="title" id="title2">제목</p>
             <br />
-            <p class="singer">가수</p>
+            <p class="singer" id="singer2">가수</p>
           </div>
           <div class="song-info3">
-            <p class="title">제목</p>
+            <p class="title" id="title3">제목</p>
             <br />
-            <p class="singer">가수</p>
+            <p class="singer" id="singer3">가수</p>
           </div>
-          <div class = "audio">
-            <audio src="tmp" controls></audio>
-          </div>
+          <audio id="audio" src="https://ccrma.stanford.edu/~jos/mp3/harpsi-cs.mp3" controls></audio>
         </main>
         <footer>
           <div id="grid">
@@ -108,9 +106,10 @@
               <p class="value">산뜻한</p>
             </div>
           </div>
-          <input id="go_recommend" type="button" value="추천 음악 보러 가기" />
+          <input type="button" id="go_playlist" value="플레이리스트 보러 가기" />
         </footer>
       </div>
     </div>
+    <script type="text/javascript" src="mainpage3.js"></script>
   </body>
 </html>
