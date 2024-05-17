@@ -26,13 +26,17 @@ def upload_analyze_file(request):
         mySound_file = request.FILES.get('mysound_file', None)
         compareSound_file = request.FILES.get('comparesound_file', None)
         
-        new_name = '사용자음원_' + mySound_file.name  # 파일 이름 앞에 max_붙이기
-        mySound_file.name = new_name
-    
+        ##파일 이름 변경##
+        # 파일 이름에서 확장자를 분리하기
+        mySound_name, mySound_ext = os.path.splitext(mySound_file.name)
+        compareSound_name, compareSound_ext = os.path.splitext(compareSound_file.name)
+
+        # 새 파일 이름 설정
+        new_mySound_name = 'usr' + mySound_ext 
+        new_compareSound_name = 'org' + compareSound_ext ##org.mp4 이런식으로 변경 
         
-        new_name = '비교대상음원_' + compareSound_file.name
-            # 파일 이름 앞에 min_붙이기 (사용자마다 구분할 수 있도록 사용자 아이디도 앞에 추가해야할 것 같다.)
-        compareSound_file.name = new_name
+        mySound_file.name = new_mySound_name
+        compareSound_file.name = new_compareSound_name
 
         upload = UploadAnalyzeFile(mySound_file=mySound_file,
                                    fMySound_name=mySound_file.name,
