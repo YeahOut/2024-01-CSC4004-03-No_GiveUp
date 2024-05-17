@@ -11,16 +11,25 @@ import shutil
 import math
 import plotly.graph_objects as go
 from pydub import AudioSegment
+from spleeter.separator import Separator
 
 def spleet(org_file_name):
-    if (os.path.isfile("./output")):
-        shutil.rmtree("./output")
+    output_dir = "./output"
+    if (os.path.isfile(output_dir)):
+        shutil.rmtree(output_dir)
+
+    #os.makedirs(output_dir)
     stems = 5
     file_name = org_file_name
+    separator = Separator('spleeter:5stems')
+    audio_dir = file_name + ".mp3"
 
+    separator.separate_to_file(audio_dir, output_dir)
+    '''
     spl = r'spleeter separate -p spleeter:' + \
           str(stems) + r'stems -o output ' + file_name + '.mp3'
     os.system(spl)
+    '''
 
     src = "./output/" + file_name + "/vocals.wav"
     dst = "./"
