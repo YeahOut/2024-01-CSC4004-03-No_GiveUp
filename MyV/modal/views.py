@@ -56,7 +56,7 @@ def vocalResult(request):
 
     if (downloaded==1):
         max_note, min_note, start_t, best_st, best_ed = process_file()
-        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st':best_st, 'best_ed':best_ed}
+        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed)}
     else :
         print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)
