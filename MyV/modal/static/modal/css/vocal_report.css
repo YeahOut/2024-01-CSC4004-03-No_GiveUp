@@ -8,9 +8,6 @@
   padding: 0;
 }
 
-.backbutton {
-    margin-left:10px;
-}
 .flex {
   margin: 0;
   padding: 0;
@@ -27,31 +24,8 @@
   overflow: hidden;
 }
 
-header {
-  height: 85px;
-  display: flex;
-  justify-content: center;
-}
-
 body {
   margin: 0;
-}
-
-.logo {
-  width: 390px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-top: 40px;
-}
-
-.modal {
-  width: 35px;
-  height: 30px;
-  margin-left: auto;
-  margin-right: 25px;
-  margin-top: 25px;
 }
 
 #report_main_container {
@@ -64,12 +38,12 @@ body {
 }
 
 #report_paragraph {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0;
 }
 
 .report_main {
-  background-color: rgb(255, 244, 239);
+  background-color: rgb(255, 255, 255);
 }
 
 .report_graph {
@@ -82,11 +56,205 @@ body {
   height: 80px;
 }
 
-.kakao_share_button {
-  width: 80%;
-  margin: 0 auto;
+.report_score {
+  margin: 10px;
+}
+
+.report_legend {
+  width: 100%;
 }
 
 #report_name_score h3, #report_name_score h3{
     margin : 0 0 0 0;
+}
+
+.header {
+  width: 844px;
+  height: 130px;
+}
+
+.header-contents {
+  position: relative;
+  left: 5%;
+  top: 30px;
+  margin-bottom: 80px;
+}
+.logo {
+  width: 65px;
+  padding-left: 15px;
+}
+
+/**modal css**/
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/**버튼 위치**/
+
+.mobile_btn {
+  position: absolute;
+  top: 35px;
+  left: 300px;
+}
+
+/****/
+
+input[id="hamburger"] {
+  display: none;
+}
+
+/**버튼 사이즈**/
+
+input[id="hamburger"] + label {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  left: 100%;
+  cursor: pointer;
+}
+
+/****/
+/**modal icon**/
+
+input[id="hamburger"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 30px;
+  background: #000;
+  transition: all 0.35s;
+}
+input[id="hamburger"] + label span:nth-child(1) {
+  top: 0;
+}
+input[id="hamburger"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id="hamburger"] + label span:nth-child(3) {
+  bottom: 0;
+}
+input[id="hamburger"]:checked + label {
+  z-index: 99;
+}
+input[id="hamburger"]:checked + label span {
+  background: black;
+}
+input[id="hamburger"]:checked + label span:nth-child(1) {
+  width: 25px;
+  top: 103.5%;
+  transform: translateY(-60%) rotate(150deg);
+}
+input[id="hamburger"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+input[id="hamburger"]:checked + label span:nth-child(3) {
+  width: 25px;
+  bottom: 55%;
+  transform: translateY(50%) rotate(-150deg);
+}
+/****/
+
+/**modal**/
+
+div[class="sidebar"] {
+  width: 166px;
+  height: 844px;
+  background: white;
+  background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
+  top: 0%;
+  left: 200%;
+  z-index: 98;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+
+/****/
+
+input[id="hamburger"]:checked + label + div {
+  left: 223px;
+}
+
+/** modal contents form**/
+.nav_mobile {
+  position: absolute;
+  top: 119px;
+  width: 100%;
+}
+/****/
+/** modal contents text**/
+.sidebar .nav_mobile li {
+  color: black;
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style-type: none;
+  font-size: 17px;
+  font-family: "Noto Sans KR";
+  font-weight: bold;
+  padding-top: 15px;
+  text-align: right;
+}
+/****/
+
+.sidebar a {
+  padding: 0;
+  text-decoration: none;
+  display: inline;
+}
+
+.sidebar li a {
+  display: inline;
+  font-weight: bold;
+  line-height: 40px;
+  margin-left: 0px;
+
+  padding-right: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+.sidebar li a:hover,
+.sidebar ul li:hover a {
+  text-decoration: none;
+  color: #5d5fef;
+  padding-left: 5px;
+  margin: 0px;
+  border: 0px;
+}
+
+.user-img {
+  position: relative;
+  left: 50px;
+  top: 10%;
+}
+
+.user-info {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 25px;
+}
+
+.info1,
+.info2 {
+  padding-top: 10px;
+}
+
+.modaltext {
+  position: relative;
+  top: 10%;
+}
+
+.wave {
+  transform: translateY(50%) rotate(119deg);
+  position: relative;
+  left: 60%;
+  top: 93.5px;
 }
