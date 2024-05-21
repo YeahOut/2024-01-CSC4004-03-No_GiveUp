@@ -9,7 +9,6 @@
 
 body {
   margin: 0;
-  padding: 0;
 }
 
 .flex {
@@ -27,21 +26,6 @@ body {
   overflow: hidden;
 }
 
-.back_btn{
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-header {
-    margin-top:55px;
-}
-.header-content{
-  display: flex;
-  justify-content: center;
-  /*승연이꺼 추가*/
-  position: relative;
-  bottom: 20px;
-}
 
 .header-content h2 {
   /*padding-left: 5px;*/
@@ -54,7 +38,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 35px;
+  margin-top: 100px;
 }
 .textbox p {
   font-weight: 500;
@@ -147,10 +131,18 @@ input[type='checkbox']:checked + .custom-checkbox:before {
 }
 
 footer {
-  margin-top: 90px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
-
+}
+.file-upload-button{
+  justify-content: center;
+  display: flex;
+  width: 150px;
+  height: 30px;
+  color: black;
+  border: 0;
+  border-radius: 5px;
 }
 .next-step-button {
   margin-top:45 px;
@@ -163,116 +155,195 @@ footer {
   border-radius: 5px;
 }
 
-/*애니메이션*/
 
-.container {
+.header {
+  width: 844px;
+  height: 130px;
+}
+
+.header-contents {
   position: relative;
-  display: flex;
-  width: 1000px;
-  height: 155px; /*170->155 수정*/
+  left: 5%;
+  top: 30px;
+  margin-bottom: 80px;
+}
+.logo {
+  width: 65px;
+  padding-left: 15px;
+}
+
+/**modal css**/
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/**버튼 위치**/
+
+.mobile_btn {
+  position: absolute;
+  top: 35px;
+  left: 300px;
+}
+
+/****/
+
+input[id="hamburger"] {
+  display: none;
+}
+
+/**버튼 사이즈**/
+
+input[id="hamburger"] + label {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  left: 100%;
+  cursor: pointer;
+}
+
+/****/
+/**modal icon**/
+
+input[id="hamburger"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 30px;
+  background: #000;
+  transition: all 0.35s;
+}
+input[id="hamburger"] + label span:nth-child(1) {
+  top: 0;
+}
+input[id="hamburger"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id="hamburger"] + label span:nth-child(3) {
+  bottom: 0;
+}
+input[id="hamburger"]:checked + label {
+  z-index: 99;
+}
+input[id="hamburger"]:checked + label span {
+  background: black;
+}
+input[id="hamburger"]:checked + label span:nth-child(1) {
+  width: 25px;
+  top: 103.5%;
+  transform: translateY(-60%) rotate(150deg);
+}
+input[id="hamburger"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+input[id="hamburger"]:checked + label span:nth-child(3) {
+  width: 25px;
+  bottom: 55%;
+  transform: translateY(50%) rotate(-150deg);
+}
+/****/
+
+/**modal**/
+
+div[class="sidebar"] {
+  width: 166px;
+  height: 844px;
+  background: white;
+  background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
+  top: 0%;
+  left: 200%;
+  z-index: 98;
+  transition: all 0.35s;
   overflow: hidden;
 }
 
-.wave1 {
-  z-index: 0;
-  top: -5px;
-}
-.wave2 {
-  z-index: 1;
-  top: -10px;
-}
-.wave3 {
-  z-index: 2;
-}
-.wave4 {
-  z-index: 3;
+/****/
+
+input[id="hamburger"]:checked + label + div {
+  left: 223px;
 }
 
-.wave1,
-.wave2,
-.wave3,
-.wave4 {
+/** modal contents form**/
+.nav_mobile {
   position: absolute;
-  display: flex;
-  height: 100px;
-}
-
-#w11 {
-  animation: waving1;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w12 {
-  animation: waving1;
-  animation-iteration-count: infinite;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w13 {
-  animation: waving1;
-  animation-iteration-count: infinite;
-  animation-duration: 2.3s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w14 {
-  animation: waving1;
-  animation-iteration-count: infinite;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w21 {
-  animation: waving2;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w22 {
-  animation: waving2;
-  animation-iteration-count: infinite;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w23 {
-  animation: waving2;
-  animation-iteration-count: infinite;
-  animation-duration: 2.3s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-#w24 {
-  animation: waving2;
-  animation-iteration-count: infinite;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-
-
-@keyframes waving2 {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes waving1 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-ul{
+  top: 119px;
+  width: 100%;
   padding:0px;
+}
+/****/
+/** modal contents text**/
+.sidebar .nav_mobile li {
+  color: black;
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style-type: none;
+  font-size: 17px;
+  font-family: "Noto Sans KR";
+  font-weight: bold;
+  padding-top: 15px;
+  text-align: right;
+}
+/****/
+
+.sidebar a {
+  padding: 0;
+  text-decoration: none;
+  display: inline;
+}
+
+.sidebar li a {
+  display: inline;
+  font-weight: bold;
+  line-height: 40px;
+  margin-left: 0px;
+
+  padding-right: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+.sidebar li a:hover,
+.sidebar ul li:hover a {
+  text-decoration: none;
+  color: #5d5fef;
+  padding-left: 5px;
+  margin: 0px;
+  border: 0px;
+}
+
+.user-img {
+  position: relative;
+  left: 50px;
+  top: 10%;
+}
+
+.user-info {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 25px;
+}
+
+.info1,
+.info2 {
+  padding-top: 10px;
+}
+
+.modaltext {
+  position: relative;
+  top: 10%;
+}
+
+.wave {
+  transform: translateY(50%) rotate(119deg);
+  position: relative;
+  left: 60%;
+  top: 93.5px;
 }
