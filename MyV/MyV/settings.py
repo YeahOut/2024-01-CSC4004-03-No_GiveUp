@@ -118,6 +118,9 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+ACCOUNT_SIGNUP_REDIRECT_URL = '/modal/analyze'
+LOGIN_REDIRECT_URL = '/modal/analyze'
+ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
