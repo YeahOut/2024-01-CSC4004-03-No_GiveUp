@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    pass
+    nickname = models.CharField(max_length=15, unique=True, null=True)
 
 
 class UploadMAXMIN(models.Model):

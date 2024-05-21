@@ -118,7 +118,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = '/modal/analyze'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/done/'
 LOGIN_REDIRECT_URL = '/modal/analyze'
 ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
@@ -163,7 +163,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Allauth settings
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
-#ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
+ACCOUNT_SESSION_REMEMBER = False
+SESSION_COOKIE_AGE = 3600
+ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
