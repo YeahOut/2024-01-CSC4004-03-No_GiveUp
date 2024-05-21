@@ -3,20 +3,20 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils import timezone
 
 class UserManager(BaseUserManager):
-    def create_user(self, user_name, user_email, ID, user_mood, user_energy, user_tempo, password=None):
-        if not user_name:
+    def create_user(self, username, email, user_ID, user_mood, user_energy, user_tempo, password=None):
+        if not username:
             raise ValueError('사용자는 무조건 이름이 있어야 합니다.')
         
-        if not user_email:
+        if not email:
             raise ValueError('사용자는 무조건 이메일이 있어야 합니다.')
         
-        if not ID:
+        if not user_ID:
             raise ValueError('사용자는 무조건 ID가 있어야 합니다.')
-        
+
         user = self.model(
-            email=self.normalize_email(user_email),
-            user_name=user_name,
-            ID=ID,
+            email=self.normalize_email(email),
+            username=username,
+            user_ID=user_ID,
             user_mood=user_mood,
             user_energy=user_energy,
             user_tempo=user_tempo,
@@ -25,11 +25,11 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, user_name, user_email, ID, user_mood, user_energy, user_tempo, password=None):
+    def create_superuser(self, username, email, user_ID, user_mood, user_energy, user_tempo, password=None):
         user = self.create_user(
-            email=self.normalize_email(user_email),
-            user_name=user_name,
-            ID=ID,
+            email=self.normalize_email(email),
+            username=username,
+            user_ID=user_ID,
             user_mood=user_mood,
             user_energy=user_energy,
             user_tempo=user_tempo,
@@ -40,13 +40,13 @@ class UserManager(BaseUserManager):
         user.is_active = True
         user.is_staff = True
         user.is_superadmin = True
-        user.save(using(self._db))
+        user.save(using=self._db)
         return user
 
 class User(AbstractBaseUser):
-    user_name = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
     email = models.EmailField(max_length=255, unique=True)
-    ID = models.CharField(max_length=50, unique=True)
+    user_ID = models.CharField(max_length=50, unique=True)
     user_mood = models.DecimalField(max_digits=4, decimal_places=2)
     user_energy = models.DecimalField(max_digits=4, decimal_places=2)
     user_tempo = models.DecimalField(max_digits=4, decimal_places=2)
@@ -59,8 +59,8 @@ class User(AbstractBaseUser):
     date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(default=timezone.now) 
     
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name', 'ID', 'user_mood', 'user_energy', 'user_tempo']
+    USERNAME_FIELD = 'user_ID'
+    REQUIRED_FIELDS = ['username', 'email', 'user_mood', 'user_energy', 'user_tempo']
     
     objects = UserManager()
 
