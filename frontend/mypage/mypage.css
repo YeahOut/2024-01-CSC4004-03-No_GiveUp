@@ -1,6 +1,20 @@
-/* 폰트 불러오기 */
-
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
+      format("truetype");
+  font-display: swap;
+}
 
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
@@ -10,6 +24,7 @@
   margin: 0;
   padding: 0;
 }
+
 .flex {
   margin: 0;
   padding: 0;
@@ -24,10 +39,9 @@
   height: 844px;
   overflow: hidden;
 }
-
 .header {
   width: 844px;
-  height: 100px;
+  height: 130px;
 }
 
 .header-contents {
@@ -41,138 +55,55 @@
 }
 
 .title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+.user img {
+  position: relative;
+  left: 31%;
+  top: 80px;
+}
+.user p {
+  font-size: 36px;
+  font-weight: 600;
   text-align: center;
   position: relative;
   top: 100px;
 }
-/*최고음과 최저음을 녹음한 파일을 업로드 해주세요 텍스트*/
-.textbox {
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  /**justify-content: center;**/
-  align-items: center;
+
+.button-form p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.button {
+  width: 99px;
+  height: 111px;
+  background-color: white;
+  border: solid 1px #b1b1b1;
+  border-radius: 20%;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 30px;
+
   position: relative;
+  left: 15px;
   top: 130px;
 }
-.textbox p {
-  text-align: center;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-}
-.textbox2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0px;
+
+.wave-img {
+  transform: translateY(50%) rotate(119deg);
   position: relative;
-  top: 350px;
-}
-#last {
-  margin: 3px 0 0 0;
-}
-
-/*주의해주세요 핑크 박스 부분*/
-.warningBox {
-  display: flex;
-  flex-direction: column;
-  /**justify-content: center;**/
-  align-items: center;
-  width: 309px;
-  height: 90px;
-  border-radius: 10px;
-  background-color: rgba(255, 238, 238, 0.7); /* 0.7은 투명도 70%를 의미 */
-  margin-top: 40px;
-}
-.warning_text {
-  display: inline-flex;
-  justify-items: center;
-}
-.warning_text h3 {
-  padding: 5px 0 0 5px;
-  margin: 0;
-  color: #ff1515;
-}
-.warningBox p {
-  margin: 5px 0 0 0;
-}
-
-/*파일 업로드 버튼 부분*/
-.file-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4px;
-  position: relative;
-  top: 300px;
-}
-
-.btn-upload {
-  width: 166px;
-  height: 45px;
-  font-size: 20px;
-  color: #fff;
-  background: #8dadff;
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background: #5e59ff;
-    color: #fff;
-  }
-}
-
-.minsound,
-.maxsound {
-  /*업로드 버튼 커스텀하기*/
-  display: inline-flex;
-  margin-bottom: 15px;
-  align-items: center;
-}
-
-#min-file,
-#max-file {
-  /*파입업로드 버튼 숨기기*/
-  display: none;
-}
-
-.custom-checkbox {
-  margin: 0 0 20px 20px;
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border: 1px solid #8dadff;
-  background-color: white;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.custom-checkbox:before {
-  content: ""; /* 빈 콘텐츠로 체크박스 표시를 제어 */
-}
-
-input[type="checkbox"]:checked + .custom-checkbox:before {
-  content: "✔"; /* 선택되었을 때 체크 마크 표시 */
-  color: #5f5bd9; /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
-}
-
-#save_button {
-  width: 315px;
-  height: 51px;
-  border: 0;
-  border-radius: 100px;
-  font-size: 18px;
-  background-color: #5d5fef;
-  color: #eeeeee;
-
-  position: relative;
-  left: 35px;
-  top: 400px;
+  right: 40px;
+  bottom: 22px;
+  height: 270px;
 }
 
 /**modal css**/
@@ -342,6 +273,7 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   top: 10%;
 }
+
 .wave {
   transform: translateY(50%) rotate(119deg);
   position: relative;

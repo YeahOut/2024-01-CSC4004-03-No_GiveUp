@@ -40,44 +40,45 @@
   overflow: hidden;
 }
 
-header {
-  height: 85px;
-  display: flex;
-  justify-content: center;
-  /* background-color: black; */
+.header {
+  width: 844px;
+  height: 100px;
 }
 
-/*******/
-
-.logo {
-  width: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header-contents {
   position: relative;
-  margin-top: 40px;
-  left: 30px;
+  left: 5%;
+  top: 30px;
 }
-.modal {
-  width: 35px;
-  height: 30px;
-  margin-left: auto;
-  margin-right: 25px;
-  margin-top: 25px;
-}
-header {
-  height: 85px;
-  display: flex;
-  justify-content: center;
-  /* background-color: black; */
+.logo {
+  width: 65px;
+  padding-left: 15px;
 }
 
-/*****/
 .analyze_move {
   text-align: center;
   position: relative;
-  top: 200px;
+  top: 230px;
 }
+
+.rotate {
+  animation: rotation 1300s;
+}
+.linear {
+  animation-timing-function: linear;
+}
+.infinte {
+  animation-iteration-count: infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-300000deg);
+  }
+}
+
 .text {
   text-align: center;
   position: relative;
