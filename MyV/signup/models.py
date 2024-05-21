@@ -35,6 +35,7 @@ class UserManager(BaseUserManager):
             user_tempo=user_tempo,
             password=password
         )
+        
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
@@ -47,8 +48,8 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     ID = models.CharField(max_length=50, unique=True)
     user_mood = models.DecimalField(max_digits=4, decimal_places=2)
-    user_energy = models.CharField(max_length=50)
-    user_tempo = models.CharField(max_length=50)
+    user_energy = models.DecimalField(max_digits=4, decimal_places=2)
+    user_tempo = models.DecimalField(max_digits=4, decimal_places=2)
     
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
@@ -56,7 +57,7 @@ class User(AbstractBaseUser):
     is_superadmin = models.BooleanField(default=False)
     
     date_joined = models.DateTimeField(default=timezone.now)
-    last_login = models.DateTimeField(default=timezone.now)  # 기본 값을 명시
+    last_login = models.DateTimeField(default=timezone.now) 
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['user_name', 'ID', 'user_mood', 'user_energy', 'user_tempo']

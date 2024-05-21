@@ -85,7 +85,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'signup.User'
+AUTH_USER_MODEL = 'signup.User' 
 
 
 # Password validation
