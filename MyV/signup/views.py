@@ -4,7 +4,7 @@ from .models import UploadMAXMIN, MaxminNote
 from .maxmin import maxAnalysis, minAnalysis
 # Create your views here.
 def signup1(request):
-    return render(request, 'signup/signup1.html')
+    return render(request, 'account/signup.html')
 
 def signup2(request):
     return render(request, 'signup/signup2.html')

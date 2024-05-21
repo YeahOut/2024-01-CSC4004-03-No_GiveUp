@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'signup',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'signup',
     'myauth',
     'login',
     'storages',
@@ -100,16 +100,7 @@ AUTH_USER_MODEL = 'signup.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "signup.validators.CustomPasswordValidator"
     },
 ]
 
@@ -169,3 +160,4 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_SESSION_REMEMBER = False
 SESSION_COOKIE_AGE = 3600
 ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
