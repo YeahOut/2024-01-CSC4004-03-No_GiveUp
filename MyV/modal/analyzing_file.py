@@ -13,50 +13,59 @@ import sys
 import os
 import shutil
 import math
-from django.conf import settings
+import plotly.graph_objects as go
+from pydub import AudioSegment
+from spleeter.separator import Separator
 
+def downloadFile() :
+    s3 = boto3.resource('s3')
+    for bucket in s3.buckets.all():
+        print(bucket.name)
+    
+    #s3 버킷 정보 가져오기
+    bucket_name = 'myv-aws-bucket'
+    bucket = s3.Bucket(bucket_name)
+    print("###test###")
+    print(bucket)
 
-# def vocalAnalyze() :
-#     s3 = boto3.client('s3')
-#     file_name=('static/비교대상음원_최고음_김동국.wav')
-#     bucket = 'myv-aws-bucket'
-#     key='vocalReportSource/비교대상음원_최고음_김동국.wav'
-#     # 버킷 이름 / 다운로드 할 객체 지정 / 다운로드할 위치와 파일명
-#     client = boto3.client('s3')
-#     client.download_file(bucket,key,file_name)
+    #파일 다운로드 진행하기
+    mine_obj_file= 'vocalReportSource/usr.wav' #디렉토리 버킷 접근하기
+    compare_obj_file='vocalReportSource/org.m4a'
+    print("###버킷 접근 성공###")
+    
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'usr.wav') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(mine_obj_file,save_file)
 
-
-
-def vocalAnalyze(bucket_name, key):
-    # 임시 파일 생성
-    with tempfile.NamedTemporaryFile(delete=True) as temp_file:
-        s3_client = boto3.client('s3')
-
-        try:
-            # S3 버킷에서 임시 파일로 다운로드
-            s3_client.download_file(bucket_name, key, temp_file.name)
-            print(f"파일이 성공적으로 다운로드되었습니다: {temp_file.name}")
-
-            # 파일 처리 로직
-            #process_file(temp_file.name)
-
-        except Exception as e:
-            print(f"파일 다운로드 중 오류 발생: {e}")
-
+    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'org.m4a') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(compare_obj_file,save_file)
+    return 1;
 
 def process_file():
-    org = "kaze_younha_sliced"
-    usr = "kaze_mine"
+    # 반주 & 보컬 분리
+    org = "org"
+    usr = "usr"
+
+    #확장자 예외처리
+    org_convert_format()
+    print("##확장자 예외처리 성공##")
+    #usr_convert_format()
 
     # 반주 & 보컬 분리
     spleet(org)
-    # spleet(usr)
-
+    #spleet(usr)
+    
     plt.figure(figsize=(12, 4))
-    org_name = os.path.join(settings.MEDIA_ROOT, org + ".wav")
-    usr_name = os.path.join(settings.MEDIA_ROOT, usr + ".wav")
+    print("#################분리완#################")
+    org_name = os.path.join(os.getcwd(),'media', 'vocalReportSrc', "org.wav") #librosa에서 돌릴 음원파일의 경로 (즉 분리된 음원 이름까지 경로를 가져오고, wav를 붙여서 확장자 변경)
+    usr_name = os.path.join(os.getcwd(),'media', 'vocalReportSrc', "usr.wav") #librosa에서 돌릴 음원파일의 경로 (즉 분리된 음원 이름까지 경로를 가져오고, wav를 붙여서 확장자 변경)
+    
+    ##리브로사 분석 시작##
     y_org, sr_org = librosa.load(org_name)
     y_usr, sr_usr = librosa.load(usr_name)
+
+    print(f"org 업로드 확인하기: {len(y_org)} samples at {sr_org} Hz")
+    print(f"usr 업로드 확인하기: {len(y_usr)} samples at {sr_usr} Hz")
+
     f0_org, voiced_flag_org, voiced_prob_org = librosa.pyin(y=y_org, fmin=60, fmax=2000, sr=sr_org)
     f0_usr, voiced_flag_usr, voiced_prob_usr = librosa.pyin(y=y_usr, fmin=60, fmax=2000, sr=sr_usr)
     frames_org = range(len(f0_org))
@@ -74,13 +83,16 @@ def process_file():
 
     f1_org = f0_org.copy()
     f1_usr = f0_usr.copy()
-
+    print("###test1###")
     t_usr, t0, idx = get_start_pos(f1_org=f0_org, f1_usr=f0_usr, t_org=t_org, t_usr=t_usr)
-
-    score, min_note, max_note, best_idx = accuracy_analysis(t_usr, idx, f0_org, f0_usr)
+    print("###test###")
+    score, min_note, max_note, best_idx = accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr)
+    print("###test###")
     best_st = t_usr[best_idx]
     best_ed = t_usr[best_idx + len(f0_usr) // 5]
 
+    remove_prefiles()
+    
     print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
     print("점수 :", int(score * 100))
     print("최고음 :", max_note)
@@ -90,41 +102,34 @@ def process_file():
     return max_note, min_note, int(t0), best_st, best_ed
 
 def spleet(org_file_name):
-    # MEDIA_ROOT의 하위 폴더에 output을 생성해야 장고가 접근 가능하므로 변경
-    output_dir = os.path.join(settings.MEDIA_ROOT, 'output')
-    if os.path.exists(output_dir):
+    output_dir = os.path.join(os.getcwd(), 'output') #output폴더를 생성할 경로 정해주기
+    if (os.path.isfile(output_dir)):
         shutil.rmtree(output_dir)
+
+    #os.makedirs(output_dir)#spleet 함수 쓸 경우 만들어야 하니까
     stems = 5
-    file_name = org_file_name
+    file_path = os.path.join(os.getcwd(),'media','vocalReportSrc',org_file_name) #mp3파일이 있는 폴더로 파일명 정해주기 (확장자는 not yet) 
+    file_name = org_file_name #그냥 파일명 org, usr 이렇게 
+    spl = f'spleeter separate -p spleeter:{stems}stems -o "{output_dir}" "{file_path}.m4a"'
+    os.system(spl)
+    print("##check point1##")
 
-    # spl = r'spleeter separate -p spleeter:' + \
-    #       str(stems) + r'stems -o output ' + file_name + '.mp3'
-    spl = r'spleeter separate -p spleeter:' + \
-          str(stems) + r'stems -o {output_dir} ' + file_name + '.mp3'
+    src = os.path.join(output_dir, file_name, "vocals.wav") #spleet 함수로 만든 vocal.wav 찾기
+    dst = os.path.join(os.getcwd(), 'media', 'vocalReportSrc') #spleet 함수가 만든 vocal.wav 파일을 meida/vocalReportSrc로 옮기기 위한 도착 경로
 
+    print("##check point2##")
+    print("src: ", src) #for debug
+    print("dst: ", dst) #for debug
+    
+    shutil.copy2(src, dst) #src voacl.wav copy to dst path
+    print("##check point3##")
 
-    # Spleeter 실행 결과 확인
-    result = os.system(spl)  # 0이면 성공
-    if result != 0:
-        raise Exception("Spleeter 실행 오류")
+    shutil.rmtree(output_dir) #spleet 함수로 만든 Output 폴더 삭제하기
+    print("##rmtree check point4##")
 
-    # 결과 파일 경로 확인
-    src = os.path.join(output_dir, org_file_name, "vocals.wav")
-    print(f"Checking if file exists: {src}")  # 디버깅 메시지
-
-    if not os.path.isfile(src):
-        raise FileNotFoundError(f"File not found: {src}")
-
-    # 파일 복사 및 폴더 정리
-    dst = os.path.join(settings.MEDIA_ROOT, f"{org_file_name}.wav")
-    shutil.copy2(src, dst)
-
-    # rmtree 작동 확인
-    #shutil.rmtree(output_dir)
-
-    # if os.path.isfile(dst):
-    #     os.remove(dst)  # 기존 파일이 존재하면 삭제
-    os.rename(src, dst)  # 보컬 파일을 원하는 이름으로 변경
+    if (os.path.isfile(file_name + ".wav")):
+        os.remove(file_name + ".wav")
+    os.rename(os.path.join(dst,"vocals.wav"), os.path.join(dst,"org.wav"))
 
 def get_start_pos(f1_org, f1_usr, t_org, t_usr):
     # 두 함수 미분
@@ -149,7 +154,7 @@ def get_start_pos(f1_org, f1_usr, t_org, t_usr):
     return t_usr, t0, max_idx
 
 
-def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
+def accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr):
     track_len = len(f0_usr)
     f0_org = f0_org[idx:idx + track_len]
 
@@ -193,17 +198,49 @@ def accuracy_analysis(t_usr, idx, f0_org, f0_usr):
         if f0_usr[i] < 0:
             f0_usr[i] = np.nan
 
-    # plot
-    plt.plot(t_usr, f0_org, 'r', label="비교 음원")
-    plt.plot(t_usr, f0_usr, 'b', label="사용자 음원")
-    plt.axhline(max_hz, t_usr[0], t_usr[-1], color='seagreen', linestyle='--', label="최고음")
-    plt.axhline(min_hz, t_usr[0], t_usr[-1], color='orange', linestyle='--', label="최저음")
-    plt.fill_between(t_usr[best_idx:best_idx + term_len - 1],
-                     f0_usr[best_idx:best_idx + term_len - 1], color='aqua', alpha=0.5, label="가장 정확한 구간")
-
-    #plt.legend()
-    #plt.savefig('./vocal_report_graph.png', bbox_inches='tight', dpi=300)
+    # plot update 0517
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=t_org, y=f0_org, fill='tozeroy', name='비교 음원'))
+    fig.add_trace(go.Scatter(x=t_usr, y=f0_usr, fill='tozeroy', name='사용자 음원'))
+    fig.add_hline(y=max_hz, line_dash="dash", label=dict(text="최고음"))
+    fig.add_hline(y=min_hz, line_dash="dash", label=dict(text="최저음"))
+    fig.add_vrect(x0=t_usr[best_idx], x1=t_usr[best_idx+term_len-1], fillcolor='green',
+                  opacity=0.25, line_width=0, label=dict(text="가장 정확한 구간"))
+    fig.update_layout(legend_yanchor='top', legend_y=0.99, legend_xanchor='left', legend_x=0.01,
+                      margin_l=0, margin_r=0, margin_b=0, margin_t=0)
+    #fig.write_image('./vocal_report_graph.png')
+    #fig.show()
     return score, min_note, max_note, best_idx
 
+##0517 update
+def org_convert_format():
+    is_org_m4a = False
+    if (os.path.isfile(os.path.join(os.getcwd(), 'media', 'org.m4a'))) :
+        is_org_m4a = True
 
+    if(is_org_m4a):
+        org_audio = AudioSegment.from_file(os.path.join(os.getcwd(), 'media','org.m4a'), format="m4a")
+        org_audio.export(os.path.join(os.getcwd(), 'media', 'org.mp3'), format="mp3")
 
+def usr_convert_format():
+    is_usr_m4a = False
+    if (os.path.isfile(os.path.join(os.getcwd(), 'media','usr.m4a'))):
+        is_usr_m4a = True
+
+    if(is_usr_m4a):
+        org_audio = AudioSegment.from_file(os.path.join(os.getcwd(), 'media', 'usr.m4a'), format="m4a")
+        org_audio.export(os.path.join(os.getcwd(), 'media','usr.mp3'), format="mp3")
+
+def remove_prefiles():
+    if (os.path.isfile("org.wav")):
+        os.remove("org.wav")
+    if (os.path.isfile("org.mp3")):
+        os.remove("org.mp3")
+    if (os.path.isfile("org.m4a")):
+        os.remove("org.m4a")
+    if (os.path.isfile("usr.wav")):
+        os.remove("usr.wav")
+    if (os.path.isfile("usr.mp3")):
+        os.remove("usr.mp3")
+    if (os.path.isfile("usr.m4a")):
+        os.remove("usr.m4a")

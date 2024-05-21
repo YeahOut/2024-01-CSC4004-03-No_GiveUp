@@ -1,10 +1,27 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
   padding: 0;
 }
 
@@ -17,57 +34,11 @@
   justify-content: center;
   align-items: center;
 }
-
 .contents {
   width: 390px;
   height: 844px;
   overflow: hidden;
 }
-
-body {
-  margin: 0;
-}
-
-#report_main_container {
-  max-width: 80%;
-  height: 550px;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  width: max-content;
-}
-
-#report_paragraph {
-  max-width: 100%;
-  margin: 0;
-}
-
-.report_main {
-  background-color: rgb(255, 255, 255);
-}
-
-.report_graph {
-  width: 100%;
-  height: 35%;
-}
-
-.graph_legend {
-  width: 100px;
-  height: 80px;
-}
-
-.report_score {
-  margin: 10px;
-}
-
-.report_legend {
-  width: 100%;
-}
-
-#report_name_score h3, #report_name_score h3{
-    margin : 0 0 0 0;
-}
-
 .header {
   width: 844px;
   height: 130px;
@@ -77,11 +48,62 @@ body {
   position: relative;
   left: 5%;
   top: 30px;
-  margin-bottom: 80px;
 }
 .logo {
   width: 65px;
   padding-left: 15px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+.user img {
+  position: relative;
+  left: 31%;
+  top: 80px;
+}
+.user p {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+
+.button-form p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.button {
+  width: 99px;
+  height: 111px;
+  background-color: white;
+  border: solid 1px #b1b1b1;
+  border-radius: 20%;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 30px;
+
+  position: relative;
+  left: 15px;
+  top: 130px;
+}
+
+.wave-img {
+  transform: translateY(50%) rotate(119deg);
+  position: relative;
+  right: 40px;
+  bottom: 22px;
+  height: 270px;
 }
 
 /**modal css**/

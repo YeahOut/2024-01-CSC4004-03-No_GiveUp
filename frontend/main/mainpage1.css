@@ -25,79 +25,140 @@
   overflow: hidden;
 }
 
-header {
-  height: 85px;
-  display: flex;
-  justify-content: center;
-  /* background-color: black; */
+.header {
+  width: 844px;
+  height: 100px;
 }
 
+.header-contents {
+  position: relative;
+  left: 5%;
+  top: 30px;
+}
 .logo {
-  width: 380px;
+  width: 65px;
+  padding-left: 15px;
+}
+
+.title {
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+/*최고음과 최저음을 녹음한 파일을 업로드 해주세요 텍스트*/
+.textbox {
+  height: 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /**justify-content: center;**/
   align-items: center;
   position: relative;
-  margin-top: 40px;
-  left: 0px;
+  top: 130px;
 }
-.modal-open {
-  width: 35px;
-  height: 30px;
-  margin-left: auto;
-  margin-right: 25px;
-  margin-top: 25px;
+.textbox p {
+  text-align: center;
+  font-weight: 700;
+  margin: 0 0 6px 0;
 }
-
-.modal {
-  position: relative;
+.textbox2 {
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
-  top: 0;
-  left: 0%;
-
-  width: 250px;
-  height: 550px;
-
-  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  margin-top: 0px;
+  position: relative;
+  top: 350px;
+}
+#last {
+  margin: 3px 0 0 0;
 }
 
-.btn-open-modal {
-  position: relative;
-  right: 30%;
-  border: none;
-  background-color: #eeeeee;
+/*주의해주세요 핑크 박스 부분*/
+.warningBox {
+  display: flex;
+  flex-direction: column;
+  /**justify-content: center;**/
+  align-items: center;
+  width: 309px;
+  height: 90px;
+  border-radius: 10px;
+  background-color: rgba(255, 238, 238, 0.7); /* 0.7은 투명도 70%를 의미 */
+  margin-top: 40px;
+}
+.warning_text {
+  display: inline-flex;
+  justify-items: center;
+}
+.warning_text h3 {
+  padding: 5px 0 0 5px;
+  margin: 0;
+  color: #ff1515;
+}
+.warningBox p {
+  margin: 5px 0 0 0;
 }
 
-/* 녹음페이지 1 CSS */
-
-.record {
-  display: inline;
-  font-size: 20px;
-  font-weight: bold;
+/*파일 업로드 버튼 부분*/
+.file-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
   position: relative;
-  left: 153px;
-  top: 70px;
-}
-#recording_button {
-  width: 130px;
-  height: 130px;
-  border-radius: 100px;
-  background-color: #efefff;
-  border: solid 10px #5d5fef;
-  position: relative;
-  top: 220px;
-}
-.timer_js_timer {
-  display: inline;
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 1px;
-  color: #5d5fef;
-  position: relative;
-  left: 95px;
   top: 300px;
+}
+
+.btn-upload {
+  width: 166px;
+  height: 45px;
+  font-size: 20px;
+  color: #fff;
+  background: #8dadff;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: #5e59ff;
+    color: #fff;
+  }
+}
+
+.minsound,
+.maxsound {
+  /*업로드 버튼 커스텀하기*/
+  display: inline-flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+#min-file,
+#max-file {
+  /*파입업로드 버튼 숨기기*/
+  display: none;
+}
+
+.custom-checkbox {
+  margin: 0 0 20px 20px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #8dadff;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.custom-checkbox:before {
+  content: ""; /* 빈 콘텐츠로 체크박스 표시를 제어 */
+}
+
+input[type="checkbox"]:checked + .custom-checkbox:before {
+  content: "✔"; /* 선택되었을 때 체크 마크 표시 */
+  color: #5f5bd9; /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
 }
 
 #save_button {
@@ -111,28 +172,179 @@ header {
 
   position: relative;
   left: 35px;
-  top: 390px;
+  top: 400px;
 }
 
-/* Ellipse 2
+/**modal css**/
 
-position: absolute;
-width: 132px;
-height: 132px;
-left: 124px;
-top: 275px;
+a {
+  text-decoration: none;
+  color: black;
+}
 
-background: #5a7eff;
-opacity: 0.36;
- */
+/**버튼 위치**/
 
-/* Ellipse 3 
-position: absolute;
-width: 110px;
-height: 110px;
-left: 135px;
-top: 286px;
+.mobile_btn {
+  position: absolute;
+  top: 35px;
+  left: 300px;
+}
 
-background: #EFEFFF;
-box-shadow: -4px 0px 4px rgba(255, 255, 255, 0.5), 4px 0px 4px rgba(255, 255, 255, 0.5), 0px -4px 3px rgba(255, 255, 255, 0.25), 0px 4px 3px rgba(0, 0, 0, 0.25);
-filter: blur(0.5px); */
+/****/
+
+input[id="hamburger"] {
+  display: none;
+}
+
+/**버튼 사이즈**/
+
+input[id="hamburger"] + label {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  left: 100%;
+  cursor: pointer;
+}
+
+/****/
+/**modal icon**/
+
+input[id="hamburger"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 30px;
+  background: #000;
+  transition: all 0.35s;
+}
+input[id="hamburger"] + label span:nth-child(1) {
+  top: 0;
+}
+input[id="hamburger"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id="hamburger"] + label span:nth-child(3) {
+  bottom: 0;
+}
+input[id="hamburger"]:checked + label {
+  z-index: 99;
+}
+input[id="hamburger"]:checked + label span {
+  background: black;
+}
+input[id="hamburger"]:checked + label span:nth-child(1) {
+  width: 25px;
+  top: 103.5%;
+  transform: translateY(-60%) rotate(150deg);
+}
+input[id="hamburger"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+input[id="hamburger"]:checked + label span:nth-child(3) {
+  width: 25px;
+  bottom: 55%;
+  transform: translateY(50%) rotate(-150deg);
+}
+/****/
+
+/**modal**/
+
+div[class="sidebar"] {
+  width: 166px;
+  height: 844px;
+  background: white;
+  background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
+  top: 0%;
+  left: 200%;
+  z-index: 98;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+
+/****/
+
+input[id="hamburger"]:checked + label + div {
+  left: 223px;
+}
+
+/** modal contents form**/
+.nav_mobile {
+  position: absolute;
+  top: 119px;
+  width: 100%;
+}
+/****/
+/** modal contents text**/
+.sidebar .nav_mobile li {
+  color: black;
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style-type: none;
+  font-size: 17px;
+  font-family: "Noto Sans KR";
+  font-weight: bold;
+  padding-top: 15px;
+  text-align: right;
+}
+/****/
+
+.sidebar a {
+  padding: 0;
+  text-decoration: none;
+  display: inline;
+}
+
+.sidebar li a {
+  display: inline;
+  font-weight: bold;
+  line-height: 40px;
+  margin-left: 0px;
+
+  padding-right: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+.sidebar li a:hover,
+.sidebar ul li:hover a {
+  text-decoration: none;
+  color: #5d5fef;
+  padding-left: 5px;
+  margin: 0px;
+  border: 0px;
+}
+
+.user-img {
+  position: relative;
+  left: 50px;
+  top: 10%;
+}
+
+.user-info {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 25px;
+}
+
+.info1,
+.info2 {
+  padding-top: 10px;
+}
+
+.modaltext {
+  position: relative;
+  top: 10%;
+}
+.wave {
+  transform: translateY(50%) rotate(119deg);
+  position: relative;
+  left: 60%;
+  top: 93.5px;
+}

@@ -64,12 +64,13 @@ body {
 }
 
 #report_paragraph {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0;
+  text-align: left;
 }
 
 .report_main {
-  background-color: rgb(255, 244, 239);
+  background-color: rgb(255, 255, 255);
 }
 
 .report_graph {
@@ -77,9 +78,12 @@ body {
   height: 35%;
 }
 
-.kakao_share_button {
-  width: 80%;
-  margin: 0 auto;
+.report_score {
+  margin: 10px;
+}
+
+.report_legend {
+  width: 100%;
 }
 
 #report_name_score h3, #report_name_score h3{
