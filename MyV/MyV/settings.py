@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'signup',
     'widget_tweaks',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
     'myauth',
     'login',
     'storages',
     'modal',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 SITE_ID = 1
@@ -110,7 +110,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = '/done/'
+ACCOUNT_SIGNUP_REDIRECT_URL = "done"
 LOGIN_REDIRECT_URL = '/modal/analyze'
 ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
@@ -156,9 +156,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Allauth settings
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
-ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_SESSION_REMEMBER = True
 SESSION_COOKIE_AGE = 3600
 ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True

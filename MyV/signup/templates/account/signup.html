@@ -1,8 +1,13 @@
+{% extends "account/base.html" %}
+
 {% load static %}
 {% load widget_tweaks %}
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
+
+
+{% block content %}
+<div class="account-background">
+  <main class="account">
+    <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}signup1{% endblock %}</title>
@@ -54,49 +59,47 @@
               src="{% static 'signup/images/logo.svg' %}"
               width="104px"
               height="43px"
+              left="30px"
             />
+            
+        
             <h2 class="title">회원가입</h2>
           </div>
         </header>
-        <main id="signup-form"> 
-          <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-              {{ form.nickname|add_class:"signup-input"|attr:"placeholder:이름을 입력하세요."|add_error_class:"error" }}
-              {% for error in form.nickname.errors %}
-                <div class="error-message">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.email|add_class:"signup-input"|attr:"placeholder:이메일을 입력하세요."|add_error_class:"error" }}
-              {% for error in form.email.errors %}
-                <div class="error-message">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.username|add_class:"signup-input"|attr:"placeholder:아이디를 입력하세요."|add_error_class:"error" }}
-              {% for error in form.username.errors %}
-                <div class="error-message">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.password1|add_class:"signup-input"|attr:"placeholder:비밀번호를 입력하세요."|add_error_class:"error" }}
-              {% for error in form.password1.errors %}
-                <div class="error-message">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.password2|add_class:"signup-input"|attr:"placeholder:비밀번호를 한번 더 입력하세요."|add_error_class:"error" }}
-              {% for error in form.password2.errors %}
-                <div class="error-message">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <footer>
-              <button class="next-step-button" type="submit">다음 단계로 넘어가기</button>
-            </footer>
-          </form>
-        </main>
+
+    <form method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      <div>
+        {{ form.email|add_class:"cp-input"|attr:"placeholder:이메일"|add_error_class:"error" }}
+        {% for error in form.email.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}
       </div>
+      <div>
+        
+        {{ form.nickname|add_class:"cp-input"|attr:"placeholder:닉네임 (MyV에서 사용되는 이름입니다)"|add_error_class:"error" }}
+        {% for error in form.nickname.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.password1|add_class:"cp-input"|attr:"placeholder:비밀번호"|add_error_class:"error" }}
+        {% for error in form.password1.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.password2|add_class:"cp-input"|attr:"placeholder:비밀번호 확인"|add_error_class:"error" }}
+        {% for error in form.password2.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}    
+      </div>
+      <button class="cp-button" type="submit">회원가입</button>
+    </form>
+
+    <div class="info">
+      이미 회원이신가요?<a class="link" href="{% url 'account_login' %}">로그인</a>
     </div>
-  </body>
-</html>
+  </main>
+</div>
+{% endblock content %}

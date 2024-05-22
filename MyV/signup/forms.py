@@ -1,11 +1,18 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
-class SignupForm(forms.ModelForm):
+class SignupForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, required=True, help_text='Required. Enter a valid email address.')
+
     class Meta:
         model = User
-        fields = ["nickname"]
-    
-    def signup(self, request, user):
+        fields = ("username", "email", "password1", "password2", "nickname")
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data["email"]
         user.nickname = self.cleaned_data["nickname"]
-        user.save()
+        if commit:
+            user.save()
+        return user

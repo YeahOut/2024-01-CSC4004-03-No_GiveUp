@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'signup/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'signup/css/theme.css' %}">
+
+    <title>{% block title %}회원가입{% endblock title %}</title>
+  </head>
+  <body>
+    {% block header %}{% endblock header %}
+    {% block content %}{% endblock content %}
+    {% block footer %}{% endblock footer %}
+  </body>
+</html>
