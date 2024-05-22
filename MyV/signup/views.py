@@ -2,9 +2,27 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import UploadMAXMIN, MaxminNote
 from .maxmin import maxAnalysis, minAnalysis
+from django.shortcuts import render, redirect
+from .forms import SignupForm
+from allauth.account.views import SignupView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import SignupForm
+from .models import User
+
+class CustomSignupView(CreateView):
+    model = User
+    form_class = SignupForm
+    template_name = 'account/signup.html'
+    success_url = reverse_lazy('done')
+
+def signup4(request):
+    return render(request, 'signup/signup4.html')
+
 # Create your views here.
 def signup1(request):
-    return render(request, 'signup/signup1.html')
+    return render(request, 'account/signup.html')
 
 def signup2(request):
     return render(request, 'signup/signup2.html')
@@ -36,5 +54,3 @@ def upload_view(request):
 
     return HttpResponse("Failed to upload files")
 
-def signup4(request):
-    return render(request, 'signup/signup4.html')

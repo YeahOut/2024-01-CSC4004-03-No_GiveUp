@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 .flex {
   margin: 0;
   padding: 0;
@@ -17,6 +18,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .contents {
   width: 390px;
   height: 844px;
@@ -28,7 +30,6 @@
 .container {
   position: relative;
   display: flex;
-
   width: 1000px;
   height: 170px;
   overflow: hidden;
@@ -38,13 +39,16 @@
   z-index: 0;
   top: -5px;
 }
+
 .wave2 {
   z-index: 1;
   top: -10px;
 }
+
 .wave3 {
   z-index: 2;
 }
+
 .wave4 {
   z-index: 3;
 }
@@ -65,6 +69,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w12 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -72,6 +77,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w13 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -79,6 +85,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w14 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -86,6 +93,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w21 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -93,6 +101,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w22 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -100,6 +109,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w23 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -107,6 +117,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w24 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -119,6 +130,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -128,6 +140,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -154,8 +167,7 @@
 
 #signup-form {
   margin-top: 30px;
-  position: absolute;
-  top: 55%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 400px;
@@ -163,25 +175,45 @@
   border-radius: 5px;
 }
 
-.signup-input {
-  margin: auto;
+.form-group {
   margin-bottom: 30px;
+  position: relative;
+}
+
+.signup-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  /* 오류 메시지와의 간격을 위한 여백 */
   border: 3px solid #cccccc;
   border-radius: 10px;
   outline: none;
-  width: 300px;
-  height: 45px;
-  text-indent: 7px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  line-height: 1.7;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.signup-input.error~.error-message {
+  display: block;
+  width: 100%;
 }
 
 .next-step-button {
-  position: relative;
-  top: 470px;
-  left: 45px;
-  width: 300px;
-  height: 50px;
+  top: 300px;
+  display: block;
+  width: 100%;
+  padding: 15px;
   color: white;
   background-color: #5e59ff;
   border: 0;
   border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
 }
