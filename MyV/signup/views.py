@@ -17,7 +17,7 @@ class CustomSignupView(CreateView):
     template_name = 'account/signup.html'
     success_url = reverse_lazy('done')
 
-def done(request):
+def signup4(request):
     return render(request, 'signup/signup4.html')
 
 # Create your views here.
