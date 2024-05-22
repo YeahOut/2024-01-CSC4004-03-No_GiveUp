@@ -196,11 +196,8 @@
   font-size: 14px;
   line-height: 1.7;
   position: absolute;
-  /* 위치를 절대값으로 변경 */
   top: 100%;
-  /* 부모 요소 아래에 배치 */
   left: 0;
-  /* 왼쪽 정렬 */
 }
 
 .signup-input.error~.error-message {
