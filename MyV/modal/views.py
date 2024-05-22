@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import UploadAnalyzeFile, UserVocalInfo
-from .analyzing_file import process_file, downloadFile
+from .analyzing_file import process_file
+from .aws import downloadFile, upload_to_s3, makingBucket,deleteBucket
+
 # Create your views here.
 
 from django.conf import settings
@@ -26,25 +27,11 @@ def upload_analyze_file(request):
         mySound_file = request.FILES.get('mysound_file', None)
         compareSound_file = request.FILES.get('comparesound_file', None)
         
-        ##파일 이름 변경##
-        # 파일 이름에서 확장자 분리하기
-        mySound_name, mySound_ext = os.path.splitext(mySound_file.name)
-        compareSound_name, compareSound_ext = os.path.splitext(compareSound_file.name)
-
-        # 새 파일 이름 설정
-        new_mySound_name = 'usr' + mySound_ext 
-        new_compareSound_name = 'org' + compareSound_ext ##org.mp4 이런식으로 변경 
-        
-        mySound_file.name = new_mySound_name
-        compareSound_file.name = new_compareSound_name
-        #인스턴스 중복되는거 방지하기
-        upload = UploadAnalyzeFile(mySound_file=mySound_file,
-                                   fMySound_name=mySound_file.name,
-                                   compareSound_file=compareSound_file, 
-                                   fCompareSound_name=compareSound_file.name)
-        upload.save()
-        
-        return HttpResponse("Files uploaded successfully")
+        if mySound_file and compareSound_file:
+            upload_to_s3(mySound_file, compareSound_file)
+            return HttpResponse("Files uploaded successfully")
+        else:
+            return HttpResponse("Failed to upload files")
     
     return HttpResponse("Failed to upload files")
 
@@ -55,11 +42,11 @@ def vocalResult(request):
     print("##전달 성공##")
 
     if (downloaded==1):
-        max_note, min_note, start_t, best_st, best_ed = process_file()
-        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed)}
-        user = request.user  # 현재 로그인한 사용자에 접근하기 위한 용도..
-        saveInfo = UserVocalInfo(user= user, max_note=max_note, min_note=min_note)
-        saveInfo.save()
+        max_note, min_note, start_t, best_st, best_ed, score = process_file()
+        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed), 'score':score}
+        #user = request.user  # 현재 로그인한 사용자에 접근하기 위한 용도..
+        #saveInfo = UserVocalInfo(user= user, max_note=max_note, min_note=min_note)
+        #saveInfo.save()
     else :
         print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)
