@@ -11,7 +11,7 @@
         <div class="contents">
             <header>
                 <div class="header-contents">
-                    <img class="backbutton" src="{% static 'modal/images/backbutton.svg' %}" />
+                    <img class="backbutton" src="{% static 'modal/images/backbutton.svg' %}" onclick="location.href='{% url 'index' %}'"/>
                     <img class="logo" src="{% static 'modal/images/logo.svg' %}" />
                 </div>
                 <div class="mobile_btn">
@@ -33,6 +33,7 @@
                                 <li><a href="#">사용 방법</a></li>
                                 <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
                                 <li><a href="#">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
                             </ul>
                             <div class="wave">
                                 <img src="{% static 'modal/images/wave.png' %}" height="223px" />
