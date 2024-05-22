@@ -322,8 +322,9 @@ a.cp-button {
     font-size: 17px;
     font-weight: 300;
     background-color: transparent;
-    color: #e1811b;
-    border: 1px solid #e1811b;
+    color: #5E59FF;
+    border: 1px solid #5E59FF;
+    align-items: center;
 }
 
 /* Icon Button */
