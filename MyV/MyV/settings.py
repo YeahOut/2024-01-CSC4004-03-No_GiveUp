@@ -31,18 +31,25 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'signup',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'signup',
+    'widget_tweaks',
     'myauth',
     'login',
     'storages',
     'modal',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'MyV.urls'
@@ -85,26 +93,26 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'signup.User' 
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "signup.validators.CustomPasswordValidator"
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
+ACCOUNT_SIGNUP_REDIRECT_URL = "/done/"
+LOGIN_REDIRECT_URL = '/modal/analyze'
+ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -140,3 +148,17 @@ MEDIA_URL = 'media/'
 import os
 # 미디어 파일이 저장될 서버상의 실제 경로 (내 로컬)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+#Email settings
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_SESSION_REMEMBER = True
+SESSION_COOKIE_AGE = 3600
+ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True

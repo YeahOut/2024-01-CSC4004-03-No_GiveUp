@@ -181,26 +181,28 @@
 }
 
 .label {
-  font-size: small;
+  font-size: 10px;
 }
 
 .login-input {
   margin: auto;
+  margin-top: 5px;
   margin-bottom: 30px;
   border: 2px solid lightgrey;
   border-radius: 10px;
   outline: none;
   width: 300px;
-  height: 40px;
+  height: 50px;
   text-indent: 7px;
 }
 
 #submit-button {
   position: relative;
-  left: 70px;
+  left: 55px;
 
   margin-top: 10px;
-  width: 150px;
+  width: 179px;
+  height: 40px;
   padding: 10px;
   background-color: rgb(80, 90, 238);
   color: #fff;

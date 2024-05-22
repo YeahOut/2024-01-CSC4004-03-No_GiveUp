@@ -45,7 +45,7 @@
             class="back_btn"
             type="image"
             src="{% static 'signup/images/backbutton.svg' %}"
-            onclick="location.href='{% url 'signup3' %}'"
+            onclick="location.href='../account/logout/'"
           />
           <div class="header-content">
             <img id="logo" src="{% static 'signup/images/logo.svg' %}" width="99px" height="40px" />
@@ -60,7 +60,7 @@
           </div>
           <div class="text1">
             <p>환영합니다!</p>
-            <p>@@님의 회원가입이 완료되었습니다.</p>
+            <p>{{user.nickname}}님의 회원가입이 완료되었습니다.</p>
           </div>
           <div class="text2">
             <p>지금 바로 MyV에서</p>
@@ -68,7 +68,8 @@
           </div>
         </main>
         <footer>
-            <input class="next-step-button" type="submit" value="확인" />
+            <input class="next-step-button" type="submit" value="확인" onclick="location.href='../modal/analyze'"
+            />
           </form>
         </footer>
       </div>
