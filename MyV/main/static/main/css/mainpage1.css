@@ -176,6 +176,21 @@ input[type="checkbox"]:checked + .custom-checkbox:before {
   top: 400px;
 }
 
+.file-upload-button {
+  position: relative;
+  left: 115px;
+  top: 310px;
+  justify-content: center;
+  display: flex;
+  width: 150px;
+  height: 30px;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+}
+
+
+
 /**modal css**/
 
 a {
