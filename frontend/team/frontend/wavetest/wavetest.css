@@ -1,0 +1,106 @@
+*{margin:0;padding:0;}
+
+.container{
+    position: relative;
+    display: flex;
+    top:0px;
+    width: 1000px;
+    height: 170px;
+    overflow: hidden;
+}
+
+.wave1{
+    z-index: 0;
+    top:-5px;
+}
+.wave2{
+    z-index: 1;
+    top:-10px;
+}
+.wave3{
+    z-index: 2;
+}
+.wave4{
+    z-index: 3;
+}
+
+.wave1, .wave2, .wave3, .wave4{
+    position:absolute;
+    display:flex;
+    height: 100px;
+  }
+  
+#w11 {
+    animation: waving1;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#w12 {
+    animation: waving1;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+#w13 {
+    animation: waving1;
+    animation-iteration-count: infinite;
+    animation-duration: 2.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#w14 {
+    animation: waving1;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#w21 {
+    animation: waving2;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#w22 {
+    animation: waving2;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+#w23 {
+    animation: waving2;
+    animation-iteration-count: infinite;
+    animation-duration: 2.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#w24 {
+    animation: waving2;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes waving1 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+}
+
+@keyframes waving2 {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+}
