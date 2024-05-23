@@ -44,7 +44,7 @@
         </header>
         <main class="report">
           <h2>보컬 보고서</h2>
-          <h3>김동국님의 보컬 분석 결과입니다</h3>
+          <h3>{{ user }}님의 보컬 분석 결과입니다</h3>
           <div id="report_main_container">
             <div class="report_main">
                 <hr style="border:1px color= silver;">
@@ -53,14 +53,13 @@
                 </div>
                 <h3 class="report_score">김동국님의 총 점수 : </h3>
                 <h3 class="report_score">{{ score }}/100 점 </h3>
-                <p>안녕하세요 <b>김동국</b>님!</p>
+                <p>안녕하세요 <b>{{ user }}</b>님!</p>
                 <p>김동국님이 부른 부분은 음원의 <b>{{ start_t }}</b>초 부터 입니다.</p>
                 <p>최고음은 <b>{{ max }}</b> 이며
                    최저음은 <b>{{ min }}</b>입니다.</p>
                 <p>성향은 <b>밝음</b>이며, 가장 잘 부른 구간은 <b>{{ best_st }}초부터 {{ best_ed }}초 입니다.</p>
             </div>
             <img class="report_graph" src="{% static 'modal/images/vocal_report_graph.png' %}">
-            <img class="graph_legend" src="{% static 'modal/images/legend.png' %}">
           </div>
         </main>
       </div>
