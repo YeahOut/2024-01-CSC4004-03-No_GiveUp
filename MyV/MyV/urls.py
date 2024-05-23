@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('myauth.urls')),
     path('',include('signup.urls')),
     path('modal/',include('modal.urls')),
+    path('main/',include('main.urls')),
 ]

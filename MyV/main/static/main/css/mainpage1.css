@@ -57,7 +57,7 @@
 }
 .textbox p {
   text-align: center;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0 0 6px 0;
 }
 .textbox2 {
@@ -84,6 +84,7 @@
   border-radius: 10px;
   background-color: rgba(255, 238, 238, 0.7); /* 0.7은 투명도 70%를 의미 */
   margin-top: 40px;
+  padding: 10px 10px 15px 10px;
 }
 .warning_text {
   display: inline-flex;
@@ -174,6 +175,21 @@ input[type="checkbox"]:checked + .custom-checkbox:before {
   left: 35px;
   top: 400px;
 }
+
+.file-upload-button {
+  position: relative;
+  left: 115px;
+  top: 310px;
+  justify-content: center;
+  display: flex;
+  width: 150px;
+  height: 30px;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+}
+
+
 
 /**modal css**/
 

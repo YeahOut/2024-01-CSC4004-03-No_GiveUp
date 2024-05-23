@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyV</title>
-    <link rel="stylesheet" href="mainpage2.css" />
+    <link rel="stylesheet" href="{% static 'main/css/mainpage2.css' %}" />
   </head>
   <body>
     <div class="flex">
       <div class="contents">
         <header>
           <div class="header-contents">
-            <img class="logo" src="logo.svg" />
+            <img class="logo" src="{% static 'main/images/logo.svg' %}" />
           </div>
         </header>
         <main>
           <div class="analyze_move">
-            <img class="linear infinite rotate" src="analyze_movement.png" />
+            <img class="linear infinite rotate" src="{% static 'main/images/analyze_movement.png' %}" />
           </div>
           <div class="text">
             <p class="analyzing">분석중 입니다.</p>
