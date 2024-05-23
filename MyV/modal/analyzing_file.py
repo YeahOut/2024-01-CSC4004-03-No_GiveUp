@@ -1,5 +1,3 @@
-import boto3
-import tempfile #임시로 파일 다운 받고 삭제하기 위해 사용
 import os
 ##음원처리 위한 라이브러리
 import librosa
@@ -16,29 +14,6 @@ import math
 import plotly.graph_objects as go
 from pydub import AudioSegment
 from spleeter.separator import Separator
-
-def downloadFile() :
-    s3 = boto3.resource('s3')
-    for bucket in s3.buckets.all():
-        print(bucket.name)
-    
-    #s3 버킷 정보 가져오기
-    bucket_name = 'myv-aws-bucket'
-    bucket = s3.Bucket(bucket_name)
-    print("###test###")
-    print(bucket)
-
-    #파일 다운로드 진행하기
-    mine_obj_file= 'vocalReportSource/usr.wav' #디렉토리 버킷 접근하기
-    compare_obj_file='vocalReportSource/org.m4a'
-    print("###버킷 접근 성공###")
-    
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'usr.wav') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
-    bucket.download_file(mine_obj_file,save_file)
-
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'org.m4a') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
-    bucket.download_file(compare_obj_file,save_file)
-    return 1;
 
 def process_file():
     # 반주 & 보컬 분리
@@ -98,8 +73,9 @@ def process_file():
     print("최고음 :", max_note)
     print("최저음 :", min_note)
     print("가장 잘부른 구간 : {:.1f}초 ~ {:.1f}초".format(best_st, best_ed))
+    print("점수: score")
     #plt.show()
-    return max_note, min_note, int(t0), best_st, best_ed
+    return max_note, min_note, int(t0), best_st, best_ed, score
 
 def spleet(org_file_name):
     output_dir = os.path.join(os.getcwd(), 'output') #output폴더를 생성할 경로 정해주기
@@ -208,7 +184,7 @@ def accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr):
                   opacity=0.25, line_width=0, label=dict(text="가장 정확한 구간"))
     fig.update_layout(legend_yanchor='top', legend_y=0.99, legend_xanchor='left', legend_x=0.01,
                       margin_l=0, margin_r=0, margin_b=0, margin_t=0)
-    #fig.write_image('./vocal_report_graph.png')
+    fig.write_image(os.path.join(os.getcwd(),'modal','static','modal','images','vocal_report_graph.png'))
     #fig.show()
     return score, min_note, max_note, best_idx
 
