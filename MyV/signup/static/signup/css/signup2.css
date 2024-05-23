@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 .flex {
   margin: 0;
   padding: 0;
@@ -17,6 +18,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .contents {
   width: 390px;
   height: 844px;
@@ -38,13 +40,16 @@
   z-index: 0;
   top: -5px;
 }
+
 .wave2 {
   z-index: 1;
   top: -10px;
 }
+
 .wave3 {
   z-index: 2;
 }
+
 .wave4 {
   z-index: 3;
 }
@@ -65,6 +70,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w12 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -72,6 +78,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w13 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -79,6 +86,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w14 {
   animation: waving1;
   animation-iteration-count: infinite;
@@ -86,6 +94,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w21 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -93,6 +102,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w22 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -100,6 +110,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w23 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -107,6 +118,7 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 #w24 {
   animation: waving2;
   animation-iteration-count: infinite;
@@ -119,6 +131,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -128,6 +141,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -144,25 +158,23 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: 20px;
 }
 
 .header-content h2 {
   padding-left: 5px;
   margin-bottom: 0;
 }
+
 .text {
   position: relative;
-  top: 4px;
-  font-size: 10px;
+  top: 23px;
+  font-size: 14px;
   text-align: center;
   font-weight: 700;
 }
 
 .next-step-button {
   position: relative;
-  top: 480px;
-  left: 45px;
   width: 300px;
   height: 50px;
   color: white;
@@ -176,7 +188,7 @@
 .slider-form {
   margin-top: 30px;
   position: absolute;
-  top: 58%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 400px;
@@ -194,13 +206,11 @@
 .slider-3 {
   width: 100%;
   height: 5px;
-  background: linear-gradient(
-    to right,
-    #32a6f9 0%,
-    #32a6f9 50%,
-    #d6edfd 50%,
-    #d6edfd 100%
-  );
+  background: linear-gradient(to right,
+      #32a6f9 0%,
+      #32a6f9 50%,
+      #d6edfd 50%,
+      #d6edfd 100%);
   border-radius: 8px;
   outline: none;
   transition: background 450ms ease-in;
@@ -258,6 +268,7 @@
   display: inline-block;
   padding-right: 100px;
 }
+
 .steps-right {
   font-size: 0.1px;
   -webkit-transform: scale(0.83);

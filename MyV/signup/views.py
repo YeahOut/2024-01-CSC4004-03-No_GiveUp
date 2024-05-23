@@ -26,7 +26,7 @@ def save_preferences(request):
                 tempo=form.cleaned_data['tempo']
             )
             preferences.save()
-            return redirect('analyze')  # 'next_step'은 다음 단계의 URL name입니다.
+            return redirect('signup4')  # 'next_step'은 다음 단계의 URL name입니다.
     else:
         form = PreferencesForm()
     return render(request, 'preferences_form.html', {'form': form})
@@ -36,7 +36,7 @@ class CustomSignupView(CreateView):
     model = User
     form_class = SignupForm
     template_name = 'account/signup.html'
-    success_url = reverse_lazy('done')
+    success_url = reverse_lazy('signup4')
 
 def signup4(request):
     return render(request, 'signup/signup4.html')
@@ -45,6 +45,7 @@ def signup4(request):
 def signup1(request):
     return render(request, 'account/signup.html')
 
+@login_required
 def signup2(request):
     return render(request, 'signup/signup2.html')
 
