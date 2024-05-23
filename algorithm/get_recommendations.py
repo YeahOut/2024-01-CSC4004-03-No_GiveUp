@@ -39,9 +39,10 @@ recommended = sp.recommendations(limit=recommendation_songs_cnt, market='KR', se
 tracks = recommended['tracks']
 
 #추천 결과
-songs = []
-urls = []
-img_dirs = []
+songs = [] #곡명
+img_urls = [] #이미지 url
+img_dirs = [] #이미지jpg 저장 경로
+
 
 cnt = 1
 for track in tracks:
@@ -54,16 +55,16 @@ for track in tracks:
     image = imread(img_save_loc)
 
     songs.append(song_name)
-    urls.append(img_url)
+    img_urls.append(img_url)
     img_dirs.append(img_url)
 
     print(cnt,"######################")
     print(preview_url)
     print(song_url)
+    print(img_url)
     print(song_name)
 
     cnt += 1
 
 for i in range(recommendation_songs_cnt - len(songs)):
     img_dirs.append("./tmp_img.png")
-
