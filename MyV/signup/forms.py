@@ -9,3 +9,9 @@ class SignupForm(forms.ModelForm):
     def signup(self, request, user):
         user.nickname = self.cleaned_data["nickname"]
         user.save()
+        
+        
+class PreferencesForm(forms.Form):
+    mood = forms.IntegerField(min_value=0, max_value=10)
+    energy = forms.IntegerField(min_value=0, max_value=10)
+    tempo = forms.IntegerField(min_value=0, max_value=10)

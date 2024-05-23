@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import User, UserPreferences
 
 #@admin.register(User)
 '''class UserAdmin(admin.ModelAdmin):
@@ -15,3 +15,8 @@ from .models import User
     
 admin.site.register(User, UserAdmin)
 UserAdmin.fieldsets += (("Custom fields", {"fields": ("nickname",)}),)
+
+@admin.register(UserPreferences)
+class UserPreferencesAdmin(admin.ModelAdmin):
+    list_display = ('user', 'mood', 'energy', 'tempo')
+    search_fields = ('user__username',)

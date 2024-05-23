@@ -10,6 +10,27 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import SignupForm
 from .models import User
+from .forms import PreferencesForm
+from .models import UserPreferences
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def save_preferences(request):
+    if request.method == 'POST':
+        form = PreferencesForm(request.POST)
+        if form.is_valid():
+            preferences = UserPreferences(
+                user=request.user,
+                mood=form.cleaned_data['mood'],
+                energy=form.cleaned_data['energy'],
+                tempo=form.cleaned_data['tempo']
+            )
+            preferences.save()
+            return redirect('analyze')  # 'next_step'은 다음 단계의 URL name입니다.
+    else:
+        form = PreferencesForm()
+    return render(request, 'preferences_form.html', {'form': form})
+
 
 class CustomSignupView(CreateView):
     model = User

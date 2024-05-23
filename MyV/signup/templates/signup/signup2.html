@@ -58,117 +58,44 @@
                     </div>
                 </header>
                 <main class="slider-form">
-                    <div class="slider1">
-                        <div class="slider-text"><span>선호하는 분위기</span></div>
-                        <div>
-                            <input
-                                class="slider-1"
-                                id="slider-1"
-                                type="range"
-                                min="0"
-                                max="10"
-                                value="5"
-                                steps="1"
-                            />
+                    <form id="preferences-form" method="POST" action="{% url 'save_preferences' %}">
+                        {% csrf_token %}
+                        <div class="slider1">
+                            <div class="slider-text"><span>선호하는 분위기</span></div>
+                            <input class="slider-1" id="slider-1" type="range" min="0" max="10" value="5" name="mood" steps="1"/>
+                            <div><img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px"></div>
+                            <div><span class="steps-left">차분한 분위기</span><span class="steps-right">긍정적인 분위기</span></div>
                         </div>
-                        <div>
-                            <img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px">
+                        <div class="slider2">
+                            <div class="slider-text"><span>곡의 에너지</span></div>
+                            <input class="slider-2" id="slider-2" type="range" min="0" max="10" value="5" name="energy" steps="1"/>
+                            <div><img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px"></div>
+                            <div class="step-text"><p class="steps-left">차분한 분위기</p><p class="steps-right">긍정적인 분위기</p></div>
                         </div>
-                        <div>
-                            <span class="steps-left">차분한 분위기</span>
-                            <span class="steps-right">긍정적인 분위기</span>
+                        <div class="slider3">
+                            <div class="slider-text"><span>선호하는 음악의 빠르기</span></div>
+                            <input class="slider-3" id="slider-3" type="range" min="0" max="10" value="5" name="tempo" steps="1"/>
+                            <div><img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px"></div>
+                            <div><span class="steps-left">차분한 분위기</span><span class="steps-right">긍정적인 분위기</span></div>
                         </div>
-                    </div>
-                    <div class="slider2">
-                        <div class="slider-text"><span>곡의 에너지</span></div>
-                        <div>
-                            <input
-                                class="slider-2"
-                                id = "slider-2"
-                                type="range"
-                                min="0"
-                                max="10"
-                                value="5"
-                                steps="1"
-                            />
-                        </div>
-                        <div>
-                            <img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px">
-                        </div>
-                        <div class="step-text">
-                            <p class="steps-left">차분한 분위기</p>
-                            <p class="steps-right">긍정적인 분위기</p>
-                        </div>
-                    </div>
-                    <div class="slider3">
-                        <div class="slider-text"><span>선호하는 음악의 빠르기</span></div>
-                        <div>
-                            <input
-                                class="slider-3"
-                                id = "slider-3"
-                                type="range"
-                                min="0"
-                                max="10"
-                                value="5"
-                                steps="1"
-                            />
-                        </div>
-                        <div>
-                            <img class="steps" src="{% static 'signup/images/Steps.svg' %}" width="300px">
-                        </div>
-                        <div>
-                            <span class="steps-left">차분한 분위기</span>
-                            <span class="steps-right">긍정적인 분위기</span>
-                        </div>
-                    </div>
+                        <footer>
+                            <button type="submit" class="next-step-button">다음 단계로 넘어가기</button>
+                        </footer>
+                    </form>
                 </main>
-                <footer>
-                    <input
-                        class="next-step-button"
-                        type="submit"
-                        value="다음 단계로 넘어가기"
-                        onclick="location.href='{% url 'signup4' %}'"
-                    />
-                </footer>
             </div>
         </div>
     </body>
-</html>
-
-<script>
-  document
-    .querySelector(".slider-1")
-    .addEventListener("input", function (event) {
-      var gradient_value = 100 / event.target.attributes.max.value;
-      event.target.style.background =
-        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253)  " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253) 100%)";
-    });
-  document
-    .querySelector(".slider-2")
-    .addEventListener("input", function (event) {
-      var gradient_value = 100 / event.target.attributes.max.value;
-      event.target.style.background =
-        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253)  " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253) 100%)";
-    });
-  document
-    .querySelector(".slider-3")
-    .addEventListener("input", function (event) {
-      var gradient_value = 100 / event.target.attributes.max.value;
-      event.target.style.background =
-        "linear-gradient(to right, #32a6f9 0%, #32a6f9 " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253)  " +
-        gradient_value * event.target.value +
-        "%, rgb(214, 237, 253) 100%)";
-    });
-
-
-</script>
+    </html>
+    
+    <script>
+        const updateSliderBackground = (slider) => {
+            const gradient_value = 100 / slider.max;
+            slider.style.background = `linear-gradient(to right, #32a6f9 0%, #32a6f9 ${gradient_value * slider.value}%, rgb(214, 237, 253) ${gradient_value * slider.value}%, rgb(214, 237, 253) 100%)`;
+        };
+    
+        document.querySelectorAll('input[type="range"]').forEach((slider) => {
+            slider.addEventListener('input', (event) => updateSliderBackground(event.target));
+            updateSliderBackground(slider);
+        });
+    </script>

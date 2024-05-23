@@ -11,6 +11,14 @@ class User(AbstractUser):
         validators=[validate_no_special_characters],
         )
 
+class UserPreferences(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='preferences')
+    mood = models.IntegerField()
+    energy = models.IntegerField()
+    tempo = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.user.username}'s preferences (Mood: {self.mood}, Energy: {self.energy}, Tempo: {self.tempo})"
 
 class UploadMAXMIN(models.Model):
     max_file = models.FileField(upload_to='userVoice/')
