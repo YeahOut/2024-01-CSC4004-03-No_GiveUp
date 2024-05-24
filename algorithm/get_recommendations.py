@@ -30,9 +30,45 @@ min_tmpo = input_tmpo / 10 - 0.2
 max_tmpo = input_tmpo / 10 + 0.2
 min_key = input_key - 1
 max_key = input_key + 1
-min_popularity = 60
+min_popularity = 55
 recommendation_songs_cnt = 3
 
+mood_string = ""
+energy_string = ""
+tempo_string = ""
+
+if input_mood < 2:
+    mood_string = "매우 차분한"
+elif input_mood < 4:
+    mood_string = "차분힌"
+elif input_mood < 6:
+    mood_string = "보통"
+elif input_mood < 8:
+    mood_string = "활기찬"
+else:
+    mood_string = "매우 활기찬"
+
+if input_energy < 2:
+    energy_string = "매우 잔잔한"
+elif input_energy < 4:
+    energy_string = "잔잔한"
+elif input_energy < 6:
+    energy_string = "보통"
+elif input_energy < 8:
+    energy_string = "강렬한"
+else:
+    energy_string = "매우 강렬한"
+
+if input_tmpo < 2:
+    tempo_string = "매우 느림"
+elif input_tmpo < 4:
+    tempo_string = "느림"
+elif input_tmpo < 6:
+    tempo_string = "보통"
+elif input_tmpo < 8:
+    tempo_string = "빠름"
+else:
+    tempo_string = "매우 빠름"
 
 recommended = sp.recommendations(limit=recommendation_songs_cnt, market='KR', seed_artists=seed_artist,
                                  min_danceability=min_mood, max_danceability=max_mood,
@@ -80,6 +116,9 @@ print(song_urls)
 print(img_urls)
 print(preview_urls)
 print(artists)
+print(mood_string)
+print(energy_string)
+print(tempo_string)
 
 if len(song_names) < 3:
     print("추천받은 곡 부족")
