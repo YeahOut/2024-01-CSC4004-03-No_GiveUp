@@ -26,13 +26,14 @@
                         <div class="modaltext">
                             <div class="user-info">
                                 <p class="info1">MyV 회원</p>
-                                <p class="info2">최예인</p>
+                                <p class="info2">{{ user }}</p>
                             </div>
                             <ul class="nav_mobile">
                                 <li><a href="#">마이페이지</a></li>
                                 <li><a href="#">사용 방법</a></li>
                                 <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
                                 <li><a href="#">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
                             </ul>
                             <div class="wave">
                                 <img src="{% static 'main/images/wave.png' %}" height="223px" />
@@ -53,41 +54,41 @@
                     <div class="album-form">
                         <div class="af">
                             <button class="album-cover1">
-                                <img src="{% static 'main/images/cover.jpg' %}" width="120px" />
+                                <img src="{{ cover1 }}" width="120px" />
                             </button>
                         </div>
                         <div class="af">
                             <button class="album-cover2">
-                                <img src="{% static 'main/images/cover.jpg' %}" width="130px" />
+                                <img src="{{ cover2 }}" width="130px" />
                             </button>
                         </div>
                         <div class="af">
                             <button class="album-cover3">
-                                <img src="{% static 'main/images/cover.jpg' %}" width="120px" />
+                                <img src="{{ cover3 }}" width="120px" />
                             </button>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <a class="cover1"></a>
+                    <a class="cover1" id="af1" onclick="song_select(this.id);"></a>
                 </div>
                 <div>
-                    <a class="cover2"></a>
+                    <a class="cover2" id="af2" onclick="song_select(this.id);"></a>
                 </div>
                 <div>
-                    <a class="cover3"></a>
+                    <a class="cover3" id="af3" onclick="song_select(this.id);"></a>
                 </div>
                 <div class="song-info1">
-                    <p class="title">제목</p><br />
-                    <p class="singer">가수</p>
+                    <p class="title">{{ title1 }}</p><br />
+                    <p class="singer" id="singer1">{{ artist1 }}</p>
                 </div>
                 <div class="song-info2">
-                    <p class="title">제목</p><br />
-                    <p class="singer">가수</p>
+                    <p class="title">{{ title2 }}</p><br />
+                    <<p class="singer" id="singer2">{{ artist2 }}</p>
                 </div>
                 <div class="song-info3">
-                    <p class="title">제목</p><br />
-                    <p class="singer">가수</p>
+                    <p class="title">{{ title3 }}</p><br />
+                    <p class="singer" id="singer3">{{ artist3 }}</p>
                 </div>
                 <div class="audio">
                     <audio src="{% static 'main/audio/tmp.mp3' %}" controls></audio>
@@ -97,24 +98,25 @@
                 <div id="grid">
                     <div class="item">
                         <p class="feature">당신의 음역대</p>
-                        <p class="value">A3~C4</p>
+                        <p class="value">{{ min }}~{{ max }}</p>
                     </div>
                     <div class="item">
                         <p class="feature">당신의 분위기</p>
-                        <p class="value">산뜻한</p>
+                        <p class="value">{{ mood }}</p>
                     </div>
                     <div class="item">
                         <p class="feature">곡의 에너지</p>
-                        <p class="value">000</p>
+                        <p class="value">{{ energy }}</p>
                     </div>
                     <div class="item">
                         <p class="feature">곡의 빠르기</p>
-                        <p class="value">150</p>
+                        <p class="value">{{ tmpo }}</p>
                     </div>
                 </div>
-                <input id="go_recommend" type="button" value="추천 음악 보러 가기" />
+                <input type="button" id="go_playlist" value="플레이리스트 보러 가기" />
             </footer>
         </div>
     </div>
+    <script type="text/javascript" src="{% static 'main/js/mainpage3.js' %}"></script>
 </body>
 </html>

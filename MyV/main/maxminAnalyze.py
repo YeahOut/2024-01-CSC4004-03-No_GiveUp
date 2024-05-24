@@ -20,14 +20,14 @@ def maxminAnalyze(user):
     max_file_name = userInfo.max_file_name
     #print(min_file_name)
     downloadFile(min_file_name,max_file_name)
-    print("checkpoint")
+    #print("checkpoint")
 
     #####analyze
     min_file_path = os.path.join(os.getcwd(),'media','maxminSrc',min_file_name)
     max_file_path = os.path.join(os.getcwd(),'media','maxminSrc',max_file_name)
     max_note_fromMin, min_note_fromMin = usingLibrosa(min_file_path)
     max_note_fromMax, min_note_fromMax = usingLibrosa(max_file_path)
-    print(min_note_fromMin, max_note_fromMax)
+    #print(min_note_fromMin, max_note_fromMax)
 
     #####upload to user DB 
     upload = UserMaxMinNote(user = user, 
