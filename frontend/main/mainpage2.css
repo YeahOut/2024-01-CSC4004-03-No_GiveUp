@@ -93,3 +93,16 @@
   font-size: 18px;
   color: #878787;
 }
+
+.spotify_logo{
+  width: 180px;
+  left: 100px;
+  position: relative;
+  top:340px;
+}
+.spotify_info_text{
+  text-align: center;
+  position: relative;
+  top: 350px;
+  color: #4d4747;
+}
