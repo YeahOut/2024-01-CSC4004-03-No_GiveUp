@@ -15,6 +15,8 @@ seed_artist = ["spotify:artist:6GwM5CHqhWXzG3l5kzRSAS", "spotify:artist:57htMBtz
                "spotify:artist:3HqSLMAZ3g3d5poNaI7GOU", "spotify:artist:6HvZYsbFfjnjFrWF950C9d",
                "spotify:artist:5TnQc2N1iKlFjYD7CPGvFc"]
 
+key_dict = {'C' : 0, 'C#' : 1, 'D' : 2, 'D#' : 3, 'E' : 4, 'F' : 5,
+            'F#' : 6, 'G' : 7, 'G#' : 8, 'A' : 9, 'A#' : 10, 'B' : 11}
 input_mood = 5
 input_energy = 5
 input_tmpo = 5
@@ -23,14 +25,50 @@ input_key = 5
 min_mood = input_mood / 10 - 0.2
 max_mood = input_mood / 10 + 0.2
 min_energy = input_energy / 10 - 0.2
-max_energy = input_energy / 10  + 0.2
+max_energy = input_energy / 10 + 0.2
 min_tmpo = input_tmpo / 10 - 0.2
 max_tmpo = input_tmpo / 10 + 0.2
 min_key = input_key - 1
 max_key = input_key + 1
-min_popularity = 60
+min_popularity = 55
 recommendation_songs_cnt = 3
 
+mood_string = ""
+energy_string = ""
+tempo_string = ""
+
+if input_mood < 2:
+    mood_string = "매우 차분한"
+elif input_mood < 4:
+    mood_string = "차분힌"
+elif input_mood < 6:
+    mood_string = "보통"
+elif input_mood < 8:
+    mood_string = "활기찬"
+else:
+    mood_string = "매우 활기찬"
+
+if input_energy < 2:
+    energy_string = "매우 잔잔한"
+elif input_energy < 4:
+    energy_string = "잔잔한"
+elif input_energy < 6:
+    energy_string = "보통"
+elif input_energy < 8:
+    energy_string = "강렬한"
+else:
+    energy_string = "매우 강렬한"
+
+if input_tmpo < 2:
+    tempo_string = "매우 느림"
+elif input_tmpo < 4:
+    tempo_string = "느림"
+elif input_tmpo < 6:
+    tempo_string = "보통"
+elif input_tmpo < 8:
+    tempo_string = "빠름"
+else:
+    tempo_string = "매우 빠름"
 
 recommended = sp.recommendations(limit=recommendation_songs_cnt, market='KR', seed_artists=seed_artist,
                                  min_danceability=min_mood, max_danceability=max_mood,
@@ -45,6 +83,7 @@ song_urls = [] #spotify 곡페이지 url
 img_urls = [] #이미지 url
 img_dirs = [] #이미지jpg 저장 경로
 preview_urls = [] #미리듣기 url
+artists = []
 
 cnt = 1
 for track in tracks:
@@ -52,6 +91,7 @@ for track in tracks:
     song_name = track['name']
     preview_url = track['preview_url']
     img_url = track['album']['images'][0]['url']
+    artist = track['artists'][0]['name']
     img_save_loc = "./img" + str(cnt) + ".jpg"
     urllib.request.urlretrieve(img_url, img_save_loc)
     image = imread(img_save_loc)
@@ -61,19 +101,24 @@ for track in tracks:
     img_urls.append(img_url)
     img_dirs.append(img_url)
     preview_urls.append(preview_url)
+    artists.append(artist)
 
     print(cnt,"######################")
     print(preview_url)
     print(song_url)
     print(img_url)
     print(song_name)
-
+    print(artist)
     cnt += 1
 
 print(song_names)
 print(song_urls)
 print(img_urls)
 print(preview_urls)
+print(artists)
+print(mood_string)
+print(energy_string)
+print(tempo_string)
 
 if len(song_names) < 3:
     print("추천받은 곡 부족")

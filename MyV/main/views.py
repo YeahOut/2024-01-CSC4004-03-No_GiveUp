@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .awsInMain import upload_to_s3,downloadFile
 from .maxminAnalyze import maxminAnalyze
+from .sportify_api import sportify
+
+
 def main_1(request):
     return render(request, 'main/main_1.html')
 
@@ -25,4 +28,31 @@ def main_2(request):
     return render(request,'main/loading.html')
 
 def main_3(request):
-    return render(request, 'main/main_3.html')
+    user = request.user
+    #song_names~preview_urls는 각각 리스트
+    #userInfo는 max,min, mood, tmpo, energy 순으로 담긴 리스트
+    song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
+    context = {
+        'user' : user,
+        'cover1' : img_urls[0],
+        'cover2' : img_urls[1],
+        'cover3' : img_urls[2],
+        'title1' : song_names[0],
+        'title2' : song_names[1],
+        'title3' : song_names[2],
+        'min' : userInfo[0],
+        'max' : userInfo[1],
+        'mood' : userInfo[2],
+        'tmpo' : userInfo[3],
+        'energy' : userInfo[4],
+        'artist1' : artist[0],
+        'artist2' : artist[1],
+        'artist3' : artist[2],
+    }
+    return render(request, 'main/main_3.html',context)
+
+#########test########
+def test(request):
+    user = request.user
+    sportify(user)
+    return render(request, 'main/test.html')
