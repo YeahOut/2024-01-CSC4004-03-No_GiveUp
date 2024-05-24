@@ -1,6 +1,6 @@
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
-
+import os
 from matplotlib.image import imread
 import matplotlib.pyplot as plt
 import urllib.request
@@ -20,12 +20,15 @@ def sportify(user):
                 "spotify:artist:3HqSLMAZ3g3d5poNaI7GOU", "spotify:artist:6HvZYsbFfjnjFrWF950C9d",
                 "spotify:artist:5TnQc2N1iKlFjYD7CPGvFc"]
     
-    key_dict = {'C' : 0, 'C#' : 1, 'D' : 2, 'D#' : 3, 'E' : 4, 'F' : 5,
-            'F#' : 6, 'G' : 7, 'G#' : 8, 'A' : 9, 'A#' : 10, 'B' : 11}
+    key_dict = {'C' : 0, 'C♯' : 1, 'D' : 2, 'D♯' : 3, 'E' : 4, 'F' : 5,
+            'F♯' : 6, 'G' : 7, 'G♯' : 8, 'A' : 9, 'A♯' : 10, 'B' : 11}
 
-    userNoteInfo = UserMaxMinNote.objects.get(user=user) #db에서 정보 가져오기
+    #db에서 정보 가져오기 (최고음 최저음)
+    userNoteInfo = UserMaxMinNote.objects.get(user=user)
     user_min_note = userNoteInfo.min_note
     user_max_note = userNoteInfo.max_note
+
+    #db에서 정보 가져오기 (회원 성향 정보)
     userPreferenceInfo = UserPreferences.objects.get(user=user)
     user_mood = userPreferenceInfo.mood
     user_energy = userPreferenceInfo.energy
@@ -35,6 +38,7 @@ def sportify(user):
     input_energy = user_energy
     input_tmpo = user_tmpo
     min_key = key_dict[user_min_note[:len(user_min_note) - 1]]
+    print(min_key)
     max_key = key_dict[user_max_note[:len(user_max_note) - 1]]
 
     min_mood = input_mood / 10 - 0.2
@@ -62,6 +66,7 @@ def sportify(user):
     img_urls = [] #이미지 url
     img_dirs = [] #이미지jpg 저장 경로
     preview_urls = [] #미리듣기 url
+    artists = []
 
     cnt = 1
     for track in tracks:
@@ -69,31 +74,37 @@ def sportify(user):
         song_name = track['name']
         preview_url = track['preview_url']
         img_url = track['album']['images'][0]['url']
-        img_save_loc = "./img" + str(cnt) + ".jpg"
-        urllib.request.urlretrieve(img_url, img_save_loc)
-        image = imread(img_save_loc)
+        artist = track['artists'][0]['name']
+        #img_save_loc = "./img" + str(cnt) + ".jpg"
+        #urllib.request.urlretrieve(img_url, img_save_loc)
+        #image = imread(img_save_loc)
 
         song_names.append(song_name)
         song_urls.append(song_url)
         img_urls.append(img_url)
         img_dirs.append(img_url)
         preview_urls.append(preview_url)
+        artists.append(artist)
 
         print(cnt,"######################")
         print(preview_url)
         print(song_url)
         print(img_url)
         print(song_name)
-
+        print(artist)
         cnt += 1
 
     print(song_names)
     print(song_urls)
     print(img_urls)
     print(preview_urls)
+    print(artist)
+    print("#######"+artists[0])
 
     if len(song_names) < 3:
         print("추천받은 곡 부족")
 
     for i in range(recommendation_songs_cnt - len(song_names)):
-        img_urls.append("./tmp_img.png")
+        img_urls.append(os.join.path(os.getcwd(),'main', 'static','main','tmp_img.png'))
+
+    return song_names, song_urls, img_urls, preview_urls, artist, [user_max_note, user_min_note, user_mood, user_tmpo, user_energy ]
