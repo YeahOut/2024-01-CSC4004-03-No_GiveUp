@@ -1,29 +1,26 @@
 #aws에 파일 업로드하기
 import os
 import boto3
-from .models import 
 from django.conf import settings
+from .models import UserMaxMinFile
 
-
-def upload_to_s3(min_file, max_file):
+def upload_to_s3(min_file, max_file,user):
     ##파일 이름 변경##
     # 파일 이름에서 확장자 분리하기
     mySound_name, mySound_ext = os.path.splitext(min_file.name)
     compareSound_name, compareSound_ext = os.path.splitext(max_file.name)    
     
     # 새 파일 이름 설정
-    new_mySound_name = 'usr' + mySound_ext 
-    new_compareSound_name = 'org' + compareSound_ext ##org.mp4 이런식으로 변경 
+    new_minSound_name = f'{user}'+'_min' + mySound_ext 
+    new_maxSound_name = f'{user}'+ '_max' + compareSound_ext ##org.mp4 이런식으로 변경 
         
-    min_file.name = new_mySound_name
-    max_file.name = new_compareSound_name
+    min_file.name = new_minSound_name
+    max_file.name = new_maxSound_name
     #인스턴스 중복되는거 방지하기
-    upload = (min_file=min_file,
-                               fMySound_name=min_file.name,
-                               max_file=max_file, 
-                               fCompareSound_name=max_file.name)
+    upload = UserMaxMinFile(min_file=min_file,
+                            max_file=max_file,
+                            user=user)
     upload.save()
-
 
 #aws에서 파일 다운로드하기
 def downloadFile() :
