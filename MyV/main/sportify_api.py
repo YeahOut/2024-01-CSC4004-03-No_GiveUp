@@ -98,7 +98,7 @@ def sportify(user):
     print(song_urls)
     print(img_urls)
     print(preview_urls)
-    print(artist)
+    print(artists)
     print("#######"+artists[0])
 
     if len(song_names) < 3:
@@ -107,4 +107,4 @@ def sportify(user):
     for i in range(recommendation_songs_cnt - len(song_names)):
         img_urls.append(os.join.path(os.getcwd(),'main', 'static','main','tmp_img.png'))
 
-    return song_names, song_urls, img_urls, preview_urls, artist, [user_max_note, user_min_note, user_mood, user_tmpo, user_energy ]
+    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, user_mood, user_tmpo, user_energy ]
