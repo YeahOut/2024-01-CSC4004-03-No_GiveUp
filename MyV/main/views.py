@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .awsInMain import upload_to_s3,downloadFile
 from .maxminAnalyze import maxminAnalyze
+from .sportify_api import sportify
+
+
 def main_1(request):
     return render(request, 'main/main_1.html')
 
@@ -26,3 +29,9 @@ def main_2(request):
 
 def main_3(request):
     return render(request, 'main/main_3.html')
+
+#########test########
+def test(request):
+    user = request.user
+    sportify(user)
+    return render(request, 'main/test.html')

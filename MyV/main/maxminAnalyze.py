@@ -15,7 +15,7 @@ from .models import UserMaxMinNote
 
 def maxminAnalyze(user):
     #####download from s3
-    userInfo = UserMaxMinFile.objects.get(user=user)
+    userInfo = UserMaxMinFile.objects.get(user=user) #db에서 정보 가져오기
     min_file_name = userInfo.min_file_name
     max_file_name = userInfo.max_file_name
     #print(min_file_name)
