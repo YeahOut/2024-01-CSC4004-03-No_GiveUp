@@ -15,6 +15,8 @@ seed_artist = ["spotify:artist:6GwM5CHqhWXzG3l5kzRSAS", "spotify:artist:57htMBtz
                "spotify:artist:3HqSLMAZ3g3d5poNaI7GOU", "spotify:artist:6HvZYsbFfjnjFrWF950C9d",
                "spotify:artist:5TnQc2N1iKlFjYD7CPGvFc"]
 
+key_dict = {'C' : 0, 'C#' : 1, 'D' : 2, 'D#' : 3, 'E' : 4, 'F' : 5,
+            'F#' : 6, 'G' : 7, 'G#' : 8, 'A' : 9, 'A#' : 10, 'B' : 11}
 input_mood = 5
 input_energy = 5
 input_tmpo = 5
@@ -23,7 +25,7 @@ input_key = 5
 min_mood = input_mood / 10 - 0.2
 max_mood = input_mood / 10 + 0.2
 min_energy = input_energy / 10 - 0.2
-max_energy = input_energy / 10  + 0.2
+max_energy = input_energy / 10 + 0.2
 min_tmpo = input_tmpo / 10 - 0.2
 max_tmpo = input_tmpo / 10 + 0.2
 min_key = input_key - 1
