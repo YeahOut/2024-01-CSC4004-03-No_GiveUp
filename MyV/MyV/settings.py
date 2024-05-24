@@ -111,7 +111,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = "/done/"
+ACCOUNT_SIGNUP_REDIRECT_URL = "/signup/2/"
 LOGIN_REDIRECT_URL = '/modal/analyze'
 ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
