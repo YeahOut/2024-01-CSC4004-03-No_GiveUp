@@ -19,7 +19,9 @@ import shutil
 import math
 
 def analyzePage(request):
-    return render(request,'modal/analyze.html')
+    user = request.user
+    context = {'user':user}
+    return render(request,'modal/analyze.html', context)
 
 #AWS s3에 업로드하는 함수
 def upload_analyze_file(request):
