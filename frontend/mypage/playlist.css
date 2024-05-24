@@ -77,13 +77,6 @@
   font-weight: 700;
 }
 
-.spotify_info{
-  position: relative;
-  top:110px;
-  width:210px;
-  left:40px
-}
-
 .playlist-contents {
   position: relative;
   top: 120px;
