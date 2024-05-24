@@ -43,8 +43,8 @@ def sportify(user):
     max_energy = input_energy / 10  + 0.2
     min_tmpo = input_tmpo / 10 - 0.2
     max_tmpo = input_tmpo / 10 + 0.2
-    min_key = input_key - 1
-    max_key = input_key + 1
+    min_key = min_key - 1
+    max_key = max_key + 1
     min_popularity = 60
     recommendation_songs_cnt = 3
 
