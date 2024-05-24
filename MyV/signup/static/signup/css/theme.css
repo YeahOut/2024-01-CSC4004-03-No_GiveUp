@@ -283,16 +283,14 @@ a.cp-button {
 }
 
 .cp-button {
-    border: none;
-    outline: none;
-    padding: 14px 28px;
-    border-radius: 9999px;
-    font-size: 19px;
-    font-weight: 400;
-    letter-spacing: -0.32px;
-    cursor: pointer;
-    background-color: var(--button-primary-background);
-    color: var(--button-text);
+    position: relative;
+    width: 300px;
+    height: 50px;
+    color: white;
+    background-color: #5e59ff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 17px;
 }
 
 .cp-button:hover,
@@ -407,7 +405,7 @@ div.cp-input {
 input.cp-input,
 textarea.cp-input,
 .cp-input input {
-    width: 100%;
+    width: 80%;
     font-size: 17px;
     letter-spacing: -0.3px;
     padding: 16px 24px;
@@ -415,6 +413,7 @@ textarea.cp-input,
     background-color: var(--input-background);
     outline: none;
     border-radius: 7px;
+    margin-left: 40px;
 }
 
 input.cp-input:focus,

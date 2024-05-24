@@ -2,16 +2,11 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import UploadMAXMIN, MaxminNote
 from .maxmin import maxAnalysis, minAnalysis
-from django.shortcuts import render, redirect
-from .forms import SignupForm
+from .forms import SignupForm, PreferencesForm
 from allauth.account.views import SignupView
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from .forms import SignupForm
-from .models import User
-from .forms import PreferencesForm
-from .models import UserPreferences
+from .models import User,UserPreferences
 from django.contrib.auth.decorators import login_required
 
 @login_required

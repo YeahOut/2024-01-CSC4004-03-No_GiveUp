@@ -167,10 +167,10 @@
 
 .text {
   position: relative;
-  top: 23px;
-  font-size: 14px;
+  top: 35px;
+  font-size: 16px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 540;
 }
 
 .next-step-button {
@@ -181,6 +181,7 @@
   background-color: #5e59ff;
   border: 0;
   border-radius: 5px;
+  font-size: 17px;
 }
 
 /*****슬라이더 CSS ******/
@@ -263,14 +264,22 @@
 }
 
 .steps-left {
-  font-size: 0.1px;
-  -webkit-transform: scale(0.83);
+  font-size: 13px;
+  -webkit-transform: scale(0.9);
   display: inline-block;
-  padding-right: 100px;
+  padding-right: 140px;
 }
 
 .steps-right {
-  font-size: 0.1px;
+  font-size: 14px;
   -webkit-transform: scale(0.83);
   display: inline-block;
 }
+
+.steps-left2 {
+  font-size: 14px;
+  -webkit-transform: scale(0.83);
+  display: inline-block;
+  padding-right: 32px;
+}
+
