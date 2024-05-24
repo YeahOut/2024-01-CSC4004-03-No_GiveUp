@@ -28,3 +28,13 @@
     </div>
   </body>
 </html>
+
+
+<script>
+  // 페이지 로드 후 3초 뒤에 리디렉션
+  window.onload = function() {
+    setTimeout(function() {
+      window.location.href = "{% url 'main3' %}";
+    }, 3000); // 3000 ms= 3sec
+  };
+</script>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .awsInMain import upload_to_s3
-
+from .awsInMain import upload_to_s3,downloadFile
+from .maxminAnalyze import maxminAnalyze
 def main_1(request):
     return render(request, 'main/main_1.html')
 
@@ -20,6 +20,8 @@ def upload_max_min(request):
     return HttpResponse("Failed to upload files")
 
 def main_2(request):
+    user = request.user
+    maxminAnalyze(user)
     return render(request,'main/loading.html')
 
 def main_3(request):

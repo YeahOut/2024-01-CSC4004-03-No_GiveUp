@@ -6,6 +6,8 @@ class UserMaxMinFile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     min_file = models.FileField(upload_to='userVoice/')
     max_file = models.FileField(upload_to='userVoice/')
+    min_file_name = models.CharField(max_length=255, default="none")
+    max_file_name = models.CharField(max_length=255, default="none")
 
 class UserMaxMinNote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

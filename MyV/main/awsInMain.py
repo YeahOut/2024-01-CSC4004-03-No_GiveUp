@@ -19,14 +19,14 @@ def upload_to_s3(min_file, max_file,user):
     #인스턴스 중복되는거 방지하기
     upload = UserMaxMinFile(min_file=min_file,
                             max_file=max_file,
-                            user=user)
+                            user=user,
+                            min_file_name=min_file.name,
+                            max_file_name=max_file.name)
     upload.save()
 
 #aws에서 파일 다운로드하기
-def downloadFile() :
+def downloadFile(min_file_name,max_file_name) :
     s3 = boto3.resource('s3')
-    for bucket in s3.buckets.all():
-        print(bucket.name)
     
     #s3 버킷 정보 가져오기
     bucket_name = 'myv-aws-bucket'
@@ -35,15 +35,15 @@ def downloadFile() :
     print(bucket)
 
     #파일 다운로드 진행하기
-    mine_obj_file= 'vocalReportSource/usr.wav' #디렉토리 버킷 접근하기
-    compare_obj_file='vocalReportSource/org.m4a'
+    min_obj_file= 'userVoice/' + min_file_name #디렉토리 버킷 접근하기
+    max_obj_file='userVoice/' + max_file_name
     print("###버킷 접근 성공###")
     
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'usr.wav') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
-    bucket.download_file(mine_obj_file,save_file)
+    save_file = os.path.join(os.getcwd(), 'media', 'maxminSrc', min_file_name) #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(min_obj_file,save_file)
 
-    save_file = os.path.join(os.getcwd(), 'media', 'vocalReportSrc', 'org.m4a') #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
-    bucket.download_file(compare_obj_file,save_file)
+    save_file = os.path.join(os.getcwd(), 'media', 'maxminSrc',max_file_name) #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
+    bucket.download_file(max_obj_file,save_file)
     return 1;
 
 #사용자마다 S3 디렉토리 버킷 생성하는 함수 (올리고, 다운받는 용도로 만든 후 음역대 저장하면 삭제할 함수)
