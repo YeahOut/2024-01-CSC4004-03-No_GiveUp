@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .analyzing_file import process_file
 from .aws import downloadFile, upload_to_s3, makingBucket,deleteBucket
-
+from .models import UserVocalInfo
 # Create your views here.
 
 from django.conf import settings
@@ -19,7 +19,9 @@ import shutil
 import math
 
 def analyzePage(request):
-    return render(request,'modal/analyze.html')
+    user = request.user
+    context = {'user':user}
+    return render(request,'modal/analyze.html', context)
 
 #AWS s3에 업로드하는 함수
 def upload_analyze_file(request):
@@ -43,10 +45,10 @@ def vocalResult(request):
 
     if (downloaded==1):
         max_note, min_note, start_t, best_st, best_ed, score = process_file()
-        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed), 'score':score}
-        #user = request.user  # 현재 로그인한 사용자에 접근하기 위한 용도..
-        #saveInfo = UserVocalInfo(user= user, max_note=max_note, min_note=min_note)
-        #saveInfo.save()
+        user = request.user  # 현재 로그인한 사용자에 접근하기 위한 용도..
+        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed), 'score':score, 'user': user}
+        saveInfo = UserVocalInfo(user= user, max_note=max_note, min_note=min_note)
+        saveInfo.save()
     else :
         print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)

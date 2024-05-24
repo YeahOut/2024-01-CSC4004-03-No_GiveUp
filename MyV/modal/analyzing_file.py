@@ -65,7 +65,7 @@ def process_file():
     print("###test###")
     best_st = t_usr[best_idx]
     best_ed = t_usr[best_idx + len(f0_usr) // 5]
-
+    score = int(score *100)
     remove_prefiles()
     
     print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
