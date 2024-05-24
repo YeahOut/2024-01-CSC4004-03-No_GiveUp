@@ -586,8 +586,8 @@ ul.navbar li {
 
 .account button[type="submit"] {
     display: block;
-    width: 90%;
-    margin: 20px;
+    width: 80%;
+    margin: 40px;
 }
 
 .account .info .item {
@@ -611,7 +611,7 @@ ul.navbar li {
 }
 
 .account form> :not(:last-child) {
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .account form .checkbox {

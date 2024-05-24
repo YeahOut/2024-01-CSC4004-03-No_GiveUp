@@ -447,6 +447,7 @@ textarea.cp-input {
     color: var(--input-error);
     font-size: 14px;
     line-height: 1.7;
+    text-align: right;
 }
 
 .cp-input:not(.error)~.error-message {
