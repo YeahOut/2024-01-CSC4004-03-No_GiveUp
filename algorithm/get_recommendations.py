@@ -47,6 +47,7 @@ song_urls = [] #spotify 곡페이지 url
 img_urls = [] #이미지 url
 img_dirs = [] #이미지jpg 저장 경로
 preview_urls = [] #미리듣기 url
+artists = []
 
 cnt = 1
 for track in tracks:
@@ -54,6 +55,7 @@ for track in tracks:
     song_name = track['name']
     preview_url = track['preview_url']
     img_url = track['album']['images'][0]['url']
+    artist = track['artists'][0]['name']
     img_save_loc = "./img" + str(cnt) + ".jpg"
     urllib.request.urlretrieve(img_url, img_save_loc)
     image = imread(img_save_loc)
@@ -63,19 +65,21 @@ for track in tracks:
     img_urls.append(img_url)
     img_dirs.append(img_url)
     preview_urls.append(preview_url)
+    artists.append(artist)
 
     print(cnt,"######################")
     print(preview_url)
     print(song_url)
     print(img_url)
     print(song_name)
-
+    print(artist)
     cnt += 1
 
 print(song_names)
 print(song_urls)
 print(img_urls)
 print(preview_urls)
+print(artists)
 
 if len(song_names) < 3:
     print("추천받은 곡 부족")
