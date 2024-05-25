@@ -22,12 +22,21 @@ body{
   width:390px;
   height:844px;
   overflow: hidden;
+  background: linear-gradient(180deg,white,#e1e1ff);
+}
+.header{
+  width:844px;
+  height:130px;
 }
 .header-contents{
-  width:348px;
-  height:67px;
-  left:5%;
-  top:67px;
+  position: relative;
+  left: 5%;
+  top: 30px;
+}
+
+.backbutton{
+  width:30px;
+  height:30px;
 }
 
 .title{
@@ -39,60 +48,171 @@ body{
   text-align:center;
 }
 
-.backbutton{
-  width:24px;
-  height:24px;
-  position:relative;
-  left:10px;
-  top:25px;
-}
 .logo{
+  width:70px;
+  height:27px;
+  padding-left:15px;
+}
+a{
+  text-decoration:none;
+  color:black;
+}
+.mobile_btn{
+  position: absolute;
+  top:35px;
+  left:300px;
+}
+input[id="hamburger"]{
+  display:none;
+}
+input[id="hamburger"]+label{
+  display:block;
+  width: 30px;
+  height:20px;
+  position:relative;
+  left:100%;
+  cursor:pointer;
+}
+input[id="hamburger"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 30px;
+  background: #000;
+  transition: all 0.35s;
+}
+input[id="hamburger"] + label span:nth-child(1) {
+  top: 0;
+}
+input[id="hamburger"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id="hamburger"] + label span:nth-child(3) {
+  bottom: 0;
+}
+input[id="hamburger"]:checked + label {
+  z-index: 99;
+}
+input[id="hamburger"]:checked + label span {
+  background: black;
+}
+input[id="hamburger"]:checked + label span:nth-child(1) {
+  width: 25px;
+  top: 103.5%;
+  transform: translateY(-60%) rotate(150deg);
+}
+input[id="hamburger"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+input[id="hamburger"]:checked + label span:nth-child(3) {
+  width: 25px;
+  bottom: 55%;
+  transform: translateY(50%) rotate(-150deg);
+}
+div[class="sidebar"] {
+  width: 166px;
+  height: 844px;
+  background: white;
+  background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
+  top: 0%;
+  left: 200%;
+  z-index: 98;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+input[id="hamburger"]:checked + label + div {
+  left: 223px;
+}
+
+.nav_mobile{
+  position: absolute;
+  top:119px;
+  width:100%;
+}
+.sidebar .nav_mobile li {
+  color: black;
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style-type: none;
+  font-size: 17px;
+  font-family: "Noto Sans KR";
+  font-weight: bold;
+  padding-top: 15px;
+  text-align: right;
+}
+.sidebar a{
+  padding:0;
+  text-decoration:none;
+  display:inline;
+}
+.sidebar li a {
+  display: inline;
+  font-weight: bold;
+  line-height: 40px;
+  margin-left: 0px;
+
+  padding-right: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.sidebar li a:hover,
+.sidebar ul li:hover a {
+  text-decoration: none;
+  color: #5d5fef;
+  padding-left: 5px;
+  margin: 0px;
+  border: 0px;
+}
+.user-info{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 25px;
+}
+.info1
+.info2{
+  padding-top:10px;
+}
+.modaltext{
+  position:relative;
+  top:10%;
+}
+.wave{
+  transform: translateY(50%) rotate(119deg);
+  position: relative;
+  left: 60%;
+  top: 93.5px;
+}
+
+
+.team-text{
+  text-align:center;
+  position: relative;
+}
+.title{
+  font-size:20px;
+  padding-bottom:22px;
+  font-weight: 700;
+}
+.sub{
+  font-size:16.55px;
+  padding-bottom:50px;
+  font-weight: 500;
+}
+.logo_1{
   width:54px;
   height:27px;
-  position:relative;
-  left:20px;
-  top:25px;
-}
-.modal{
-  width:35px;
-  height:30px;
-  position:relative;
-  top:25px;
-  left:250px;
 }
 .show{
-  text-align: center;
-  position:relative;
-  top:20px;
-}
-
-.logo1{
-  width:54px;
-  height:27px;
-} 
-.front_1{
-  color:#5974fc
-}
-.front_2{
-  display:flex;
-  margin:20px
-}
-
-.profile{
-  width:100px;
-  height:150px;
-  margin:3px 3px 3px 3px;
-  text-align:center;
-}
-.back_1{
-  color:#5974fc
-}
-.back_2{
-  display:flex;
-  margin:20px;
 }
 
 .etc{
   font-size:13px;
   text-align:right;
+  font-weight: 500;
 }

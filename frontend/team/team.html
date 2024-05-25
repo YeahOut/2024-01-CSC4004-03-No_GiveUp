@@ -5,11 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>팀 소개</title>
         <link rel="stylesheet" href="team.css" />
-        <style>
-            body{
-                background: linear-gradient(180deg,white,#e1e1ff);
-            }
-        </style>
       </head>
       <body>
         <div class="flex">
@@ -21,53 +16,47 @@
       src="backbutton.svg"
       onclick="location.href='../main/intropage.html'"/>
         <img class="logo"src="logo.svg"/>
-        <input class="modal" type="image" src="list.svg"/>
+      </div>
+      <div class="mobile_btn">
+        <input type="checkbox" id="hamburger"/>
+        <label for="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <img class="user-img" src="modal-face.svg" width="100px"/>
+            <div class="modaltext">
+                <div class="user-info">
+                    <p class="info1">MyV 회원</p>
+                    <p class="info2">최예인</p>
+                </div>
+                <ul class="nav_mobile">
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="#">사용 방법</a></li>
+                    <li><a href="#">보컬 분석</a></li>
+                    <li><a href="#">팀 소개</a></li>
+                  </ul>
+                  <div class="wave">
+                    <img src="../modalfile/wave.png" height="223px" />
+                  </div>
+            </div>
+        </div>
       </div>
     </header>
      <main>
-        <div class="show">
-                <h3>팀 소개</h3>
-                <p><img class="logo1" src="logo.svg"/>는 2024년 동국대학교 공개SW프로젝트<br>
-                팀 '포7ㅣ를 모르조'에서 제작한<br>
-            모바일형 웹서비스입니다.</p>
+        <div class="team-text">
+            <div class="title">
+                <p>팀소개</p>
             </div>
-            <div class="front_1">
-                    <img src="yarn.svg"/><strong>프론트엔드</strong>
-                </div>                               
-                    <div class="front_2">
-                    <div class="profile">
-                        <p><img src="face1.svg"/></p>
-                        <p>AI 융합학부22</p>
-                        <p><strong>이승연</strong></p>
-                        </div>
-                    <div class="profile">
-                        <p><img src="face2.svg"/></p>
-                        <p>컴퓨터공학21</p>
-                        <p><strong>이성준</strong></p>
-                        </div>
-                    <div class="profile">
-                        <p><img src="face3.svg"/></p>
-                        <p>컴퓨터공학22</p>
-                        <p><strong>이시우</strong></p>
-                        </div>
-                </div>
-            <div class="back_1">
-                <img src="disc.svg"/><strong>백엔드</strong>
-                </div>
-                <div class="back_2">
-                    <div class="profile">
-                    <p><img src="face4.svg" /></p>
-                    <p>컴퓨터공학22</p>
-                    <p><strong>김지민</strong></p>
-                    </div>
-                    <div class="profile">
-                    <p><img src="face5.svg" /></p>
-                    <p>컴퓨터공학22</p>
-                    <p><strong>최예인</strong></p>
-                    </div>
-                </div>
-           
+            <div class="sub">
+                <img class="logo_1"src="logo.svg"/>
+                는 2024년 동국대학교 공개SW프로젝트<br>
+                팀 "포7ㅣ를 모르조"에서 제작한<br>
+                모바일형 웹서비스입니다.
+            </div>
         </div>
+        <img class="show"src="Group.svg"/>
     </main>
     <footer>
         <div class="etc">
