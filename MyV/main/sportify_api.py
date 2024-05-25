@@ -7,7 +7,7 @@ import urllib.request
 
 ##model import 하기
 from signup.models import UserPreferences
-from main.models import UserMaxMinNote
+from main.models import UserMaxMinNote, PlaylistInfo
 
 def sportify(user):
     client_id = "0a3419c6f1934f9c85e6f0381335c2b0"
@@ -24,12 +24,12 @@ def sportify(user):
             'F♯' : 6, 'G' : 7, 'G♯' : 8, 'A' : 9, 'A♯' : 10, 'B' : 11}
 
     #db에서 정보 가져오기 (최고음 최저음)
-    userNoteInfo = UserMaxMinNote.objects.get(user=user)
+    userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first() #가장 마지막 정보만 가져오기
     user_min_note = userNoteInfo.min_note
     user_max_note = userNoteInfo.max_note
 
     #db에서 정보 가져오기 (회원 성향 정보)
-    userPreferenceInfo = UserPreferences.objects.get(user=user)
+    userPreferenceInfo = UserPreferences.objects.filter(user=user).order_by('-id').first() #가장 마지막 정보만 가져오기
     user_mood = userPreferenceInfo.mood
     user_energy = userPreferenceInfo.energy
     user_tmpo = userPreferenceInfo.tempo
@@ -136,6 +136,17 @@ def sportify(user):
     print(preview_urls)
     print(artists)
     print("#######"+artists[0])
+    
+    ####db전달
+    playlist_info = PlaylistInfo(user=user)
+
+    for i in range(len(song_names)):
+       setattr(playlist_info, f'img{i+1}', img_urls[i])
+       setattr(playlist_info, f'artist{i+1}', artists[i])
+       setattr(playlist_info, f'title{i+1}', song_names[i])
+
+    playlist_info.save()
+
 
     if len(song_names) < 3:
         print("추천받은 곡 부족")
@@ -143,4 +154,4 @@ def sportify(user):
     for i in range(recommendation_songs_cnt - len(song_names)):
         img_urls.append(os.join.path(os.getcwd(),'main', 'static','main','tmp_img.png'))
 
-    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, user_mood, user_tmpo, user_energy ]
+    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, mood_string, tempo_string, energy_string ]
