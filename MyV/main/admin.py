@@ -6,10 +6,12 @@ class UserMaxMinFileAdmin(admin.ModelAdmin):
     pass
 
 class UserMaxMinNoteAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user','min_note', 'max_note',)
+    search_fields = ('user__username',)
 
 class PlaylistInfoAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user',)
+    search_fields = ('user__username',)
 
 admin.site.register(UserMaxMinFile,UserMaxMinFileAdmin)
 admin.site.register(UserMaxMinNote,UserMaxMinNoteAdmin)

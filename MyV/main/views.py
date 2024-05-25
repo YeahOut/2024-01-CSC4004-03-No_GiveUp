@@ -40,14 +40,17 @@ def main_3(request):
         'title1' : song_names[0],
         'title2' : song_names[1],
         'title3' : song_names[2],
-        'min' : userInfo[0],
-        'max' : userInfo[1],
+        'min' : userInfo[1],
+        'max' : userInfo[0],
         'mood' : userInfo[2],
         'tmpo' : userInfo[3],
         'energy' : userInfo[4],
         'artist1' : artist[0],
         'artist2' : artist[1],
         'artist3' : artist[2],
+        'preview1' : preview_urls[0],
+        'preview2' : preview_urls[1],
+        'preview3' : preview_urls[2],
     }
     return render(request, 'main/main_3.html',context)
 
