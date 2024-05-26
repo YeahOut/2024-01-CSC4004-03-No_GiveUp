@@ -51,7 +51,7 @@ def main_3(request):
         'preview1' : preview_urls[0],
         'preview2' : preview_urls[1],
         'preview3' : preview_urls[2],
-    }
+    }   
     return render(request, 'main/main_3.html',context)
 
 #########test########

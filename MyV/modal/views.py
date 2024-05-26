@@ -2,21 +2,10 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .analyzing_file import process_file
 from .aws import downloadFile, upload_to_s3, makingBucket,deleteBucket
-from .models import UserVocalInfo
-# Create your views here.
+from .models import UserVocalInfo, SelectedPlaylist
+from main.models import PlaylistInfo
 
-from django.conf import settings
-import librosa, boto3
-import librosa.display
-import librosa.feature
-import matplotlib
-import matplotlib.pyplot as plt
-from matplotlib import font_manager,rc
-import numpy as np
-import sys
-import os
-import shutil
-import math
+# Create your views here.
 
 def analyzePage(request):
     user = request.user
@@ -53,26 +42,20 @@ def vocalResult(request):
         print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)
 
-#로컬에 있는 음원으로 최고최저 분석하는 함수
-def maxminAnalysis(request):
-    file_path = os.path.join(settings.MEDIA_ROOT, 'audio', 'kaze_mine.wav')
-    y, sr = librosa.load(file_path)
-    # y = y[:len(y) // 2]
-    f0, voiced_flag, voiced_prob = librosa.pyin(y=y, fmin=60, fmax=2000, sr=sr)
-
-    max_freq = -1
-    min_freq = 3000
-    sum_freq = 0
-    valid_frame_cnt = 0
-    for i in range(len(f0)):
-        if (voiced_flag[i]):
-            sum_freq += f0[i]
-            max_freq = max(max_freq, f0[i])
-            min_freq = min(min_freq, f0[i])
-            valid_frame_cnt += 1
-    max_note = librosa.hz_to_note(max_freq)
-    min_note = librosa.hz_to_note(min_freq)
-    avg_note = librosa.hz_to_note(sum_freq / valid_frame_cnt)
-
-    context = {'max': max_note, 'min': min_note, 'avg':avg_note}  # 템플릿에 넘길 데이터를 사전형으로 만들기
-    return context
+#####playlist View 
+def playlistPage(request):
+    if request.method == "POST":
+        album_id = request.POST.get('selected_album_id')
+        
+        user = request.user
+        playlist_info = PlaylistInfo.objects.filter(user=user).order_by('-id').first()
+    
+        if album_id == "1" :
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img1, artist=playlist_info.artist1, title=playlist_info.title1)
+        elif album_id == "2":
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img2, artist=playlist_info.artist2, title=playlist_info.title2)
+        elif album_id == "3":
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img3, artist=playlist_info.artist3, title=playlist_info.title3)
+        
+        ##return은 예인이가 템플릿으로 바꾸면 될 것 같아용!
+        return HttpResponse(f'{album_id}')

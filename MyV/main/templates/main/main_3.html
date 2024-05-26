@@ -113,7 +113,7 @@
                         <p class="value">{{ tmpo }}</p>
                     </div>
                 </div>
-                <form id="albumForm" method="post" action="{% url 'main1' %}">
+                <form id="albumForm" method="post" action="{% url 'playlistPage' %}">
                     {% csrf_token %}
                     <input type="hidden" name="selected_album_id" id="selected_album_id">
                     <input type="button" id="go_playlist" value="플레이리스트 보러 가기" onclick="submitForm();">
@@ -144,6 +144,7 @@ function song_select(clicked_id) {
     }
 
     document.getElementById('selected_album_id').value = cur_selected;
+    console.log("curselected:", cur_selected)
 }
 
 function submitForm() {
