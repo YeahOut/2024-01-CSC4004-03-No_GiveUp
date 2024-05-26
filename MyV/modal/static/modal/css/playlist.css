@@ -328,26 +328,26 @@ input[id="hamburger"]:checked+label+div {
 
 .pagination .current {
   font-weight: bold;
-  position: fixed;
-  top: 700px;
+  position: relative;
+  top: 175px;
   color: #5d5fef;
   left: 160px;
 }
 
 .pagination .previous {
   font-weight: bold;
-  position: fixed;
-  top: 700px;
+  position: relative;
+  top: 175px;
   color: #5d5fef;
-  left: 70px;
+  left: 120px;
 }
 
 .pagination .next {
   font-weight: bold;
-  position: fixed;
-  top: 700px;
+  position: relative;
+  top: 175px;
   color: #5d5fef;
-  left: 250px;
+  left: 200px;
 }
 
 .sp {
@@ -355,4 +355,11 @@ input[id="hamburger"]:checked+label+div {
   top: 4px;
   left: 2px;
   width: 70px;
+}
+
+hr{
+  width: 335px;
+    position: relative;
+    left: 27.5px;
+    color: #cacaca;
 }

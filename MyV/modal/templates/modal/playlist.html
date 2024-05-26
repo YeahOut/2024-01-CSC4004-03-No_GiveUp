@@ -61,11 +61,13 @@
                                 <div class="song-info">
                                     <span class="song-title">{{ playlist.title }}</span><br />
                                     <span class="singer">{{ playlist.artist }}</span>
-                                </div>
+                                </div>                               
                             </div>
                         {% empty %}
                             <p>선택된 앨범이 없습니다.</p>
                         {% endfor %}
+                        <hr />
+                    
                     </div>
                     <div class="pagination">
                         <span class="previous">
