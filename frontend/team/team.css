@@ -214,5 +214,6 @@ input[id="hamburger"]:checked + label + div {
 .etc{
   font-size:13px;
   text-align:right;
-  font-weight: 500;
+  font-weight: 700;
+  padding-right:15px;
 }
