@@ -189,7 +189,6 @@ input[id="hamburger"]:checked + label + div {
   left: 60%;
   top: 93.5px;
 }
-
 .team-text{
   text-align:center;
   position:relative;
