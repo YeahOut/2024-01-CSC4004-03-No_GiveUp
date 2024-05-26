@@ -220,11 +220,14 @@
   overflow: scroll;
 }
 
+
 .song-info1::-webkit-scrollbar,
 .song-info2::-webkit-scrollbar,
 .song-info3::-webkit-scrollbar {
   display: none; /*스크롤바 숨기기*/
 }
+
+
 
 
 #audio{
