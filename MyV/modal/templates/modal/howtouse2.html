@@ -14,9 +14,9 @@
           <div class="header-contents">
             <img
               class="backbutton"
-              src="backbutton.svg"
-              onclick="location.href='howtouse1.html'"
-            /><img class="logo" src="logo.svg" />
+              src="{% static 'modal/images/backbutton.svg' %}"
+              onclick="location.href='{% url 'howtoUse1' %}'"
+            /> <img class="logo" src="{% static 'modal/images/logo.svg' %}" onclick="location.href='{% url 'main1' %}'"/>
           </div>
           <div class="mobile_btn">
             <input type="checkbox" id="hamburger" />
@@ -26,20 +26,21 @@
               <span></span>
             </label>
             <div class="sidebar">
-              <img class="user-img" src="modal-face.svg" width="100px" />
+              <img class="user-img" src="{% static 'modal/images/modal-face.svg' %}" width="100px" />
               <div class="modaltext">
-                <div class="user-info">
-                  <p class="info1">MyV 회원</p>
-                  <p class="info2">최예인</p>
-                </div>
-                <ul class="nav_mobile">
-                  <li><a href="#">마이페이지</a></li>
-                  <li><a href="#">사용 방법</a></li>
-                  <li><a href="#">보컬 분석</a></li>
-                  <li><a href="#">팀 소개</a></li>
-                </ul>
-                <div class="wave">
-                  <img src="../modalfile/wave.png" height="223px" />
+                  <div class="user-info">
+                      <p class="info1">MyV 회원</p>
+                      <p class="info2">{{ user }}</p>
+                  </div>
+                  <ul class="nav_mobile">
+                      <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                      <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
+                      <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                      <li><a href="#">팀 소개</a></li>
+                      <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                  </ul>
+                  <div class="wave">
+                      <img src= "{% static 'modal/images/wave.png' %}" height="223px" />
                 </div>
               </div>
             </div>
@@ -54,17 +55,17 @@
               당신의 최고음, 최저음으로 <br />당신의 음역대를 체크하세요
             </div>
           </div>
-          <img class="iphone" src="how2.svg" />
+          <img class="iphone" src="{% static 'modal/images/how2.svg' %}" />
         </main>
         <footer>
           <input
             class="next-button"
             type="button"
             value="다음"
-            onclick="location.href='howtouse3.html'"
+            onclick="location.href='{% url 'howtoUse3' %}'"
           />
           <div>
-            <img class="steps" src="step2.svg" />
+            <img class="steps" src="{% static 'modal/images/step2.svg' %}" />
           </div>
         </footer>
       </div>
