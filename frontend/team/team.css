@@ -53,6 +53,7 @@ body{
   height:27px;
   padding-left:15px;
 }
+
 a{
   text-decoration:none;
   color:black;
@@ -189,10 +190,10 @@ input[id="hamburger"]:checked + label + div {
   top: 93.5px;
 }
 
-
 .team-text{
   text-align:center;
-  position: relative;
+  position:relative;
+  font-weight:700;
 }
 .title{
   font-size:20px;
@@ -207,8 +208,6 @@ input[id="hamburger"]:checked + label + div {
 .logo_1{
   width:54px;
   height:27px;
-}
-.show{
 }
 
 .etc{
