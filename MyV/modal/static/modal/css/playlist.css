@@ -353,3 +353,7 @@ hr{
     left: 27.5px;
     color: #cacaca;
 }
+
+.playlist-content:hover {
+  background-color: #f0f0f0; 
+}

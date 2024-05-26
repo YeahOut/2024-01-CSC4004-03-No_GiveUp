@@ -55,7 +55,7 @@
                     </div>
                     <div class="playlist-contents">
                         {% for playlist in page_obj %}
-                            <div class="playlist-content">
+                            <div class="playlist-content" onclick="location.href='{{ playlist.song_url }}'">
                                 <hr />
                                 <span class="album"><img src="{{ playlist.img }}" alt="앨범 커버" width="80px" /></span>
                                 <div class="song-info">
@@ -64,10 +64,10 @@
                                 </div>                               
                             </div>
                         {% empty %}
-                            <p>선택된 앨범이 없습니다.</p>
+                            <p style="padding-left: 130px;
+                            padding-bottom: 10px;">선택된 앨범이 없습니다.</p>
                         {% endfor %}
                         <hr />
-                    
                     </div>
                     <div class="pagination">
                         <span class="previous">
@@ -76,16 +76,15 @@
                                 <a href="?page={{ page_obj.previous_page_number }}">이전</a>
                             {% endif %}
                         </span>
-
-                            <span class="current">
-                                페이지 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
-                            </span>
-                            <span class="next">
+                        <span class="current">
+                            페이지 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                        </span>
+                        <span class="next">
                             {% if page_obj.has_next %}
                                 <a href="?page={{ page_obj.next_page_number }}">다음</a>
                                 <a href="?page={{ page_obj.paginator.num_pages }}">끝 &raquo;</a>
                             {% endif %}
-                            </span>
+                        </span>
                     </div>
                 </div>
             </main>
