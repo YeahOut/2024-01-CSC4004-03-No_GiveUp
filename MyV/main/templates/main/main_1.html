@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="{% static 'main/css/mainpage1.css' %}" />
+</head>
+<body>
+    <div class="flex">
+        <div class="contents">
+            <header>
+                <div class="header-contents">
+                    <img class="logo" src="{% static 'main/images/logo.svg' %}" onclick="location.href='{% url 'main1' %}'"/>
+                </div>
+                <div class="mobile_btn">
+                    <input type="checkbox" id="hamburger" />
+                    <label for="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <img class="user-img" src="{% static 'main/images/modal-face.svg' %}" width="100px" />
+                        <div class="modaltext">
+                            <div class="user-info">
+                                <p class="info1">MyV 회원</p>
+                                <p class="info2">{{ user }}</p>
+                            </div>
+                            <ul class="nav_mobile">
+                                <li><a href="#">사용 방법</a></li>
+                                <li><a href="{% url 'analyze' %}">플레이리스트</a></li>
+                                <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                                <li><a href="#">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                            </ul>
+                            <div class="wave">
+                                <img src="{% static 'main/images/wave.png' %}" height="223px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div>
+                <h2 class="title">최고음 최저음 기록</h2>
+            </div>
+
+            <div class="textbox">
+                <div>
+                    <p>최고음과 최저음을 녹음한 파일을 업로드해주세요</p>
+                </div>
+
+                <div class="warningBox">
+                    <div class="warning_text">
+                        <input type="image" src="{% static 'main/images/warningIcon.svg' %}" />
+                        <h3>주의해주세요</h3>
+                    </div>
+                    <p>음원은 .m4a .mp3 .wav 확장자로 올려주세요!</p>
+                    <p>음원의 길이는 15초를 넘지 않아야 해요!</p>
+                </div>
+            </div>
+            
+            <form id="file-upload-form" class="file-container" action="{% url 'upload_max_min' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}  <!-- CSRF 토큰 추가 -->
+                <div class="minsound">
+                    <div class="minsound btn">
+                        <label for="min-file">
+                            <div class="btn-upload">최저음 올리기</div>
+                        </label>
+                        <input id="min-file" type="file" name="min_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'minSound')">
+                    </div>
+                    <input type="checkbox" id="min-checkbox" style="display: none;">
+                    <label for="min-checkbox" class="custom-checkbox"></label>
+                </div>
+                <div class="maxsound">
+                    <div class="maxsound btn">
+                        <label for="max-file">
+                            <div class="btn-upload">최고음 올리기</div>
+                        </label>
+                        <input id="max-file" type="file" name="max_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'maxSound')">
+                    </div>
+                    <input type="checkbox" id="max-checkbox" style="display: none;">
+                    <label for="max-checkbox" class="custom-checkbox"></label>
+                </div>
+            </form>
+            <input class="file-upload-button" type="submit" value="파일 제출하기" onclick="handleSubmit(event)"/>
+
+            <div class="textbox2">
+                <p id="last">당신의 최고음 최저음을 기반으로</p>
+                <p id="last">어울리는 노래를 추천해드립니다</p>
+            </div>
+
+            <footer>
+                <input
+                    id="save_button"
+                    type="submit"
+                    value="다음으로 넘어가기"
+                    onclick="location.href='{% url 'loading' %}'"
+                />
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    let minSoundFile = null;
+    let maxSoundFile = null;
+
+    // 파일을 선택하면 체크 표시가 되게 하기
+    function handleFileSelect(event, fileType) {
+        const file = event.target.files[0];
+        if (file) {
+            if (fileType === "minSound") {
+                minSoundFile = file;
+                document.getElementById("min-checkbox").checked = true;
+            } else if (fileType === "maxSound") {
+                maxSoundFile = file;
+                document.getElementById("max-checkbox").checked = true;
+            }
+        } else {
+            if (fileType === "minSound") {
+                minSoundFile = null;
+                document.getElementById("min-checkbox").checked = false;
+            } else if (fileType === "maxSound") {
+                maxSoundFile = null;
+                document.getElementById("max-checkbox").checked = false;
+            }
+        }
+    }
+
+    // 체크박스 클릭 방지
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("min-checkbox").addEventListener("click", function (event) {
+            event.preventDefault();
+        });
+        document.getElementById("max-checkbox").addEventListener("click", function (event) {
+            event.preventDefault();
+        });
+    });
+
+    
+    // 파일 제출하기 전에는 다음 단계 못넘어가게 하기
+    document.querySelector('#save_button').disabled = true;
+
+
+    // 파일 제출 처리
+    function handleSubmit(event) {
+        event.preventDefault(); // 채워야지만 보낼 수 있도록 하기 위함
+
+        if (minSoundFile && maxSoundFile) {
+            const formData = new FormData();
+            formData.append("min_file", minSoundFile);
+            formData.append("max_file", maxSoundFile);
+
+            const csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+            fetch("{% url 'upload_max_min' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": csrftoken, // CSRF 토큰 추가
+                },
+            })
+            .then((response) => {
+                if (response.ok) {
+                    alert("파일이 성공적으로 업로드되었습니다.");
+                    document.getElementById('save_button').disabled = false;
+                } else {
+                    alert("업로드에 실패했습니다. 서버 응답: " + response.status);
+                }
+                return response.text();
+            })
+            .then((result) => {
+                console.log("서버 응답:", result);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("에러가 발생했습니다: " + error.message);
+            });
+        } else {
+            alert("두 개의 파일을 모두 선택해주세요.");
+        }
+    }
+</script>

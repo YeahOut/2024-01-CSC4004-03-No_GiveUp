@@ -195,23 +195,40 @@
 
 .song-info1 {
   position: relative;
-  bottom: 480px;
-  left: 46px;
+  bottom: 485px;
+  left: 5px;
+  width: 115px;
+  height: 50px;
+  overflow: scroll; 
 }
+
 .song-info2 {
   position: relative;
-  bottom: 525px;
-  left: 176px;
+  bottom: 535px;
+  left: 135px;
+  width: 115px;
+  height: 50px;
+  overflow: scroll; 
 }
+
 .song-info3 {
   position: relative;
-  bottom: 571px;
-  left: 306px;
+  bottom: 585px;
+  left: 270px;
+  width: 120px;
+  height: 30px;
+  overflow: scroll;
 }
-.audio{
+
+.song-info1::-webkit-scrollbar,
+.song-info2::-webkit-scrollbar,
+.song-info3::-webkit-scrollbar {
+  display: none; /*스크롤바 숨기기*/
+}
+
+
+#audio{
   position: relative;
-  bottom: 540px;
-  left: 40px;
 }
 
 
@@ -240,7 +257,7 @@
 #grid .value {
   font-weight: 700;
 }
-#go_recommend {
+#go_playlist {
   width: 315px;
   height: 51px;
   border: 0;
@@ -428,4 +445,5 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   left: 60%;
   top: 93.5px;
+  z-index: -1;
 }
