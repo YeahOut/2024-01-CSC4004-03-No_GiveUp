@@ -63,3 +63,16 @@ def playlistPage(request):
         'user': user
     }
     return render(request, 'modal/playlist.html', context)
+
+
+def howtoUse1(request):
+    return render(request, 'modal/howtouse1.html')
+
+def howtoUse2(request):
+    return render(request, 'modal/howtouse2.html')
+
+def howtoUse3(request):
+    return render(request, 'modal/howtouse3.html')
+
+def howtoUse4(request):
+    return render(request, 'modal/howtouse4.html')

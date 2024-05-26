@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="{% static 'modal/css/howtouse2.css' %}" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="header-contents">
+            <img
+              class="backbutton"
+              src="backbutton.svg"
+              onclick="location.href='howtouse1.html'"
+            /><img class="logo" src="logo.svg" />
+          </div>
+          <div class="mobile_btn">
+            <input type="checkbox" id="hamburger" />
+            <label for="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+            <div class="sidebar">
+              <img class="user-img" src="modal-face.svg" width="100px" />
+              <div class="modaltext">
+                <div class="user-info">
+                  <p class="info1">MyV 회원</p>
+                  <p class="info2">최예인</p>
+                </div>
+                <ul class="nav_mobile">
+                  <li><a href="#">마이페이지</a></li>
+                  <li><a href="#">사용 방법</a></li>
+                  <li><a href="#">보컬 분석</a></li>
+                  <li><a href="#">팀 소개</a></li>
+                </ul>
+                <div class="wave">
+                  <img src="../modalfile/wave.png" height="223px" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="howtouse-text">
+            <div class="title">
+              <p>사용방법</p>
+            </div>
+            <div class="sub">
+              당신의 최고음, 최저음으로 <br />당신의 음역대를 체크하세요
+            </div>
+          </div>
+          <img class="iphone" src="how2.svg" />
+        </main>
+        <footer>
+          <input
+            class="next-button"
+            type="button"
+            value="다음"
+            onclick="location.href='howtouse3.html'"
+          />
+          <div>
+            <img class="steps" src="step2.svg" />
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
