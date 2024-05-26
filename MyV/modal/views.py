@@ -54,7 +54,7 @@ def playlistPage(request):
         return redirect('playlistPage')  # POST 요청 후 리디렉션
 
     playlists = SelectedPlaylist.objects.filter(user=user).order_by('-id')
-    paginator = Paginator(playlists, 5)  # 한 페이지에 5개의 플레이리스트를 표시
+    paginator = Paginator(playlists, 4)  # 한 페이지에 5개의 플레이리스트를 표시
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

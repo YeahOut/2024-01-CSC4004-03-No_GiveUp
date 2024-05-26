@@ -50,7 +50,7 @@
                     </div>
                     <div class="playlist-text1">
                         <p> 곡을 누르면 
-                          <img class="sp" src="{% static 'modal/images/wave.png' %}" />
+                          <img class="sp" src="{% static 'modal/images/spotify.png' %}" />
                           로 이동합니다.</p>
                     </div>
                     <div class="playlist-contents">
@@ -68,21 +68,22 @@
                         {% endfor %}
                     </div>
                     <div class="pagination">
-                        <span class="step-links">
+                        <span class="previous">
                             {% if page_obj.has_previous %}
                                 <a href="?page=1">&laquo; 처음</a>
                                 <a href="?page={{ page_obj.previous_page_number }}">이전</a>
                             {% endif %}
+                        </span>
 
                             <span class="current">
                                 페이지 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
                             </span>
-
+                            <span class="next">
                             {% if page_obj.has_next %}
                                 <a href="?page={{ page_obj.next_page_number }}">다음</a>
                                 <a href="?page={{ page_obj.paginator.num_pages }}">끝 &raquo;</a>
                             {% endif %}
-                        </span>
+                            </span>
                     </div>
                 </div>
             </main>

@@ -5,14 +5,10 @@
   font-weight: normal;
   font-style: normal;
   src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
-      format("truetype");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix") format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -34,11 +30,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .contents {
   width: 390px;
   height: 844px;
   overflow: hidden;
 }
+
 .header {
   width: 844px;
   height: 130px;
@@ -49,6 +47,7 @@
   left: 5%;
   top: 30px;
 }
+
 .logo {
   width: 65px;
   padding-left: 15px;
@@ -62,8 +61,7 @@
   font-weight: 700;
 }
 
-.playlist-form {
-}
+.playlist-form {}
 
 .playlist-text {
   font-size: 20px;
@@ -92,8 +90,9 @@
 }
 
 .playlist-content {
-  width: 390px;
-  height: 63px;
+  height: 92px;
+  margin-bottom: 7px;
+
 }
 
 .playlist-content hr {
@@ -114,7 +113,8 @@
 .song-info {
   position: relative;
   left: 90px;
-  bottom: 52px;
+  bottom: 58px;
+  width: 220px;
 }
 
 .song-title {
@@ -123,6 +123,7 @@
   bottom: -14px;
   font-size: 17px;
 }
+
 .singer {
   position: relative;
   left: 40px;
@@ -132,11 +133,11 @@
 
 .wa {
   transform: translateY(50%) rotate(180deg);
-  position: relative;
-  bottom: -470px;
+  position: fixed;
+  bottom: 50px;
   height: 150px;
-
 }
+
 /**modal css**/
 
 a {
@@ -160,7 +161,7 @@ input[id="hamburger"] {
 
 /**버튼 사이즈**/
 
-input[id="hamburger"] + label {
+input[id="hamburger"]+label {
   display: block;
   width: 30px;
   height: 20px;
@@ -172,7 +173,7 @@ input[id="hamburger"] + label {
 /****/
 /**modal icon**/
 
-input[id="hamburger"] + label span {
+input[id="hamburger"]+label span {
   display: block;
   position: absolute;
   width: 100%;
@@ -181,35 +182,44 @@ input[id="hamburger"] + label span {
   background: #000;
   transition: all 0.35s;
 }
-input[id="hamburger"] + label span:nth-child(1) {
+
+input[id="hamburger"]+label span:nth-child(1) {
   top: 0;
 }
-input[id="hamburger"] + label span:nth-child(2) {
+
+input[id="hamburger"]+label span:nth-child(2) {
   top: 50%;
   transform: translateY(-50%);
 }
-input[id="hamburger"] + label span:nth-child(3) {
+
+input[id="hamburger"]+label span:nth-child(3) {
   bottom: 0;
 }
-input[id="hamburger"]:checked + label {
+
+input[id="hamburger"]:checked+label {
   z-index: 99;
 }
-input[id="hamburger"]:checked + label span {
+
+input[id="hamburger"]:checked+label span {
   background: black;
 }
-input[id="hamburger"]:checked + label span:nth-child(1) {
+
+input[id="hamburger"]:checked+label span:nth-child(1) {
   width: 25px;
   top: 103.5%;
   transform: translateY(-60%) rotate(150deg);
 }
-input[id="hamburger"]:checked + label span:nth-child(2) {
+
+input[id="hamburger"]:checked+label span:nth-child(2) {
   opacity: 0;
 }
-input[id="hamburger"]:checked + label span:nth-child(3) {
+
+input[id="hamburger"]:checked+label span:nth-child(3) {
   width: 25px;
   bottom: 55%;
   transform: translateY(50%) rotate(-150deg);
 }
+
 /****/
 
 /**modal**/
@@ -229,8 +239,8 @@ div[class="sidebar"] {
 
 /****/
 
-input[id="hamburger"]:checked + label + div {
-  left: 155px;
+input[id="hamburger"]:checked+label+div {
+  left: 225px;
 }
 
 /** modal contents form**/
@@ -239,6 +249,7 @@ input[id="hamburger"]:checked + label + div {
   top: 119px;
   width: 100%;
 }
+
 /****/
 /** modal contents text**/
 .sidebar .nav_mobile li {
@@ -253,6 +264,7 @@ input[id="hamburger"]:checked + label + div {
   padding-top: 15px;
   text-align: right;
 }
+
 /****/
 
 .sidebar a {
@@ -304,6 +316,7 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   top: 10%;
 }
+
 .wave {
   transform: translateY(50%) rotate(119deg);
   position: relative;
@@ -314,9 +327,32 @@ input[id="hamburger"]:checked + label + div {
 
 
 .pagination .current {
-  font-weight: bold;  
-  position: relative; 
-  top: 550px;           
-  color: #5d5fef;        
+  font-weight: bold;
+  position: fixed;
+  top: 700px;
+  color: #5d5fef;
   left: 160px;
+}
+
+.pagination .previous {
+  font-weight: bold;
+  position: fixed;
+  top: 700px;
+  color: #5d5fef;
+  left: 70px;
+}
+
+.pagination .next {
+  font-weight: bold;
+  position: fixed;
+  top: 700px;
+  color: #5d5fef;
+  left: 250px;
+}
+
+.sp {
+  position: relative;
+  top: 4px;
+  left: 2px;
+  width: 70px;
 }
