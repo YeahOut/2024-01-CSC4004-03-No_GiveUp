@@ -113,7 +113,12 @@
                         <p class="value">{{ tmpo }}</p>
                     </div>
                 </div>
-                <input type="button" id="go_playlist" value="플레이리스트 보러 가기" />
+                <form id="albumForm" method="post" action="{% url 'playlistPage' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_album_id" id="selected_album_id">
+                    <input type="button" id="go_playlist" value="플레이리스트 보러 가기" onclick="submitForm();">
+                </form>
+                
             </footer>
         </div>
     </div>
@@ -122,8 +127,8 @@
 </html>
 
 <script>
+var cur_selected = 0;
 function song_select(clicked_id) {
-    var cur_selected = 0;
     var element = document.getElementById(clicked_id);
     var url = element.getAttribute('data-url');
 
@@ -137,6 +142,17 @@ function song_select(clicked_id) {
         document.getElementById("audio").src = url;
         cur_selected = 3;
     }
+
+    document.getElementById('selected_album_id').value = cur_selected;
+    console.log("curselected:", cur_selected)
 }
+
+function submitForm() {
+        if (cur_selected !== 0) {
+            document.getElementById('albumForm').submit();
+        } else {
+            alert('먼저 앨범을 선택해주세요.');
+        }
+    }
 
 </script>
