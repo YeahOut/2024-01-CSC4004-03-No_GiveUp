@@ -196,8 +196,8 @@
 .song-info1 {
   position: relative;
   bottom: 485px;
-  left: 20px;
-  width: 120px;
+  left: 5px;
+  width: 115px;
   height: 50px;
   overflow: scroll; 
 }
@@ -206,7 +206,7 @@
   position: relative;
   bottom: 535px;
   left: 135px;
-  width: 120px;
+  width: 115px;
   height: 50px;
   overflow: scroll; 
 }
@@ -214,7 +214,7 @@
 .song-info3 {
   position: relative;
   bottom: 585px;
-  left: 280px;
+  left: 270px;
   width: 120px;
   height: 30px;
   overflow: scroll;
