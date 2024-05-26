@@ -124,6 +124,7 @@ div[class="sidebar"] {
   transition: all 0.35s;
   overflow: hidden;
 }
+
 input[id="hamburger"]:checked + label + div {
   left: 223px;
 }
