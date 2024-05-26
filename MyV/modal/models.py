@@ -22,3 +22,4 @@ class SelectedPlaylist(models.Model):
     img = models.CharField(max_length=255, default="none")
     artist = models.CharField(max_length=255, default="none")
     title = models.CharField(max_length=255, default="none")
+    song_url = models.CharField(max_length=255, default="none")

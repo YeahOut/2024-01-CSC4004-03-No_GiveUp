@@ -43,13 +43,13 @@ def playlistPage(request):
     if request.method == "POST":
         album_id = request.POST.get('selected_album_id')
         playlist_info = PlaylistInfo.objects.filter(user=user).order_by('-id').first()
-        
-        if album_id == "1":
-            SelectedPlaylist.objects.create(user=user, img=playlist_info.img1, artist=playlist_info.artist1, title=playlist_info.title1)
+    
+        if album_id == "1" :
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img1, artist=playlist_info.artist1, title=playlist_info.title1, song_url=playlist_info.songurl1)
         elif album_id == "2":
-            SelectedPlaylist.objects.create(user=user, img=playlist_info.img2, artist=playlist_info.artist2, title=playlist_info.title2)
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img2, artist=playlist_info.artist2, title=playlist_info.title2, song_url=playlist_info.songurl2)
         elif album_id == "3":
-            SelectedPlaylist.objects.create(user=user, img=playlist_info.img3, artist=playlist_info.artist3, title=playlist_info.title3)
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img3, artist=playlist_info.artist3, title=playlist_info.title3, song_url=playlist_info.songurl3)
         
         return redirect('playlistPage')  # POST 요청 후 리디렉션
 
