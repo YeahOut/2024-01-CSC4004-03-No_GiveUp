@@ -1,6 +1,16 @@
-/* 폰트 불러오기 */
-
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix") format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf") format("truetype");
+  font-display: swap;
+}
 
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
@@ -29,7 +39,7 @@
 
 .header {
   width: 844px;
-  height: 100px;
+  height: 130px;
 }
 
 .header-contents {
@@ -44,167 +54,91 @@
 }
 
 .title {
+  position: relative;
+  top: 50px;
   text-align: center;
-  position: relative;
-  top: 100px;
-}
-
-/*최고음과 최저음을 녹음한 파일을 업로드 해주세요 텍스트*/
-.textbox {
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  /**justify-content: center;**/
-  align-items: center;
-  position: relative;
-  top: 130px;
-}
-
-.textbox p {
-  text-align: center;
-  font-weight: 500;
-  margin: 0 0 6px 0;
-}
-
-.textbox2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0px;
-  position: relative;
-  top: 350px;
-}
-
-#last {
-  margin: 3px 0 0 0;
-}
-
-/*주의해주세요 핑크 박스 부분*/
-.warningBox {
-  display: flex;
-  flex-direction: column;
-  /**justify-content: center;**/
-  align-items: center;
-  width: 309px;
-  height: 90px;
-  border-radius: 10px;
-  background-color: rgba(255, 238, 238, 0.7);
-  /* 0.7은 투명도 70%를 의미 */
-  margin-top: 40px;
-  padding: 10px 10px 15px 10px;
-}
-
-.warning_text {
-  display: inline-flex;
-  justify-items: center;
-}
-
-.warning_text h3 {
-  padding: 5px 0 0 5px;
-  margin: 0;
-  color: #ff1515;
-}
-
-.warningBox p {
-  margin: 5px 0 0 0;
-}
-
-/*파일 업로드 버튼 부분*/
-.file-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4px;
-  position: relative;
-  top: 300px;
-}
-
-.btn-upload {
-  width: 166px;
-  height: 45px;
   font-size: 20px;
-  color: #fff;
-  background: #8dadff;
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: #5e59ff;
-    color: #fff;
-  }
+  font-weight: 700;
 }
 
-.minsound,
-.maxsound {
-  /*업로드 버튼 커스텀하기*/
-  display: inline-flex;
-  margin-bottom: 15px;
-  align-items: center;
+.playlist-form {}
+
+.playlist-text {
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  top: 80px;
+  padding-left: 40px;
 }
 
-#min-file,
-#max-file {
-  /*파입업로드 버튼 숨기기*/
-  display: none;
+.playlist-text span {
+  font-weight: 700;
 }
 
-.custom-checkbox {
-  margin: 0 0 20px 20px;
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border: 1px solid #8dadff;
-  background-color: white;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.custom-checkbox:before {
-  content: "";
-  /* 빈 콘텐츠로 체크박스 표시를 제어 */
-}
-
-input[type="checkbox"]:checked+.custom-checkbox:before {
-  content: "✔";
-  /* 선택되었을 때 체크 마크 표시 */
-  color: #5f5bd9;
-  /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
-}
-
-#save_button {
-  width: 315px;
-  height: 51px;
-  border: 0;
-  border-radius: 100px;
+.playlist-text1 {
+  position: relative;
   font-size: 18px;
-  background-color: #5d5fef;
-  color: #eeeeee;
-
+  font-weight: 500;
   position: relative;
-  left: 35px;
-  top: 400px;
+  top: 95px;
+  padding-left: 60px;
 }
 
-.file-upload-button {
+.playlist-contents {
   position: relative;
-  left: 115px;
-  top: 310px;
-  justify-content: center;
-  display: flex;
-  width: 150px;
-  height: 30px;
-  color: black;
-  border: 0;
-  border-radius: 5px;
+  top: 120px;
 }
 
+.playlist-content {
+  height: 92px;
+  margin-bottom: 7px;
 
+}
+
+.playlist-content hr {
+  width: 335px;
+  position: relative;
+  left: 27.5px;
+  color: #cacaca;
+}
+
+.album {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  margin: 10px 0px 10px 30px;
+}
+
+.song-info {
+  position: relative;
+  left: 90px;
+  bottom: 58px;
+  width: 220px;
+}
+
+.song-title {
+  position: relative;
+  left: 40px;
+  bottom: -14px;
+  font-size: 17px;
+}
+
+.singer {
+  position: relative;
+  left: 40px;
+  bottom: -30px;
+  font-size: 11px;
+}
+
+.wa {
+  transform: translateY(30%) rotate(180deg);
+  position: absolute;
+  bottom: 60px;
+  height: 120px;
+  width: 390px;
+  top: 725px;
+}
 
 /**modal css**/
 
@@ -214,12 +148,11 @@ a {
 }
 
 /**버튼 위치**/
-
 .mobile_btn {
   position: relative;
   top: 35px;
   left: 300px;
-  z-index: 1;
+  z-index:1;
   width: 20px;
 }
 
@@ -396,4 +329,37 @@ input[id="hamburger"]:checked+label+div {
   left: 60%;
   top: 93.5px;
   z-index: -1;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #5d5fef;
+  position: relative;
+  top: 175px;
+}
+
+.pagination .previous, .pagination .current, .pagination .next {
+  margin: 0 10px;
+}
+
+.sp {
+  position: relative;
+  top: 4px;
+  left: 2px;
+  width: 70px;
+}
+
+hr{
+  width: 335px;
+    position: relative;
+    left: 27.5px;
+    color: #cacaca;
+}
+
+.playlist-content:hover {
+  background-color: #f0f0f0; 
 }
