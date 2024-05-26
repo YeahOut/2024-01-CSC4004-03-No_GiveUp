@@ -326,28 +326,18 @@ input[id="hamburger"]:checked+label+div {
 }
 
 
-.pagination .current {
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
+  color: #5d5fef;
   position: relative;
   top: 175px;
-  color: #5d5fef;
-  left: 160px;
 }
 
-.pagination .previous {
-  font-weight: bold;
-  position: relative;
-  top: 175px;
-  color: #5d5fef;
-  left: 120px;
-}
-
-.pagination .next {
-  font-weight: bold;
-  position: relative;
-  top: 175px;
-  color: #5d5fef;
-  left: 200px;
+.pagination .previous, .pagination .current, .pagination .next {
+  margin: 0 10px;
 }
 
 .sp {
