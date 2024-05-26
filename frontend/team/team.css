@@ -41,7 +41,6 @@ body{
 
 .title{
   position:relative;
-  left:27px;
   top:30px;
   font-size:17px;
   top:30px;
@@ -208,6 +207,8 @@ input[id="hamburger"]:checked + label + div {
 .logo_1{
   width:54px;
   height:27px;
+  position:relative;
+  top:10px;
 }
 
 .etc{
