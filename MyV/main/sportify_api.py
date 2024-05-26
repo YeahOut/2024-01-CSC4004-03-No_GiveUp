@@ -144,6 +144,7 @@ def sportify(user):
        setattr(playlist_info, f'img{i+1}', img_urls[i])
        setattr(playlist_info, f'artist{i+1}', artists[i])
        setattr(playlist_info, f'title{i+1}', song_names[i])
+       setattr(playlist_info, f'songurl{i+1}', song_urls[i])
 
     playlist_info.save()
 
