@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>플레이리스트</title>
+    <link rel="stylesheet" href="{% static 'modal/css/playlist.css' %}">
+</head>
+<body>
+    <div class="flex">
+        <div class="contents">
+            <header>
+                <div class="header-contents">
+                    <img class="logo" src="{% static 'modal/images/logo.svg' %}" onclick="location.href='{% url 'main1' %}'" />
+                </div>
+                <div class="mobile_btn">
+                    <input type="checkbox" id="hamburger" />
+                    <label for="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <img class="user-img" src="{% static 'modal/images/modal-face.svg' %}" width="100px" />
+                        <div class="modaltext">
+                            <div class="user-info">
+                                <p class="info1">MyV 회원</p>
+                                <p class="info2">{{ user }}</p>
+                            </div>
+                            <ul class="nav_mobile">
+                                <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                                <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
+                                <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                                <li><a href="#">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                            </ul>
+                            <div class="wave">
+                                <img src= "{% static 'modal/images/wave.png' %}" height="223px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="title">플레이리스트</div>
+                <div class="playlist-form">
+                    <div class="playlist-text">
+                        <span>{{ user }}</span> 님을 위한 플레이리스트입니다.🎵
+                    </div>
+                    <div class="playlist-text1">
+                        <p> 곡을 누르면 
+                          <img class="sp" src="{% static 'modal/images/spotify.png' %}" />
+                          로 이동합니다.</p>
+                    </div>
+                    <div class="playlist-contents">
+                        {% for playlist in page_obj %}
+                            <div class="playlist-content" onclick="location.href='{{ playlist.song_url }}'">
+                                <hr />
+                                <span class="album"><img src="{{ playlist.img }}" alt="앨범 커버" width="80px" /></span>
+                                <div class="song-info">
+                                    <span class="song-title">{{ playlist.title }}</span><br />
+                                    <span class="singer">{{ playlist.artist }}</span>
+                                </div>                               
+                            </div>
+                        {% empty %}
+                            <p style="padding-left: 130px;
+                            padding-bottom: 10px;">선택된 앨범이 없습니다.</p>
+                        {% endfor %}
+                        <hr />
+                    </div>
+                    <div class="pagination">
+                        <span class="previous">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; 처음</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+                            {% endif %}
+                        </span>
+                        <span class="current">
+                            페이지 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                        </span>
+                        <span class="next">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">다음</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">끝 &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <img class="wa" src="{% static 'modal/images/wave.png' %}" />
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

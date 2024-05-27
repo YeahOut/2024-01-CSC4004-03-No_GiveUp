@@ -10,7 +10,6 @@
   margin: 0;
   padding: 0;
 }
-
 .flex {
   margin: 0;
   padding: 0;
@@ -24,6 +23,7 @@
 .contents {
   width: 390px;
   height: 844px;
+
   overflow: hidden;
 }
 
@@ -37,7 +37,6 @@
   left: 5%;
   top: 30px;
 }
-
 .logo {
   width: 65px;
   padding-left: 15px;
@@ -48,7 +47,6 @@
   position: relative;
   top: 100px;
 }
-
 /*최고음과 최저음을 녹음한 파일을 업로드 해주세요 텍스트*/
 .textbox {
   height: 50px;
@@ -59,13 +57,11 @@
   position: relative;
   top: 130px;
 }
-
 .textbox p {
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   margin: 0 0 6px 0;
 }
-
 .textbox2 {
   display: flex;
   flex-direction: column;
@@ -75,7 +71,6 @@
   position: relative;
   top: 350px;
 }
-
 #last {
   margin: 3px 0 0 0;
 }
@@ -89,23 +84,18 @@
   width: 309px;
   height: 90px;
   border-radius: 10px;
-  background-color: rgba(255, 238, 238, 0.7);
-  /* 0.7은 투명도 70%를 의미 */
+  background-color: rgba(255, 238, 238, 0.7); /* 0.7은 투명도 70%를 의미 */
   margin-top: 40px;
-  padding: 10px 10px 15px 10px;
 }
-
 .warning_text {
   display: inline-flex;
   justify-items: center;
 }
-
 .warning_text h3 {
   padding: 5px 0 0 5px;
   margin: 0;
   color: #ff1515;
 }
-
 .warningBox p {
   margin: 5px 0 0 0;
 }
@@ -133,7 +123,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover {
     background: #5e59ff;
     color: #fff;
@@ -166,15 +155,12 @@
 }
 
 .custom-checkbox:before {
-  content: "";
-  /* 빈 콘텐츠로 체크박스 표시를 제어 */
+  content: ""; /* 빈 콘텐츠로 체크박스 표시를 제어 */
 }
 
-input[type="checkbox"]:checked+.custom-checkbox:before {
-  content: "✔";
-  /* 선택되었을 때 체크 마크 표시 */
-  color: #5f5bd9;
-  /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
+input[type="checkbox"]:checked + .custom-checkbox:before {
+  content: "✔"; /* 선택되었을 때 체크 마크 표시 */
+  color: #5f5bd9; /* 체크 마크 색상인데 안바뀜 ㅠㅠ*/
 }
 
 #save_button {
@@ -191,20 +177,7 @@ input[type="checkbox"]:checked+.custom-checkbox:before {
   top: 400px;
 }
 
-.file-upload-button {
-  position: relative;
-  left: 115px;
-  top: 310px;
-  justify-content: center;
-  display: flex;
-  width: 150px;
-  height: 30px;
-  color: black;
-  border: 0;
-  border-radius: 5px;
-}
-
-
+/**************************/
 
 /**modal css**/
 
@@ -215,12 +188,10 @@ a {
 
 /**버튼 위치**/
 
-.mobile_btn {
+.header-contents .mobile_btn {
   position: relative;
-  top: 35px;
-  left: 300px;
-  z-index: 1;
-  width: 20px;
+  top: 30px;
+  right: 110px;
 }
 
 /****/
@@ -231,21 +202,19 @@ input[id="hamburger"] {
 
 /**버튼 사이즈**/
 
-input[id="hamburger"]+label {
+input[id="hamburger"] + label {
   display: block;
   width: 30px;
   height: 20px;
   position: relative;
-  left: 100%;
+  left: 80%;
   cursor: pointer;
-  z-index: 2;
-  top: -40px;
 }
 
 /****/
 /**modal icon**/
 
-input[id="hamburger"]+label span {
+input[id="hamburger"] + label span {
   display: block;
   position: absolute;
   width: 100%;
@@ -255,43 +224,35 @@ input[id="hamburger"]+label span {
   transition: all 0.35s;
 }
 
-input[id="hamburger"]+label span:nth-child(1) {
+input[id="hamburger"] + label span:nth-child(1) {
   top: 0;
 }
-
-input[id="hamburger"]+label span:nth-child(2) {
+input[id="hamburger"] + label span:nth-child(2) {
   top: 50%;
   transform: translateY(-50%);
 }
-
-input[id="hamburger"]+label span:nth-child(3) {
+input[id="hamburger"] + label span:nth-child(3) {
   bottom: 0;
 }
-
-input[id="hamburger"]:checked+label {
+input[id="hamburger"]:checked + label {
   z-index: 99;
 }
-
-input[id="hamburger"]:checked+label span {
+input[id="hamburger"]:checked + label span {
   background: black;
 }
-
-input[id="hamburger"]:checked+label span:nth-child(1) {
+input[id="hamburger"]:checked + label span:nth-child(1) {
   width: 25px;
   top: 103.5%;
   transform: translateY(-60%) rotate(150deg);
 }
-
-input[id="hamburger"]:checked+label span:nth-child(2) {
+input[id="hamburger"]:checked + label span:nth-child(2) {
   opacity: 0;
 }
-
-input[id="hamburger"]:checked+label span:nth-child(3) {
+input[id="hamburger"]:checked + label span:nth-child(3) {
   width: 25px;
   bottom: 55%;
   transform: translateY(50%) rotate(-150deg);
 }
-
 /****/
 
 /**modal**/
@@ -301,28 +262,46 @@ div[class="sidebar"] {
   height: 844px;
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
-  top: 0%;
+  position: fixed;
+  bottom: 0px;
   left: 200%;
+  z-index: 98;
   transition: all 0.35s;
   overflow: hidden;
-  position: absolute;
-  transform: translate(50px, -70px);
-  z-index: 1;
 }
 
-/****/
+/**모달창 켜진 후 위치**/
 
-input[id="hamburger"]:checked+label+div {
-  transform: translate(-110px, -70px);
+input[id="hamburger"]:checked + label + div {
+  left: 225px;
 }
 
+@media (min-width: 400px) {
+  div[class="sidebar"] {
+    width: 166px;
+    height: 844px;
+    background: white;
+    background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+    position: fixed;
+    bottom: 155px;
+    left: 200%;
+    z-index: 98;
+    transition: all 0.35s;
+    overflow: hidden;
+  }
+
+  input[id="hamburger"]:checked + label + div {
+    left: 425px;
+    bottom: 15%;
+    overflow: hidden;
+  }
+}
 /** modal contents form**/
 .nav_mobile {
   position: absolute;
   top: 119px;
   width: 100%;
 }
-
 /****/
 /** modal contents text**/
 .sidebar .nav_mobile li {
@@ -337,7 +316,6 @@ input[id="hamburger"]:checked+label+div {
   padding-top: 15px;
   text-align: right;
 }
-
 /****/
 
 .sidebar a {
@@ -389,11 +367,9 @@ input[id="hamburger"]:checked+label+div {
   position: relative;
   top: 10%;
 }
-
 .wave {
   transform: translateY(50%) rotate(119deg);
   position: relative;
   left: 60%;
   top: 93.5px;
-  z-index: -1;
 }

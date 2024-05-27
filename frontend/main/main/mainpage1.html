@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="mainpage1.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="header-contents">
+            <img class="logo" src="logo.svg" />
+          </div>
+          <div class="mobile_btn">
+            <input type="checkbox" id="hamburger" />
+            <label for="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+            <div class="sidebar">
+              <img class="user-img" src="modal-face.svg" width="100px" />
+              <div class="modaltext">
+                <div class="user-info">
+                  <p class="info1">MyV 회원</p>
+                  <p class="info2">최예인</p>
+                </div>
+                <ul class="nav_mobile">
+                  <li><a href="#">마이페이지</a></li>
+                  <li><a href="#">사용 방법</a></li>
+                  <li><a href="#">보컬 분석</a></li>
+                  <li><a href="#">팀 소개</a></li>
+                </ul>
+                <div class="wave">
+                  <img src="wave.png" height="223px" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div>
+          <h2 class="title">최고음 최저음 기록</h2>
+        </div>
+
+        <div class="textbox">
+          <div>
+            <p>최고음과 최저음을 녹음한 파일을 업로드해주세요</p>
+          </div>
+
+          <div class="warningBox">
+            <div class="warning_text">
+              <input type="image" src="warningIcon.svg" />
+              <h3>주의해주세요</h3>
+            </div>
+            <p>음원은 .m4a .mp3 .wav 확장자로 올려주세요!</p>
+            <p>음원의 길이는 15초를 넘지 않아야 해요!</p>
+          </div>
+        </div>
+
+        <div class="file-container">
+          <div class="minsound">
+            <div class="minsound btn">
+              <label for="min-file">
+                <div class="btn-upload">최저음 올리기</div>
+              </label>
+              <input id="min-file" type="file" accept=".m4a,.mp3,.wav" />
+            </div>
+            <input type="checkbox" id="min-checkbox" style="display: none" />
+            <label for="min-checkbox" class="custom-checkbox"></label>
+          </div>
+          <div class="maxsound">
+            <div class="maxsound btn">
+              <label for="max-file">
+                <div class="btn-upload">최고음 올리기</div>
+              </label>
+              <input id="max-file" type="file" accept=".m4a,.mp3,.wav" />
+            </div>
+            <input type="checkbox" id="max-checkbox" style="display: none" />
+            <label for="max-checkbox" class="custom-checkbox"></label>
+          </div>
+        </div>
+
+        <div class="textbox2">
+          <p id="last">당신의 최고음 최저음을 기반으로</p>
+          <p id="last">어울리는 노래를 추천해드립니다</p>
+        </div>
+
+        <footer>
+          <input
+            id="save_button"
+            type="button"
+            value="Save"
+            onclick="location.href='mainpage2.html'"
+          />
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const timer = document.querySelector(".timer-js-timer");
+  const toggleBtn = document.querySelector("recording_button");
+
+  let TIME = 0;
+  let cron; // setInterval을 위한 변수
+  let isTimerRunning = false;
+
+  function toggleTimer() {
+    if (isTimerRunning) {
+      stopTimer();
+    } else {
+      startTimer();
+    }
+  }
+
+  function startTimer() {
+    updateTimer();
+    cron = setInterval(updateTimer, 1000);
+    isTimerRunning = true;
+    toggleBtn.innerText = "Stop Timer";
+    timer.classList.add("hide");
+  }
+
+  function stopTimer() {
+    clearInterval(cron);
+    isTimerRunning = false;
+    toggleBtn.innerText = "Start Timer";
+    timer.classList.remove("hide");
+  }
+
+  function updateTimer() {
+    const hours = Math.floor(TIME / 3600);
+    const checkMinutes = Math.floor(TIME / 60);
+    const seconds = TIME % 60;
+    const minutes = checkMinutes % 60;
+
+    timer.innerText = `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    TIME++;
+  }
+
+  toggleBtn.addEventListener("click", toggleTimer);
+</script>

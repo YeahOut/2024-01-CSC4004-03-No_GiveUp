@@ -9,7 +9,7 @@ class User(AbstractUser):
         null=True,
         error_messages={'unique': "이미 사용중인 닉네임입니다!"},
         validators=[validate_no_special_characters],
-        )
+    )
 
 class UserPreferences(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='preferences')

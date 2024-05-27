@@ -13,7 +13,7 @@
         <header>
           <div class="header-contents">
               <img class="backbutton" src="{% static 'modal/images/backbutton.svg' %}" href="{% url 'analyze' %}"/>
-              <img class="logo" src="{% static 'modal/images/logo.svg' %}" />
+              <img class="logo" src="{% static 'modal/images/logo.svg' %}" href="{% url 'main1' %}" />
           </div>
           <div class="mobile_btn">
               <input type="checkbox" id="hamburger" />
@@ -30,8 +30,8 @@
                           <p class="info2">{{ user }}</p>
                       </div>
                       <ul class="nav_mobile">
-                          <li><a href="{% url 'analyze' %}">마이페이지</a></li>
-                          <li><a href="#">사용 방법</a></li>
+                        <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                          <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
                           <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
                           <li><a href="#">팀 소개</a></li>
                           <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
