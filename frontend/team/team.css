@@ -26,7 +26,7 @@ body{
 }
 .header{
   width:844px;
-  height:130px;
+  height:100px;
 }
 .header-contents{
   position: relative;
@@ -38,6 +38,11 @@ body{
   width:30px;
   height:30px;
 }
+.logo{
+  width:70px;
+  height:27px;
+}
+
 
 .title{
   position:relative;
@@ -47,20 +52,46 @@ body{
   text-align:center;
 }
 
-.logo{
-  width:70px;
+
+.team-text{
+  text-align:center;
+  position:relative;
+  font-weight:700;
+}
+.title{
+  font-size:20px;
+  padding-bottom:22px;
+  font-weight: 700;
+}
+.sub{
+  font-size:16.55px;
+  padding-bottom:50px;
+  font-weight:500;
+}
+.logo_1{
+  width:54px;
   height:27px;
-  padding-left:15px;
+  position:relative;
+  top:10px;
+}
+
+.etc{
+  font-size:13px;
+  text-align:right;
+  font-weight: 700;
+  padding-right:15px;
 }
 
 a{
   text-decoration:none;
   color:black;
 }
-.mobile_btn{
-  position: absolute;
-  top:35px;
-  left:300px;
+.header-contents.mobile_btn{
+  position:relative;
+  top:30px;
+  right:110px;
+  z-index:1;
+  width:20px;
 }
 input[id="hamburger"]{
   display:none;
@@ -70,7 +101,7 @@ input[id="hamburger"]+label{
   width: 30px;
   height:20px;
   position:relative;
-  left:100%;
+  left:80%;
   cursor:pointer;
 }
 input[id="hamburger"] + label span {
@@ -117,7 +148,7 @@ div[class="sidebar"] {
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
   position: fixed;
-  top: 0%;
+  bottom:0px;
   left: 200%;
   z-index: 98;
   transition: all 0.35s;
@@ -125,9 +156,27 @@ div[class="sidebar"] {
 }
 
 input[id="hamburger"]:checked + label + div {
-  left: 223px;
+  left: 225px;
 }
-
+@media (min-width: 400px) {
+  div[class="sidebar"] {
+    width: 166px;
+    height: 844px;
+    background: white;
+    background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+    position: fixed;
+    bottom: 155px;
+    left: 200%;
+    z-index: 98;
+    transition: all 0.35s;
+    overflow: hidden;
+  }
+  input[id="hamburger"]:checked + label + div {
+    left: 425px;
+    bottom: 15%;
+    overflow: hidden;
+  }
+}
 .nav_mobile{
   position: absolute;
   top:119px;
@@ -169,6 +218,11 @@ input[id="hamburger"]:checked + label + div {
   margin: 0px;
   border: 0px;
 }
+.user-img{
+  position:relative;
+  left:50px;
+  top:10%;
+}
 .user-info{
   font-size: 20px;
   font-weight: bold;
@@ -188,32 +242,4 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   left: 60%;
   top: 93.5px;
-}
-.team-text{
-  text-align:center;
-  position:relative;
-  font-weight:700;
-}
-.title{
-  font-size:20px;
-  padding-bottom:22px;
-  font-weight: 700;
-}
-.sub{
-  font-size:16.55px;
-  padding-bottom:50px;
-  font-weight:500;
-}
-.logo_1{
-  width:54px;
-  height:27px;
-  position:relative;
-  top:10px;
-}
-
-.etc{
-  font-size:13px;
-  text-align:right;
-  font-weight: 700;
-  padding-right:15px;
 }
