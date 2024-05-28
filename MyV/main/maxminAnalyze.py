@@ -35,6 +35,9 @@ def maxminAnalyze(user):
                    min_note = min_note_fromMin)
     upload.save()
 
+    os.remove(min_file_path)
+    os.remove(max_file_path)
+
 def usingLibrosa(min_file_name):
     y, sr = librosa.load(min_file_name)
     # y = y[:len(y) // 2]
