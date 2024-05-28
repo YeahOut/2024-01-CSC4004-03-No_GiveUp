@@ -73,12 +73,17 @@
 .check {
   text-align: center;
   position: relative;
-  top: 80px;
+  top: 40px;
 }
 .text {
   text-align: center;
   position: relative;
-  top: 110px;
+  top: 65px;
+}
+.spotify {
+  position: relative;
+  top : 80px;
+  left : 10px;
 }
 .complete {
   font-size: 20px;
@@ -119,7 +124,7 @@
   height: 120px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 252px;
+  bottom: 312px;
   left: 5.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -133,7 +138,7 @@
   height: 130px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 378px;
+  bottom: 438px;
   left: 130.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -147,7 +152,7 @@
   height: 120px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 502px;
+  bottom: 562px;
   left: 264.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -160,7 +165,7 @@
   grid-template-rows: 1fr 1fr 1fr;
   text-align: center;
   position: relative;
-  top: 0px;
+  top: -60px;
 }
 
 #grid2 {
@@ -195,7 +200,7 @@
 
 .song-info1 {
   position: relative;
-  bottom: 485px;
+  bottom: 545px;
   left: 20px;
   width: 120px;
   height: 50px;
@@ -204,7 +209,7 @@
 
 .song-info2 {
   position: relative;
-  bottom: 535px;
+  bottom: 595px;
   left: 135px;
   width: 120px;
   height: 50px;
@@ -213,7 +218,7 @@
 
 .song-info3 {
   position: relative;
-  bottom: 585px;
+  bottom: 645px;
   left: 280px;
   width: 120px;
   height: 30px;
@@ -234,7 +239,7 @@
 
 .audio {
   position: relative;
-  bottom: 540px;
+  bottom: 605px;
   left: 40px;
 }
 
@@ -247,7 +252,7 @@
   row-gap: 30px;
   text-align: center;
   position: relative;
-  bottom: 520px;
+  bottom: 580px;
 }
 
 #grid .feature {
@@ -269,7 +274,7 @@
 
   position: relative;
   left: 35px;
-  bottom: 500px;
+  bottom: 550px;
 }
 
 /**modal css**/

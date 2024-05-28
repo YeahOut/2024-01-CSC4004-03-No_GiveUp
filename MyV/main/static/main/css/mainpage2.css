@@ -84,6 +84,21 @@
   position: relative;
   top: 300px;
 }
+
+.textwithSpotify{
+  position : relative;
+  top: 330px;
+  text-align: center;
+  color:#a6a6a6;
+}
+
+.textwithSpotify p {
+  margin-bottom: 5px;
+}
+.spotify{
+  margin-top: 15px;
+}
+
 .analyzing {
   margin-bottom: 18px;
   font-size: 24px;
