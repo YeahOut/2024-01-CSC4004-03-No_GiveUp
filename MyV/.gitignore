@@ -167,4 +167,4 @@ cython_debug/
 *.pyc
 
 #secret
-my_settings.py
+
