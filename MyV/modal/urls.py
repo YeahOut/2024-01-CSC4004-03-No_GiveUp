@@ -13,4 +13,5 @@ urlpatterns = [
     path('howtouse/2', views.howtoUse2, name='howtoUse2'),
     path('howtouse/3', views.howtoUse3, name='howtoUse3'),
     path('howtouse/4', views.howtoUse4, name='howtoUse4'),
+    path('team', views.team, name='team'),
 ]

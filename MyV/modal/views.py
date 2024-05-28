@@ -76,3 +76,6 @@ def howtoUse3(request):
 
 def howtoUse4(request):
     return render(request, 'modal/howtouse4.html')
+
+def team(request):
+    return render(request, 'modal/team.html')

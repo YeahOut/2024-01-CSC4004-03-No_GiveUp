@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>팀 소개</title>
+        <link rel="stylesheet" href="{% static 'modal/css/team.css' %}"/>
+      </head>
+      <body>
+        <div class="flex">
+            <div class="contents">
+              <header>
+                <div class="header-contents">
+                  <img class="logo" src="{% static 'modal/images/logo.svg' %}" onclick="location.href='{% url 'main1' %}'" />
+                </div>
+                <div class="mobile_btn">
+                    <input type="checkbox" id="hamburger" />
+                    <label for="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <img class="user-img" src="{% static 'modal/images/modal-face.svg' %}" width="100px" />
+                        <div class="modaltext" >
+                            <div class="user-info">
+                                <p class="info1">MyV 회원</p>
+                                <p class="info2">{{ user }}</p>
+                            </div>
+                            <ul class="nav_mobile" style="padding-left: 0px;" >
+                                <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                                <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
+                                <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                                <li><a href="#">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                            </ul>
+                            <div class="wave">
+                                <img src= "{% static 'modal/images/wave.png' %}" height="223px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+             <main>
+                <div class="team-text">
+                  <div class="title">
+                    <p>팀소개</p>
+                  </div>
+                  <div class="sub">
+                      <img class="logo_1"src="{% static 'modal/images/logo.svg' %}"/>
+                      는 2024년 동국대학교 공개SW프로젝트<br>
+                      팀 "포7ㅣ를 모르조"에서 제작한<br>
+                      모바일형 웹서비스입니다.
+                  </div>
+              </div>
+              <img class="show"src="{% static 'modal/images/Group.png' %}"/>
+          </main>
+          <footer>
+              <div class="etc">               
+                  <p>제작 기간 : 2024년 3월~6월</p>
+                  <p>Contact Us : 010-2733-8344</p>
+                  <p>E-mail : pt840072@dgu.ac.kr</p>
+              </div>
+          </footer>
+      </body>
+      </html>
