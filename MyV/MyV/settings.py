@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'signup',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'signup',
     'widget_tweaks',
     'myauth',
     'login',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'main',
 ]
 
 SITE_ID = 1
@@ -110,8 +111,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = "/done/"
-LOGIN_REDIRECT_URL = '/modal/analyze'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/signup/2/"
+LOGIN_REDIRECT_URL = '/main'
 ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

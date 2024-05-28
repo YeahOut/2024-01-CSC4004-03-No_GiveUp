@@ -1,32 +1,17 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 @font-face {
-  font-family: "PyeongChang";
-  font-weight: 400;
+  font-family: "YangJin";
+  font-weight: normal;
   font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.eot?#iefix")
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
       format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff2")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
       format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.woff")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
       format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Regular.ttf")
-      format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "PyeongChang";
-  font-weight: 700;
-  font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot");
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/PyeongChang/PyeongChang-Bold.ttf")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
       format("truetype");
   font-display: swap;
 }
@@ -54,10 +39,9 @@
   height: 844px;
   overflow: hidden;
 }
-
 .header {
   width: 844px;
-  height: 100px;
+  height: 130px;
 }
 
 .header-contents {
@@ -70,177 +54,31 @@
   padding-left: 15px;
 }
 
-.check {
+/************/
+
+.howtouse-text {
   text-align: center;
-  position: relative;
-  top: 80px;
-}
-.text {
-  text-align: center;
-  position: relative;
-  top: 110px;
-}
-.complete {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-.select {
-  font-size: 16px;
-}
-
-.af {
-  display: inline;
-  position: relative;
-  top: 140px;
-  left: 0px;
-}
-
-.album-cover1,
-.album-cover3 {
-  width: 120px;
-  height: 120px;
-  border: none;
-  background-color: #eeeeee;
-}
-
-.album-cover2 {
-  width: 130px;
-  height: 130px;
-  position: relative;
-  top: 5px;
-  border: none;
-  background-color: #eeeeee;
-}
-
-.cover1 {
-  display: block;
-  width: 120px;
-  height: 120px;
-  background-color: rgba(215, 215, 215, 0.315);
-  position: relative;
-  bottom: 252px;
-  left: 5.5px;
-  &:hover {
-    background: rgba(0, 0, 0, 0);
-    color: #fff;
-  }
-}
-
-.cover2 {
-  display: block;
-  width: 130px;
-  height: 130px;
-  background-color: rgba(215, 215, 215, 0.315);
-  position: relative;
-  bottom: 378px;
-  left: 130.5px;
-  &:hover {
-    background: rgba(0, 0, 0, 0);
-    color: #fff;
-  }
-}
-
-.cover3 {
-  display: block;
-  width: 120px;
-  height: 120px;
-  background-color: rgba(215, 215, 215, 0.315);
-  position: relative;
-  bottom: 502px;
-  left: 264.5px;
-  &:hover {
-    background: rgba(0, 0, 0, 0);
-    color: #fff;
-  }
-}
-
-#grid1 {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  text-align: center;
-  position: relative;
-  top: 0px;
-}
-
-#grid2 {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  text-align: center;
-  position: relative;
-  top: 0px;
-}
-#grid2 a {
-  display: flex;
-  flex-direction: column;
-}
-
-.song-info1 p,
-.song-info2 p,
-.song-info3 p {
-  display: inline;
-  font-weight: 500;
-}
-
-.song-info1 .title,
-.song-info2 .title,
-.song-info3 .title {
-  font-size: 20px;
-}
-.song-info1 .singer,
-.song-info2 .singer,
-.song-info3 .singer {
-  padding-left: 2.5px;
-}
-
-.song-info1 {
-  position: relative;
-  bottom: 480px;
-  left: 46px;
-}
-.song-info2 {
-  position: relative;
-  bottom: 525px;
-  left: 176px;
-}
-.song-info3 {
-  position: relative;
-  bottom: 571px;
-  left: 306px;
-}
-.audio{
-  position: relative;
-  bottom: 540px;
-  left: 40px;
-}
-
-
-.audio {
-  position: relative;
-  bottom: 540px;
-  left: 40px;
-}
-
-#grid {
-  display: grid;
-  font-family: "PyeongChang";
-  font-size: 20px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 30px;
-  text-align: center;
-  position: relative;
-  bottom: 520px;
-}
-
-#grid .feature {
-  font-size: 20px;
-  font-weight: 300;
-}
-#grid .value {
   font-weight: 700;
+  position: relative;
+  top: 50px;
 }
-#go_recommend {
+
+.title {
+  font-size: 20px;
+  padding-bottom: 25px;
+}
+
+.sub {
+  font-size: 18px;
+}
+
+.iphone {
+  position: relative;
+  top: 100px;
+  left: 21%;
+}
+
+.next-button {
   width: 315px;
   height: 51px;
   border: 0;
@@ -252,7 +90,13 @@
 
   position: relative;
   left: 35px;
-  bottom: 500px;
+  top: 180px;
+}
+
+.steps {
+  position: relative;
+  left: 150px;
+  top: 190px;
 }
 
 /**modal css**/
@@ -265,9 +109,11 @@ a {
 /**버튼 위치**/
 
 .mobile_btn {
-  position: absolute;
+  position: relative;
   top: 35px;
   left: 300px;
+  z-index:1;
+  width: 20px;
 }
 
 /****/
@@ -285,6 +131,8 @@ input[id="hamburger"] + label {
   position: relative;
   left: 100%;
   cursor: pointer;
+  z-index: 2;
+  top: -40px;
 }
 
 /****/
@@ -337,18 +185,19 @@ div[class="sidebar"] {
   height: 844px;
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
-  position: fixed;
   top: 0%;
   left: 200%;
-  z-index: 98;
   transition: all 0.35s;
   overflow: hidden;
+  position: absolute;
+  transform: translate(50px, -70px);
+  z-index: 1;
 }
 
 /****/
 
 input[id="hamburger"]:checked + label + div {
-  left: 223px;
+  transform: translate(-110px, -70px);
 }
 
 /** modal contents form**/
@@ -428,4 +277,5 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   left: 60%;
   top: 93.5px;
+  z-index: -1;
 }

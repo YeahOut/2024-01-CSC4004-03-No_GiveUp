@@ -1,86 +1,81 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UploadAnalyzeFile
-from .analyzing_file import process_file, downloadFile
-# Create your views here.
-
-from django.conf import settings
-import librosa, boto3
-import librosa.display
-import librosa.feature
-import matplotlib
-import matplotlib.pyplot as plt
-from matplotlib import font_manager,rc
-import numpy as np
-import sys
-import os
-import shutil
-import math
+from django.core.paginator import Paginator
+from .analyzing_file import process_file
+from .aws import downloadFile, upload_to_s3, makingBucket, deleteBucket
+from .models import UserVocalInfo, SelectedPlaylist
+from main.models import PlaylistInfo
 
 def analyzePage(request):
-    return render(request,'modal/analyze.html')
+    user = request.user
+    context = {'user': user}
+    return render(request, 'modal/analyze.html', context)
 
-#AWS s3에 업로드하는 함수
 def upload_analyze_file(request):
     if request.method == 'POST':
         mySound_file = request.FILES.get('mysound_file', None)
         compareSound_file = request.FILES.get('comparesound_file', None)
-        
-        ##파일 이름 변경##
-        # 파일 이름에서 확장자 분리하기
-        mySound_name, mySound_ext = os.path.splitext(mySound_file.name)
-        compareSound_name, compareSound_ext = os.path.splitext(compareSound_file.name)
 
-        # 새 파일 이름 설정
-        new_mySound_name = 'usr' + mySound_ext 
-        new_compareSound_name = 'org' + compareSound_ext ##org.mp4 이런식으로 변경 
-        
-        mySound_file.name = new_mySound_name
-        compareSound_file.name = new_compareSound_name
-        #인스턴스 중복되는거 방지하기
-        upload = UploadAnalyzeFile(mySound_file=mySound_file,
-                                   fMySound_name=mySound_file.name,
-                                   compareSound_file=compareSound_file, 
-                                   fCompareSound_name=compareSound_file.name)
-        upload.save()
-        
-        return HttpResponse("Files uploaded successfully")
+        if mySound_file and compareSound_file:
+            upload_to_s3(mySound_file, compareSound_file)
+            return HttpResponse("Files uploaded successfully")
+        else:
+            return HttpResponse("Failed to upload files")
     
     return HttpResponse("Failed to upload files")
 
-
 def vocalResult(request):
-    #context = maxminAnalysis(request)
-    downloaded = downloadFile() #음원 다운로드 받기
+    downloaded = downloadFile()
     print("##전달 성공##")
 
-    if (downloaded==1):
-        max_note, min_note, start_t, best_st, best_ed = process_file()
-        context = {'max':max_note, 'min':min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed':int(best_ed)}
-    else :
+    if downloaded == 1:
+        max_note, min_note, start_t, best_st, best_ed, score = process_file()
+        user = request.user
+        context = {'max': max_note, 'min': min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed': int(best_ed), 'score': score, 'user': user}
+        saveInfo = UserVocalInfo(user=user, max_note=max_note, min_note=min_note)
+        saveInfo.save()
+    else:
         print("##파일이 다운로드 되지 않았음##")
     return render(request, 'modal/analyze_result.html', context)
 
-#로컬에 있는 음원으로 최고최저 분석하는 함수
-def maxminAnalysis(request):
-    file_path = os.path.join(settings.MEDIA_ROOT, 'audio', 'kaze_mine.wav')
-    y, sr = librosa.load(file_path)
-    # y = y[:len(y) // 2]
-    f0, voiced_flag, voiced_prob = librosa.pyin(y=y, fmin=60, fmax=2000, sr=sr)
+def playlistPage(request):
+    user = request.user
+    if request.method == "POST":
+        album_id = request.POST.get('selected_album_id')
+        playlist_info = PlaylistInfo.objects.filter(user=user).order_by('-id').first()
+    
+        if album_id == "1" :
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img1, artist=playlist_info.artist1, title=playlist_info.title1, song_url=playlist_info.songurl1)
+        elif album_id == "2":
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img2, artist=playlist_info.artist2, title=playlist_info.title2, song_url=playlist_info.songurl2)
+        elif album_id == "3":
+            SelectedPlaylist.objects.create(user=user, img=playlist_info.img3, artist=playlist_info.artist3, title=playlist_info.title3, song_url=playlist_info.songurl3)
+        
+        return redirect('playlistPage')  # POST 요청 후 리디렉션
 
-    max_freq = -1
-    min_freq = 3000
-    sum_freq = 0
-    valid_frame_cnt = 0
-    for i in range(len(f0)):
-        if (voiced_flag[i]):
-            sum_freq += f0[i]
-            max_freq = max(max_freq, f0[i])
-            min_freq = min(min_freq, f0[i])
-            valid_frame_cnt += 1
-    max_note = librosa.hz_to_note(max_freq)
-    min_note = librosa.hz_to_note(min_freq)
-    avg_note = librosa.hz_to_note(sum_freq / valid_frame_cnt)
+    playlists = SelectedPlaylist.objects.filter(user=user).order_by('-id')
+    paginator = Paginator(playlists, 4)  # 한 페이지에 5개의 플레이리스트를 표시
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
-    context = {'max': max_note, 'min': min_note, 'avg':avg_note}  # 템플릿에 넘길 데이터를 사전형으로 만들기
-    return context
+    context = {
+        'page_obj': page_obj,
+        'user': user
+    }
+    return render(request, 'modal/playlist.html', context)
+
+
+def howtoUse1(request):
+    return render(request, 'modal/howtouse1.html')
+
+def howtoUse2(request):
+    return render(request, 'modal/howtouse2.html')
+
+def howtoUse3(request):
+    return render(request, 'modal/howtouse3.html')
+
+def howtoUse4(request):
+    return render(request, 'modal/howtouse4.html')
+
+def team(request):
+    return render(request, 'modal/team.html')

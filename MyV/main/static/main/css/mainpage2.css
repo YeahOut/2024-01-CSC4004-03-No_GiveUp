@@ -1,0 +1,110 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+}
+
+.header {
+  width: 844px;
+  height: 100px;
+}
+
+.header-contents {
+  position: relative;
+  left: 5%;
+  top: 30px;
+}
+.logo {
+  width: 65px;
+  padding-left: 15px;
+}
+
+.analyze_move {
+  text-align: center;
+  position: relative;
+  top: 230px;
+}
+
+.rotate {
+  animation: rotation 1300s;
+}
+.linear {
+  animation-timing-function: linear;
+}
+.infinte {
+  animation-iteration-count: infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-300000deg);
+  }
+}
+
+.text {
+  text-align: center;
+  position: relative;
+  top: 300px;
+}
+
+.textwithSpotify{
+  position : relative;
+  top: 330px;
+  text-align: center;
+  color:#a6a6a6;
+}
+
+.textwithSpotify p {
+  margin-bottom: 5px;
+}
+.spotify{
+  margin-top: 15px;
+}
+
+.analyzing {
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.waiting {
+  font-size: 18px;
+  color: #878787;
+}

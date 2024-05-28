@@ -191,15 +191,6 @@
   outline: none;
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  line-height: 1.7;
-  position: absolute;
-  top: 100%;
-  left: 0;
-}
-
 .signup-input.error~.error-message {
   display: block;
   width: 100%;

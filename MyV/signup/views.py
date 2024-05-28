@@ -2,20 +2,36 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import UploadMAXMIN, MaxminNote
 from .maxmin import maxAnalysis, minAnalysis
-from django.shortcuts import render, redirect
-from .forms import SignupForm
+from .forms import SignupForm, PreferencesForm
 from allauth.account.views import SignupView
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from .forms import SignupForm
-from .models import User
+from .models import User,UserPreferences
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def save_preferences(request):
+    if request.method == 'POST':
+        form = PreferencesForm(request.POST)
+        if form.is_valid():
+            preferences = UserPreferences(
+                user=request.user,
+                mood=form.cleaned_data['mood'],
+                energy=form.cleaned_data['energy'],
+                tempo=form.cleaned_data['tempo']
+            )
+            preferences.save()
+            return redirect('signup4')  # 'next_step'은 다음 단계의 URL name입니다.
+    else:
+        form = PreferencesForm()
+    return render(request, 'preferences_form.html', {'form': form})
+
 
 class CustomSignupView(CreateView):
     model = User
     form_class = SignupForm
     template_name = 'account/signup.html'
-    success_url = reverse_lazy('done')
+    success_url = reverse_lazy('signup4')
 
 def signup4(request):
     return render(request, 'signup/signup4.html')
@@ -24,6 +40,7 @@ def signup4(request):
 def signup1(request):
     return render(request, 'account/signup.html')
 
+@login_required
 def signup2(request):
     return render(request, 'signup/signup2.html')
 
