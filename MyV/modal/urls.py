@@ -7,6 +7,7 @@ urlpatterns = [
     #path('analyze', views.makingbuckettest, name='analyze'),
     path('analyze', views.analyzePage, name='analyze'),
     path('analyze/upload', views.upload_analyze_file, name='upload_analyze_file'),
+    path('analyze/loading', views.loading, name='loading'),
     path('analyze/result', views.vocalResult, name='vocalResult'),
     path('playlist', views.playlistPage, name='playlistPage'),
     path('howtouse/1', views.howtoUse1, name='howtoUse1'),

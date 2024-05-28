@@ -24,6 +24,9 @@ def upload_analyze_file(request):
     
     return HttpResponse("Failed to upload files")
 
+def loading(request):
+    return render(request, 'modal/loading.html')
+
 def vocalResult(request):
     downloaded = downloadFile()
     print("##전달 성공##")
