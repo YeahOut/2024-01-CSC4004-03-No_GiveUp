@@ -11,17 +11,17 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import my_settings
+import MyV_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = my_settings.SECRET_KEY
+SECRET_KEY = MyV_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,7 +88,12 @@ WSGI_APPLICATION = 'MyV.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = my_settings.DATABASES
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 AUTH_USER_MODEL = 'signup.User' 
 
@@ -133,6 +138,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AWS S3 연결하기
+#AWS settings
+AWS_ACCESS_KEY_ID = MyV_settings.AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = MyV_settings.AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = MyV_settings.AWS_STORAGE_BUCKET_NAME
+AWS_S3_REGION_NAME = MyV_settings.AWS_S3_REGION_NAME
 
 # Media 파일을 S3에 저장
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -144,16 +154,16 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = 'media/'
 import os
 # 미디어 파일이 저장될 서버상의 실제 경로 (내 로컬)
-MEDIA_ROOT = os.path.join(my_settings.BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 #Email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = MyV_settings.EMAIL_HOST
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = my_settings.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = my_settings.EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = MyV_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = MyV_settings.EMAIL_HOST_PASSWORD
 
 # Allauth settings
 ACCOUNT_EMAIL_REQUIRED = True
@@ -164,3 +174,5 @@ ACCOUNT_SESSION_REMEMBER = True
 SESSION_COOKIE_AGE = 3600
 ACCOUNT_SIGNUP_FORM_CLASS = 'signup.forms.SignupForm'
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
+
+
