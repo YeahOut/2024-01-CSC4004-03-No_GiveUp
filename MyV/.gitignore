@@ -165,3 +165,8 @@ cython_debug/
 
 #pyc
 *.pyc
+
+#secret
+MyV_settings.py
+
+secret.json
