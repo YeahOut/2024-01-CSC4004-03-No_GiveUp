@@ -216,9 +216,11 @@ a {
 /**버튼 위치**/
 
 .mobile_btn {
-  position: absolute;
+  position: relative;
   top: 35px;
   left: 300px;
+  z-index: 1;
+  width: 20px;
 }
 
 /****/
@@ -236,6 +238,8 @@ input[id="hamburger"]+label {
   position: relative;
   left: 100%;
   cursor: pointer;
+  z-index: 2;
+  top: -40px;
 }
 
 /****/
@@ -297,18 +301,19 @@ div[class="sidebar"] {
   height: 844px;
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
-  position: fixed;
   top: 0%;
   left: 200%;
-  z-index: 98;
   transition: all 0.35s;
   overflow: hidden;
+  position: absolute;
+  transform: translate(50px, -70px);
+  z-index: 1;
 }
 
 /****/
 
 input[id="hamburger"]:checked+label+div {
-  left: 223px;
+  transform: translate(-110px, -70px);
 }
 
 /** modal contents form**/

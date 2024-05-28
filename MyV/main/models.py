@@ -26,3 +26,6 @@ class PlaylistInfo(models.Model):
     title1 = models.CharField(max_length=255, default="none")
     title2 = models.CharField(max_length=255, default="none")
     title3 = models.CharField(max_length=255, default="none")
+    songurl1 = models.CharField(max_length=255, default="none")
+    songurl2 = models.CharField(max_length=255, default="none")
+    songurl3 = models.CharField(max_length=255, default="none")
