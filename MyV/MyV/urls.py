@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('modal/',include('modal.urls')),
     path('main/',include('main.urls')),
+    path('signup/',include('signup.urls')),
 ]
