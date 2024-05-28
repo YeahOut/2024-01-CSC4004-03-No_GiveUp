@@ -208,15 +208,18 @@ def usr_convert_format():
         org_audio.export(os.path.join(os.getcwd(), 'media','usr.mp3'), format="mp3")
 
 def remove_prefiles():
-    if (os.path.isfile("org.wav")):
-        os.remove("org.wav")
-    if (os.path.isfile("org.mp3")):
-        os.remove("org.mp3")
-    if (os.path.isfile("org.m4a")):
-        os.remove("org.m4a")
-    if (os.path.isfile("usr.wav")):
-        os.remove("usr.wav")
-    if (os.path.isfile("usr.mp3")):
-        os.remove("usr.mp3")
-    if (os.path.isfile("usr.m4a")):
-        os.remove("usr.m4a")
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.wav'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.wav'))
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.mp3'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.mp3'))
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.m4a'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.m4a'))
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.wav'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.wav'))
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.mp3'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.mp3'))
+    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.m4a'))):
+        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.m4a'))
+    
+    os.remove(os.path.join(os.getcwd(), 'pretrained_models'))
+                           
