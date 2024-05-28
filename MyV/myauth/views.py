@@ -18,6 +18,9 @@ import math
 def index(request):
     return render(request, 'myauth/intropage.html')
 
+def team(request):
+    return render(request, 'myauth/team.html')
+
 #librosa 처리 후 렌더링 테스트
 def maxminAnalysis(request):
     y, sr = librosa.load(librosa.ex('trumpet'))

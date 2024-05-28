@@ -6,4 +6,5 @@ urlpatterns = [
     #path('login/', include('login.urls')),
     #path('signup/', include('signup.urls')),
     path('account/', include('allauth.urls')),
+    path('team/', views.team, name='team1'),
 ]
