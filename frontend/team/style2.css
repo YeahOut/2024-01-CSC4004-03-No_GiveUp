@@ -1,0 +1,79 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contents {
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+}
+
+.header-contents {
+  width:348px;
+  height:67px;
+  left: 5%;
+  top: 67px;
+}
+.backbutton{
+  width:24px;
+  height:24px;
+  position:relative;
+  left:10px;
+  top:25px;
+}
+.logo{
+  width:54px;
+  height:27px;
+  position:relative;
+  left:20px;
+  top:25px;
+}
+.modal{
+  width:35px;
+  height:30px;
+  position:relative;
+  left:225px;
+  top:25px;
+}
+div[class="sidebar"] {
+  width: 166px;
+  height: 844px;
+  background: white;
+  background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
+  top: 0%;
+  left: 200%;
+  z-index: 98;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+.show{
+  position:relative;
+  text-align: center;
+}
+.phone{
+  position:relative;
+  left:85px;
+}
+.next-step-button {
+  position: relative;
+  bottom:5px;
+  left: 45px;
+  width: 315px;
+  height: 50px;
+  color: white;
+  background-color: #5e59ff;
+  border: 0;
+  border-radius: 5px;
+}
+.bar{
+  position:relative;
+  left:160px;
+  bottom:0px;
+}
