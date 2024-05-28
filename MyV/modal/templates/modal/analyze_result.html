@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vocalreport</title>
+    <link rel="stylesheet" href="{% static 'modal/css/vocal_report.css' %}"/>
+    <style>h2, h3{text-align: center;}</style>
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="header-contents">
+              <img class="backbutton" src="{% static 'modal/images/backbutton.svg' %}" href="{% url 'analyze' %}"/>
+              <img class="logo" src="{% static 'modal/images/logo.svg' %}" href="{% url 'main1' %}" />
+          </div>
+          <div class="mobile_btn">
+              <input type="checkbox" id="hamburger" />
+              <label for="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </label>
+              <div class="sidebar">
+                  <img class="user-img" src="{% static 'modal/images/modal-face.svg' %}" width="100px" />
+                  <div class="modaltext">
+                      <div class="user-info">
+                          <p class="info1">MyV 회원</p>
+                          <p class="info2">{{ user }}</p>
+                      </div>
+                      <ul class="nav_mobile">
+                        <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                          <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
+                          <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                          <li><a href="{% url 'team' %}">팀 소개</a></li>
+                          <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                      </ul>
+                      <div class="wave">
+                          <img src="{% static 'modal/images/wave.png' %}" height="223px" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </header>
+        <main class="report">
+          <h2>보컬 보고서</h2>
+          <h3>{{ user }}님의 보컬 분석 결과입니다</h3>
+          <div id="report_main_container">
+            <div class="report_main">
+                <hr style="border:1px color= silver;">
+                <div id="report_paragraph_container">
+                    <p id="report_paragraph">보고서 내용</p>
+                </div>
+                <h3 class="report_score">{{ user }}님의 총 점수 : </h3>
+                <h3 class="report_score">{{ score }}/100 점 </h3>
+                <p>안녕하세요 <b>{{ user }}</b>님!</p>
+                <p><b>{{ user }}</b>님이 부른 부분은 음원의 <b>{{ start_t }}</b>초 부터 입니다.</p>
+                <p>최고음은 <b>{{ max }}</b> 이며
+                   최저음은 <b>{{ min }}</b>입니다.</p>
+                <p>성향은 <b>밝음</b>이며, 가장 잘 부른 구간은 <b>{{ best_st }}초부터 {{ best_ed }}초 입니다.</p>
+            </div>
+            <img class="report_graph" src="{% static 'modal/images/vocal_report_graph.png' %}">
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="{% static 'modal/js/vocal_report.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyV</title>
+    <link rel="stylesheet" href="{% static 'main/css/mainpage2.css' %}" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="header-contents">
+            <img class="logo" src="{% static 'main/images/logo.svg' %}" />
+          </div>
+        </header>
+        <main>
+          <div class="analyze_move">
+            <img class="linear infinite rotate" src="{% static 'main/images/analyze_movement.png' %}" />
+          </div>
+          <div class="text">
+            <p class="analyzing">분석중 입니다.</p>
+            <p class="waiting">잠시만 기다려 주세요.</p>
+          </div>
+          <div class="textwithSpotify">
+            <p>분석된 정보를 기반으로</p>
+            <p>Spotify에서 적합한 곡을</p>
+            <p>추천해드립니다</p>
+            <img class="spotify" src="{% static 'main/images/spotify.png' %}" width="80px" />
+          </div>
+          
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<script>
+  // 페이지 로드 후 3초 뒤에 리디렉션
+  window.onload = function() {
+    setTimeout(function() {
+      window.location.href = "{% url 'main3' %}";
+    }, 3000); // 3000 ms= 3sec
+  };
+</script>

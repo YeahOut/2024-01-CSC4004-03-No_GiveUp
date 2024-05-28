@@ -1,0 +1,130 @@
+{% extends "account/base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<div class="account-background">
+  <main class="account">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}signup1{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'signup/css/signup1.css' %}" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="contents">
+        <header>
+          <div class="container">
+            <ul class="box1">
+              <li class="wave1" id="w11">
+                <img src="{% static 'signup/images/v/wc1.png' %}" />
+              </li>
+              <li class="wave2" id="w12">
+                <img src="{% static 'signup/images/v/wc2.png' %}" />
+              </li>
+              <li class="wave3" id="w13">
+                <img src="{% static 'signup/images/v/wc3.png' %}" />
+              </li>
+              <li class="wave4" id="w14">
+                <img src="{% static 'signup/images/v/wc4.png' %}" />
+              </li>
+            </ul>
+            <ul class="box2">
+              <li class="wave1" id="w21">
+                <img src="{% static 'signup/images/v/wc1.png' %}" />
+              </li>
+              <li class="wave2" id="w22">
+                <img src="{% static 'signup/images/v/wc2.png' %}" />
+              </li>
+              <li class="wave3" id="w23">
+                <img src="{% static 'signup/images/v/wc3.png' %}" />
+              </li>
+              <li class="wave4" id="w24">
+                <img src="{% static 'signup/images/v/wc4.png' %}" />
+              </li>
+            </ul>
+          </div>
+          <input
+            class="back_btn"
+            type="image"
+            src="{% static 'signup/images/backbutton.svg' %}"
+            onclick="location.href='{% url 'index' %}'"
+          />
+          <div class="header-content">
+            <img
+              id="logo"
+              src="{% static 'signup/images/logo.svg' %}"
+              width="104px"
+              height="43px"
+              left="30px"
+            />
+            
+        
+            <h2 class="title">회원가입</h2>
+          </div>
+        </header>
+
+    <form method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      <div>
+        {{ form.email|add_class:"cp-input"|attr:"placeholder:이메일"|add_error_class:"error" }}
+      </div>
+      {% for error in form.email.errors %}
+      <div class="error-message" style="
+      margin-right: 40px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+  ">{{ error }}</div>
+    {% endfor %}
+      <div>
+        {{ form.nickname|add_class:"cp-input"|attr:"placeholder:닉네임 (MyV에서 사용되는 이름입니다)"|add_error_class:"error" }}
+      </div>
+      {% for error in form.nickname.errors %}
+          <div class="error-message" style="
+          margin-right: 40px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+      ">{{ error }}</div>
+        {% endfor %}
+      <div>
+        {{ form.username|add_class:"cp-input"|attr:"placeholder:아이디"|add_error_class:"error" }}
+      </div>
+      {% for error in form.username.errors %}
+          <div class="error-message" style="
+          margin-right: 40px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+      ">{{ error }}</div>
+        {% endfor %}
+      <div>
+        {{ form.password1|add_class:"cp-input"|attr:"placeholder:비밀번호"|add_error_class:"error" }}
+      </div>
+      {% for error in form.password1.errors %}
+          <div class="error-message" style="
+          margin-right: 40px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+      ">{{ error }}</div>
+        {% endfor %}
+      <div>
+        {{ form.password2|add_class:"cp-input"|attr:"placeholder:비밀번호 확인"|add_error_class:"error" }}
+      </div>
+      {% for error in form.password2.errors %}
+          <div class="error-message"style="
+          margin-right: 40px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+      ">{{ error }}</div>
+        {% endfor %}    
+      <button class="cp-button" type="submit">다음 단계로 넘어가기</button>
+    </form>
+
+    <div class="info">
+      이미 회원이신가요?<a class="link" href="{% url 'account_login' %}">로그인</a>
+    </div>
+  </main>
+</div>
+{% endblock content %}

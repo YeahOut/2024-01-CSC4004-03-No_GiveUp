@@ -1,0 +1,176 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VocalUpload{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'modal/css/analyze.css' %}">
+</head>
+<body>
+    <div class="flex">
+        <div class="contents">
+            <header>
+                <div class="header-contents">
+                    <img class="logo" src="{% static 'modal/images/logo.svg' %}" onclick="location.href='{% url 'main1' %}'"/>
+                </div>
+                <div class="mobile_btn">
+                    <input type="checkbox" id="hamburger" />
+                    <label for="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <img class="user-img" src="{% static 'modal/images/modal-face.svg' %}" width="100px" />
+                        <div class="modaltext">
+                            <div class="user-info">
+                                <p class="info1">MyV 회원</p>
+                                <p class="info2">{{ user }}</p>
+                            </div>
+                            <ul class="nav_mobile">
+                                <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
+                                <li><a href="{% url 'playlistPage' %}">플레이리스트</a></li>
+                                <li><a href="{% url 'analyze' %}">보컬 분석</a></li>
+                                <li><a href="{% url 'team' %}">팀 소개</a></li>
+                                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                            </ul>
+                            <div class="wave">
+                                <img src="{% static 'modal/images/wave.png' %}" height="223px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="textbox">
+                <p>본인의 음원과 비교하고 싶은 음원 파일을</p>
+                <p>업로드해주세요</p>
+                <p>나만의 보컬 분석 보고서를 받아볼 수 있어요!</p>
+                <div class="textbox warningBox">
+                    <div class="warning_text">
+                        <input type="image" src="{% static 'signup/images/warningIcon.svg' %}">
+                        <h3>주의해주세요</h3>
+                    </div>
+                    <p>음원은 .m4a .mp3 .wav 확장자로 올려주세요!</p>
+                    <p>본인 음원 파일의 길이는 15초</p>
+                    <p>비교 음원의 길이는 30초를 넘지 않아야 해요!</p>
+                </div>
+            </div>
+
+
+            <form id="file-upload-form" class="file-container" action="{% url 'upload_analyze_file' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}  <!-- CSRF 토큰 추가 -->
+                <div class="mysound">
+                    <div class="mysound btn">
+                        <label for="mysound-file">
+                            <div class="btn-upload">본인 음원 올리기</div>
+                        </label>
+                        <input id="mysound-file" type="file" name="mysound_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'mySound')">
+                    </div>
+                    <input type="checkbox" id="mysound-checkbox" style="display: none;">
+                    <label for="mysound-checkbox" class="custom-checkbox"></label>
+                </div>
+                <div class="comparesound">
+                    <div class="comparesound btn">
+                        <label for="comparesound-file">
+                            <div class="btn-upload">비교 음원 올리기</div>
+                        </label>
+                        <input id="comparesound-file" type="file" name="comparesound_file" accept=".m4a,.mp3,.wav" onchange="handleFileSelect(event, 'compareSound')">
+                    </div>
+                    <input type="checkbox" id="comparesound-checkbox" style="display: none;">
+                    <label for="comparesound-checkbox" class="custom-checkbox"></label>
+                </div>
+                <input class="file-upload-button" type="submit" value="파일 제출하기" onclick="handleSubmit(event)"/>
+            </form>
+            <footer>
+                <input class="next-step-button" type="submit" value="보컬 분석 결과 보기" onclick="location.href='{% url 'vocalResult' %}'" />
+            </footer>
+        </div>
+    </div>
+    </body>
+</html>
+
+<script>
+    let mySoundFile = null;
+    let compareSoundFile = null;
+
+    // 파일을 선택하면 체크 표시가 되게 하기
+    function handleFileSelect(event, fileType) {
+    const file = event.target.files[0];
+    if (file) {
+        if (fileType === "mySound") {
+        mySoundFile = file;
+        document.getElementById("mysound-checkbox").checked = true;
+        } else if (fileType === "compareSound") {
+        compareSoundFile = file;
+        document.getElementById("comparesound-checkbox").checked = true;
+        }
+    } else {
+        if (fileType === "mySound") {
+        mySoundFile = null;
+        document.getElementById("mysound-checkbox").checked = false;
+        } else if (fileType === "compareSound") {
+        compareSoundFile = null;
+        document.getElementById("comparesound-checkbox").checked = false;
+        }
+    }
+    }
+
+    // 체크박스 클릭 방지
+    document.addEventListener("DOMContentLoaded", function () {
+        document
+        .getElementById("mysound-checkbox")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+        });
+        document
+        .getElementById("comparesound-checkbox")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+        });
+    });
+
+    // 파일 제출하기 전에는 다음 단계 못넘어가게 하기
+    document.querySelector('.next-step-button').disabled = true;
+
+    // 파일 제출 처리
+    function handleSubmit(event) {
+    event.preventDefault(); //채워야지만 보낼 수 있도록 하기 위함
+
+    if (mySoundFile && compareSoundFile) {
+        const formData = new FormData();
+        formData.append("mysound_file", mySoundFile);
+        formData.append("comparesound_file", compareSoundFile);
+
+        const csrftoken = document.querySelector(
+        "[name=csrfmiddlewaretoken]"
+        ).value;
+
+        fetch("{% url 'upload_analyze_file' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-CSRFToken": csrftoken, // CSRF 토큰 추가
+        },
+        })
+        .then((response) => {
+            if (response.ok) {
+            alert("파일이 성공적으로 업로드되었습니다.");
+            document.querySelector('.next-step-button').disabled = false;
+            } else {
+            alert("업로드에 실패했습니다. 서버 응답: " + response.status);
+            }
+            return response.text();
+        })
+        .then((result) => {
+            console.log("서버 응답:", result);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("에러가 발생했습니다: " + error.message);
+        });
+    } else {
+        alert("두 개의 파일을 모두 선택해주세요.");
+    }
+    }
+</script>
