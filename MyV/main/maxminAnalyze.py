@@ -12,7 +12,10 @@ import math
 from .models import UserMaxMinFile 
 from .awsInMain import downloadFile
 from .models import UserMaxMinNote
+from asgiref.sync import sync_to_async
 
+
+@sync_to_async
 def maxminAnalyze(user):
     #####download from s3
     userInfo = UserMaxMinFile.objects.filter(user=user).order_by('-id').first() #db에서 정보 가져오기
@@ -38,6 +41,7 @@ def maxminAnalyze(user):
     os.remove(min_file_path)
     os.remove(max_file_path)
 
+@sync_to_async
 def usingLibrosa(min_file_name):
     y, sr = librosa.load(min_file_name)
     # y = y[:len(y) // 2]
