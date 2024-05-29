@@ -21,6 +21,33 @@
   padding: 0;
 }
 
+button{
+  position: relative;
+  top: -4px;
+  left: 293px;
+  width: 70px;
+  height: 33px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  background: #FFF;
+  color: var(--white, #5D5FEF);
+  text-align: center;
+  /* font-family: Inter; */
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  border: 2px solid #5D5FEF;
+}
+
+
+button:hover{
+  background: #5D5FEF;
+  color: #FFF;
+
+}
+
+
 .flex {
   margin: 0;
   padding: 0;
@@ -86,12 +113,13 @@
 
 .playlist-contents {
   position: relative;
-  top: 120px;
+  top: 115px;
 }
 
 .playlist-content {
-  height: 92px;
-  margin-bottom: 7px;
+  position: relative;
+  top: -20px;
+
 
 }
 
@@ -100,14 +128,15 @@
   position: relative;
   left: 27.5px;
   color: #cacaca;
+
 }
 
 .album {
   display: block;
   width: 40px;
   height: 40px;
-  background-color: #000;
-  margin: 10px 0px 10px 30px;
+  /* background-color: #000; */
+  margin: -15px 1px 10px 30px;
 }
 
 .song-info {
@@ -135,9 +164,9 @@
   transform: translateY(30%) rotate(180deg);
   position: absolute;
   bottom: 60px;
-  height: 120px;
+  height: 80px;
   width: 390px;
-  top: 725px;
+  top: 776px;
 }
 
 /**modal css**/
@@ -339,7 +368,7 @@ input[id="hamburger"]:checked+label+div {
   font-weight: bold;
   color: #5d5fef;
   position: relative;
-  top: 175px;
+  top: 135px;
 }
 
 .pagination .previous, .pagination .current, .pagination .next {
@@ -358,8 +387,34 @@ hr{
     position: relative;
     left: 27.5px;
     color: #cacaca;
+    
 }
 
 .playlist-content:hover {
   background-color: #f0f0f0; 
+}
+
+.retry{
+  position: relative;
+  top: -35px;
+  left: 30px;
+  width: 100px;
+  height: 31px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  background: #FFF;
+  color: #62A3F9;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 31px;
+  border: 2px solid #62A3F9;
+  cursor: pointer;
+}
+
+.retry:hover{
+  background: #62A3F9;
+  color: #FFF;
+
 }

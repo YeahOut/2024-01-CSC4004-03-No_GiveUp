@@ -14,4 +14,5 @@ urlpatterns = [
     path('howtouse/3', views.howtoUse3, name='howtoUse3'),
     path('howtouse/4', views.howtoUse4, name='howtoUse4'),
     path('team', views.team, name='team'),
+    path('delete_playlist/', views.delete_playlist, name='delete_playlist'),
 ]
