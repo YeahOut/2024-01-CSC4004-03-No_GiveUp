@@ -26,7 +26,7 @@
                         <div class="modaltext">
                             <div class="user-info">
                                 <p class="info1">MyV 회원</p>
-                                <p class="info2">{{ user }}</p>
+                                <p class="info2">{{ user.nickname }}</p>
                             </div>
                             <ul class="nav_mobile">
                                 <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
@@ -46,7 +46,7 @@
                 <div class="title">플레이리스트</div>
                 <div class="playlist-form">
                     <div class="playlist-text">
-                        <span>{{ user }}</span> 님을 위한 플레이리스트입니다.🎵
+                        <span>{{ user.nickname }}</span> 님을 위한 플레이리스트입니다.🎵
                     </div>
                     <div class="playlist-text1">
                         <p> 곡을 누르면 
