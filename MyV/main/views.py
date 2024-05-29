@@ -4,6 +4,10 @@ from .awsInMain import upload_to_s3,downloadFile
 from .maxminAnalyze import maxminAnalyze
 from .sportify_api import sportify
 
+##async
+from asgiref.sync import sync_to_async
+import asyncio
+##
 
 def main_1(request):
     return render(request, 'main/main_1.html')
@@ -22,9 +26,10 @@ def upload_max_min(request):
     
     return HttpResponse("Failed to upload files")
 
-def main_2(request):
+async def main_2(request):
     user = request.user
-    maxminAnalyze(user)
+    task1 = asyncio.ensure_future(maxminAnalyze(user))
+    await asyncio.wait([task1])
     return render(request,'main/loading.html')
 
 def main_3(request):

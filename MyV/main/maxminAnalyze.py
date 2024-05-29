@@ -6,20 +6,20 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager,rc
 import numpy as np
 import sys
-import os
-import shutil
-import math
+import os, asyncio
 from .models import UserMaxMinFile 
 from .awsInMain import downloadFile
 from .models import UserMaxMinNote
+from asgiref.sync import sync_to_async
 
-def maxminAnalyze(user):
+
+async def maxminAnalyze(user):
     #####download from s3
-    userInfo = UserMaxMinFile.objects.filter(user=user).order_by('-id').first() #db에서 정보 가져오기
+    userInfo = await sync_to_async(UserMaxMinFile.objects.filter(user=user).order_by('-id').first())#db에서 정보 가져오기
     min_file_name = userInfo.min_file_name
     max_file_name = userInfo.max_file_name
     #print(min_file_name)
-    downloadFile(min_file_name,max_file_name)
+    await sync_to_async(downloadFile(min_file_name,max_file_name))
     #print("checkpoint")
 
     #####analyze
@@ -29,16 +29,25 @@ def maxminAnalyze(user):
     max_note_fromMax, min_note_fromMax = usingLibrosa(max_file_path)
     #print(min_note_fromMin, max_note_fromMax)
 
+    #delete
+    os.remove(min_file_path)
+    os.remove(max_file_path)
+    print("delete success")
+    ###
+
     #####upload to user DB 
     upload = UserMaxMinNote(user = user, 
                    max_note = max_note_fromMax,
                    min_note = min_note_fromMin)
-    upload.save()
+    await sync_to_async(upload.save())
 
-def usingLibrosa(min_file_name):
-    y, sr = librosa.load(min_file_name)
+
+
+async def usingLibrosa(min_file_name):
+    loop = asyncio.get_event_loop()
+    y, sr = await loop.run_in_executor(None,librosa.load,min_file_name)
     # y = y[:len(y) // 2]
-    f0, voiced_flag, voiced_prob = librosa.pyin(y=y, fmin=60, fmax=2000, sr=sr)
+    f0, voiced_flag, voiced_prob = await loop.run_in_executor(None, librosa.pyin, y, 60, 2000, sr)
 
     max_freq = -1
     min_freq = 3000
