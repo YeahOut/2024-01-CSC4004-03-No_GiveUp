@@ -1,4 +1,17 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+  font-family: "YangJin";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin?#iefix") format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/yangjin/YangJin.ttf") format("truetype");
+  font-display: swap;
+}
+
 * {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
@@ -74,6 +87,56 @@ body{
   position:relative;
   top:10px;
 }
+.profile_parent_0{
+  padding:10px;
+}
+.circle{
+  float:left;
+  padding:10px;
+}
+.circle_text_1{
+  float:left;
+  font-size:15px;
+  color:#5974fc;
+  font-weight:1000;
+  position:relative;
+  top:20px;
+}
+.circle_text_2{
+  float:left;
+  font-size:15px;
+  color:#5974fc;
+  font-weight:1000;
+  position:relative;
+  top:15px;
+}
+.show_front{
+  width:390px;
+  height:136px;
+  }
+.profile_parent_1{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-gap:1px;
+  height:44px;
+  width:382px;
+}
+.profile_child{
+  width:128px;
+  height:44px;
+  text-align:center;
+}
+.show_back{
+  width:390px;
+  height:136px;
+}
+.profile_parent_2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap:3px;
+  height:44px;
+  width:250px;
+}
 
 .etc{
   font-size:13px;
@@ -86,23 +149,30 @@ a{
   text-decoration:none;
   color:black;
 }
-.header-contents.mobile_btn{
-  position:relative;
-  top:30px;
-  right:110px;
+.header-contents{
+  position: relative;
+  left: 5%;
+  top: 30px;
+}
+.mobile_btn{
+  position: relative;
+  top: 35px;
+  left: 300px;
   z-index:1;
-  width:20px;
+  width: 20px;
 }
 input[id="hamburger"]{
   display:none;
 }
 input[id="hamburger"]+label{
-  display:block;
+  display: block;
   width: 30px;
-  height:20px;
-  position:relative;
-  left:80%;
-  cursor:pointer;
+  height: 20px;
+  position: relative;
+  left: 100%;
+  cursor: pointer;
+  z-index: 2;
+  top: -40px;
 }
 input[id="hamburger"] + label span {
   display: block;
@@ -144,39 +214,22 @@ input[id="hamburger"]:checked + label span:nth-child(3) {
 }
 div[class="sidebar"] {
   width: 166px;
-  height: 844px;
+  height: 848px;
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
-  position: fixed;
-  bottom:0px;
+  top: 0%;
   left: 200%;
-  z-index: 98;
   transition: all 0.35s;
   overflow: hidden;
+  position: absolute;
+  transform: translate(50px, -70px);
+  z-index: 1;
 }
 
 input[id="hamburger"]:checked + label + div {
-  left: 225px;
+  transform: translate(-110px, -70px);
 }
-@media (min-width: 400px) {
-  div[class="sidebar"] {
-    width: 166px;
-    height: 844px;
-    background: white;
-    background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
-    position: fixed;
-    bottom: 155px;
-    left: 200%;
-    z-index: 98;
-    transition: all 0.35s;
-    overflow: hidden;
-  }
-  input[id="hamburger"]:checked + label + div {
-    left: 425px;
-    bottom: 15%;
-    overflow: hidden;
-  }
-}
+
 .nav_mobile{
   position: absolute;
   top:119px;
@@ -242,4 +295,5 @@ input[id="hamburger"]:checked + label + div {
   position: relative;
   left: 60%;
   top: 93.5px;
+  z-index: -1;
 }
