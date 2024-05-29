@@ -23,8 +23,8 @@
 
 ### 1. 개발 환경
 - Frontend : HTML, CSS, JavaScript
-- Backend :
-- algorithm :
+- Backend : Django 5.0.4
+- algorithm : Python 3.10.11, Librosa
 - 협업 tool : GitHub, Discord, Kakaotalk, Slack
 - 디자인 : Figma
   
