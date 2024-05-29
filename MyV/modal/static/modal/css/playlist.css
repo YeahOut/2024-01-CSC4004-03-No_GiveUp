@@ -21,6 +21,30 @@
   padding: 0;
 }
 
+button{
+  position: relative;
+  top: 110px;
+  left: 310px;
+  width: 70px;
+  height: 31px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  background: #FFF;
+  color: var(--white, #5D5FEF);
+  text-align: center;
+  /* font-family: Inter; */
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  border-color: #5D5FEF;
+}
+
+button:hover{
+  background: #5D5FEF;
+  color: #FFF;
+
+}
 .flex {
   margin: 0;
   padding: 0;
@@ -86,7 +110,7 @@
 
 .playlist-contents {
   position: relative;
-  top: 120px;
+  top: 126px;
 }
 
 .playlist-content {
@@ -106,8 +130,8 @@
   display: block;
   width: 40px;
   height: 40px;
-  background-color: #000;
-  margin: 10px 0px 10px 30px;
+  /* background-color: #000; */
+  margin: -15px 1px 10px 30px;
 }
 
 .song-info {

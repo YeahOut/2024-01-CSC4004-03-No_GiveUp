@@ -79,3 +79,10 @@ def howtoUse4(request):
 
 def team(request):
     return render(request, 'modal/team.html')
+
+def delete_playlist(request):
+    if request.method == 'POST':
+        playlist_ids = request.POST.getlist('playlist_ids')
+        if playlist_ids:
+            SelectedPlaylist.objects.filter(id__in=playlist_ids, user=request.user).delete()
+    return redirect('playlistPage')
