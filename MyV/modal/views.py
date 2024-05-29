@@ -92,3 +92,11 @@ def team(request):
     user = request.user
     context = {'user': user.nickname }
     return render(request, 'modal/team.html',context)
+
+def delete_playlist(request):
+    if request.method == 'POST':
+        playlist_ids = request.POST.getlist('playlist_ids')
+        if playlist_ids:
+            SelectedPlaylist.objects.filter(id__in=playlist_ids, user=request.user).delete()
+    return redirect('playlistPage')
+

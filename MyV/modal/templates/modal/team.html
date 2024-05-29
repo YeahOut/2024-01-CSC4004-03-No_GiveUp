@@ -26,7 +26,7 @@
                         <div class="modaltext" >
                             <div class="user-info">
                                 <p class="info1">MyV 회원</p>
-                                <p class="info2">{{ user }}</p>
+                                <p class="info2">{{ user.nickname }}</p>
                             </div>
                             <ul class="nav_mobile" style="padding-left: 0px;" >
                                 <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
@@ -53,9 +53,25 @@
                       팀 "포7ㅣ를 모르조"에서 제작한<br>
                       모바일형 웹서비스입니다.
                   </div>
-              </div>
-              <img class="show"src="{% static 'modal/images/Group.png' %}"/>
-          </main>
+                </div>
+                <img class="circle"src="{% static 'modal/images/yarn.png' %}"/>
+                <div class="circle_text_1">프론트엔드
+                </div>
+                <img class="show_front"src="{% static 'modal/images/Group_front.png' %}"/>
+                <div class="profile_parent_1">
+                    <div class="profile_child">AI융합학부22<br><b>이승연</b></div>
+                    <div class="profile_child">컴퓨터공학전공21<br><b>이성준</b></div>
+                    <div class="profile_child">컴퓨터공학전공22<br><b>이시우</b></div>
+                    </div>
+                    <img class="circle"src="{% static 'modal/images/disc.png' %}"/>
+                    <div class="circle_text_2">백엔드
+                    </div><br>
+                      <img class="show_back"src="{% static 'modal/images/Group_back.png' %}"/>
+                    <div class="profile_parent_2">            
+                      <div class="profile_child">컴퓨터공학전공22<br><b>김지민</b></div>
+                      <div class="profile_child">컴퓨터공학전공22<br><b>최예인</b></div>
+                  </div>
+                </main>
           <footer>
               <div class="etc">               
                   <p>제작 기간 : 2024년 3월~6월</p>
