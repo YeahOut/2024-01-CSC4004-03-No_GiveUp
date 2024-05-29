@@ -45,7 +45,7 @@
             <main>
                 <div class="title">플레이리스트</div>
                 <div class="playlist-form">
-                    <form id="playlistForm" method="post" action="{% url 'delete_playlist' %}">
+                    <form id="playlistForm" method="post" action="{% url 'delete_playlist' %}" onsubmit="return confirmDelete()">
                         {% csrf_token %}
                         <div class="playlist-text">
                             <span>{{ user.nickname }}</span> 님을 위한 플레이리스트입니다.🎵
@@ -55,27 +55,31 @@
                               <img class="sp" src="{% static 'modal/images/spotify.png' %}" />
                               로 이동합니다.</p>
                         </div>
-                        <button type="submit">삭제</button>
+                        
                         <div class="playlist-contents">
-                            {% for playlist in page_obj %}
-                                <div class="playlist-content">
-                                    <hr />
-                                    <input type="checkbox" name="playlist_ids" value="{{ playlist.id }}" style="
-                                    margin-left: 345px;
-                                    margin-top: 5px;
-                                ">
-                                    <span class="album"><img src="{{ playlist.img }}" alt="앨범 커버" width="80px" /></span>
-                                    <div class="song-info">
-                                        <span class="song-title">{{ playlist.title }}</span><br />
-                                        <span class="singer">{{ playlist.artist }}</span>
-                                    </div>                               
-                                </div>
-                            {% empty %}
+                            {% if page_obj %}
+                                <button type="submit">삭제</button>
+                                <div class="retry" onclick="location.href='{% url 'main3' %}'">다시 추천 받기</div>
+                                {% for playlist in page_obj %}
+                                    <div class="playlist-content" onclick="location.href='{{ playlist.song_url }}'">
+                                        <hr />
+                                        <input type="checkbox" name="playlist_ids" value="{{ playlist.id }}" onclick="event.stopPropagation();" style="
+                                        margin-left: 345px;
+                                        margin-top: 12px;
+                                        transform: scale(1.5);
+                                    ">
+                                        <span class="album"><img src="{{ playlist.img }}" alt="앨범 커버" width="80px" /></span>
+                                        <div class="song-info">
+                                            <span class="song-title">{{ playlist.title }}</span><br />
+                                            <span class="singer">{{ playlist.artist }}</span>
+                                        </div>                               
+                                    </div>
+                                {% endfor %}
+                            {% else %}
                                 <p style="padding-left: 130px; padding-bottom: 10px;">선택된 앨범이 없습니다.</p>
-                            {% endfor %}
+                            {% endif %}
                             <hr />
                         </div>
-
                     </form>
                     <div class="pagination">
                         <span class="previous">
@@ -101,5 +105,16 @@
             </footer>
         </div>
     </div>
+    <script>
+        function confirmDelete() {
+            var checkboxes = document.querySelectorAll('input[name="playlist_ids"]:checked');
+            if (checkboxes.length > 0) {
+                return confirm('삭제하시겠습니까?');
+            } else {
+                alert('삭제할 곡을 선택해주세요.');
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
