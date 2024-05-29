@@ -8,7 +8,7 @@ from main.models import PlaylistInfo
 
 def analyzePage(request):
     user = request.user
-    context = {'user': user}
+    context = {'user': user.nickname }
     return render(request, 'modal/analyze.html', context)
 
 def upload_analyze_file(request):
@@ -63,22 +63,32 @@ def playlistPage(request):
 
     context = {
         'page_obj': page_obj,
-        'user': user
+        'user': user.nickname
     }
     return render(request, 'modal/playlist.html', context)
 
 
 def howtoUse1(request):
-    return render(request, 'modal/howtouse1.html')
+    user = request.user
+    context = {'user': user.nickname }
+    return render(request, 'modal/howtouse1.html',context)
 
 def howtoUse2(request):
-    return render(request, 'modal/howtouse2.html')
+    user = request.user
+    context = {'user': user.nickname }
+    return render(request, 'modal/howtouse2.html',context)
 
 def howtoUse3(request):
-    return render(request, 'modal/howtouse3.html')
+    user = request.user
+    context = {'user': user.nickname }
+    return render(request, 'modal/howtouse3.html', context)
 
 def howtoUse4(request):
-    return render(request, 'modal/howtouse4.html')
+    user = request.user
+    context = {'user': user.nickname }
+    return render(request, 'modal/howtouse4.html', context)
 
 def team(request):
-    return render(request, 'modal/team.html')
+    user = request.user
+    context = {'user': user.nickname }
+    return render(request, 'modal/team.html',context)
