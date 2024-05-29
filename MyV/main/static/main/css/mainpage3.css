@@ -201,7 +201,7 @@
 .song-info1 {
   position: relative;
   bottom: 545px;
-  left: 20px;
+  left: 10px;
   width: 120px;
   height: 50px;
   overflow: scroll; 
@@ -219,7 +219,7 @@
 .song-info3 {
   position: relative;
   bottom: 645px;
-  left: 280px;
+  left: 273px;
   width: 120px;
   height: 30px;
   overflow: scroll;
