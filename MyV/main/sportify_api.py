@@ -42,10 +42,10 @@ def sportify(user):
     min_key = key_dict[user_min_note[:len(user_min_note) - 1]]
     print(min_key)
     max_key = key_dict[user_max_note[:len(user_max_note) - 1]]
-    female_key = 502
-    male_key = 405
-    #키 값 = 옥타브 * 100 + key_dict
-    cmp_key = (min_key + 100 * int(user_min_note[-1]) + max_key + 100 * int(user_max_note[-1])) / 2
+    female_key = 502 #0530
+    male_key = 405 #0530
+    #키 값 = 옥타브 * 100 + key_dict, 0530
+    cmp_key = (min_key + 100 * int(user_min_note[-1]) + max_key + 100 * int(user_max_note[-1])) / 2 #0530
 
     min_mood = input_mood / 10 - 0.2
     max_mood = input_mood / 10 + 0.2
@@ -55,13 +55,13 @@ def sportify(user):
     max_tmpo = input_tmpo / 10 + 0.2
     min_key = min_key - 1
     max_key = max_key + 1
-    min_popularity = 60
+    min_popularity = 60 
     recommendation_songs_cnt = 3
 
     mood_string = ""
     energy_string = ""
     tempo_string = ""
-    user_key_string = ""
+    user_key_string = "" #0530
 
     if input_mood < 2:
         mood_string = "매우 차분한"
@@ -97,11 +97,11 @@ def sportify(user):
         tempo_string = "매우 빠름"
 
     if cmp_key > female_key :
-        "여성 평균보다 높아요"
+        user_key_string = "여성 평균보다 높아요"
     elif cmp_key > male_key :
-        "여성 평균보다 낮고 남성 평균보다 높아요"
+        user_key_string =  "여성 평균보다 낮고 남성 평균보다 높아요"
     else :
-        "남성 평균보다 낮아요"
+        user_key_string = "남성 평균보다 낮아요"
         
     recommended = sp.recommendations(limit=recommendation_songs_cnt, market='KR', seed_artists=seed_artist,
                                      min_danceability=min_mood, max_danceability=max_mood,
