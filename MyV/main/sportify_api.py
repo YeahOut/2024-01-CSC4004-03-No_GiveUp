@@ -25,7 +25,6 @@ def sportify(user):
 
     #db에서 정보 가져오기 (최고음 최저음)
     userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first() #가장 마지막 정보만 가져오기
-    print("user:",user)
     user_min_note = userNoteInfo.min_note
     user_max_note = userNoteInfo.max_note
 
