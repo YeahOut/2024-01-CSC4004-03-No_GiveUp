@@ -34,7 +34,7 @@ def vocalResult(request):
     if downloaded == 1:
         max_note, min_note, start_t, best_st, best_ed, score = process_file()
         user = request.user
-        context = {'max': max_note, 'min': min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed': int(best_ed), 'score': score, 'user': user}
+        context = {'max': max_note, 'min': min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed': int(best_ed), 'score': score, 'user': user.nickname}
         saveInfo = UserVocalInfo(user=user, max_note=max_note, min_note=min_note)
         saveInfo.save()
     else:
