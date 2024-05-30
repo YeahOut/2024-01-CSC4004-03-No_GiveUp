@@ -26,14 +26,16 @@ def upload_max_min(request):
     
     return HttpResponse("Failed to upload files")
 
-async def main_2(request):
-    user = request.user
-    task1 = asyncio.ensure_future(maxminAnalyze(user))
-    await asyncio.wait([task1])
+def main_2(request):
+    # user = request.user
+    # # task1 = asyncio.ensure_future(maxminAnalyze(user))
+    # # await asyncio.wait([task1])
+    # maxminAnalyze(user)
     return render(request,'main/loading.html')
 
 def main_3(request):
     user = request.user
+    maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
     #userInfo는 max,min, mood, tmpo, energy 순으로 담긴 리스트
     song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
