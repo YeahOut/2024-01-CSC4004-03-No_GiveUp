@@ -45,7 +45,7 @@ def sportify(user):
     female_key = 502 #0530
     male_key = 405 #0530
     #키 값 = 옥타브 * 100 + key_dict, 0530
-    cmp_key = (min_key + 100 * int(user_min_note[-1]) + max_key + 100 * int(user_max_note[-1])) / 2 #0530
+    cmp_key = max_key + 100 * int(user_max_note[-1])
 
     min_mood = input_mood / 10 - 0.2
     max_mood = input_mood / 10 + 0.2
@@ -99,7 +99,7 @@ def sportify(user):
     if cmp_key > female_key :
         user_key_string = "여성 평균보다 높아요"
     elif cmp_key > male_key :
-        user_key_string =  "여성 평균보다 낮고 남성 평균보다 높아요"
+        user_key_string = "여성 평균보다 낮고    남성 평균보다 높아요"
     else :
         user_key_string = "남성 평균보다 낮아요"
         
@@ -173,5 +173,5 @@ def sportify(user):
     for i in range(recommendation_songs_cnt - len(song_names)):
         img_urls.append(os.join.path(os.getcwd(), 'main', 'static', 'main', 'tmp_img.png'))
 
-    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, mood_string,
+    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, user_key_string,
                                                                     tempo_string, energy_string]
