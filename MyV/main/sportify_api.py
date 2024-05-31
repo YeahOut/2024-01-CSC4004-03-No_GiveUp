@@ -165,9 +165,9 @@ def sportify(user):
     if len(song_names) < 3:
         for i in range(3 - len(song_names)):
             img_urls.append(".\static\main\images\tmp_img.png")
-            song_name.appned(" ")
+            song_name.append(" ")
             song_url.append(" ")
-            artist.appned(" ")
+            artist.append(" ")
             preview_url.append(" ")
 
     for i in range(recommendation_songs_cnt - len(song_names)):
