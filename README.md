@@ -31,12 +31,11 @@
 
 <img src="https://img.shields.io/badge/BackEnd-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white"><img src="https://img.shields.io/badge/5.0.4-515151?style=for-the-badge">
 
-<img src="https://img.shields.io/badge/Algorithm-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"><img src="https://img.shields.io/badge/3.10.11-3776AB?style=for-the-badge"><img src="https://img.shields.io/badge/Librosa-00BFFF?style=for-the-badge">
+<img src="https://img.shields.io/badge/Algorithm-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"><img src="https://img.shields.io/badge/3.10.11-3776AB?style=for-the-badge"><img src="https://img.shields.io/badge/Librosa-00BFFF?style=for-the-badge"><img src="https://img.shields.io/badge/spleeter-1D3557?style=for-the-badge"><img src="https://img.shields.io/badge/ffmpeg-007ACC?style=for-the-badge&logo=ffmpeg&logoColor=white"><img src="https://img.shields.io/badge/plotly-3F4C6B?style=for-the-badge&logo=plotly&logoColor=white"><img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
 
 <img src="https://img.shields.io/badge/Collaboration Tool-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"><img src="https://img.shields.io/badge/Kakaotalk-FFCD00?style=for-the-badge&logo=Kakaotalk&logoColor=black"><img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white">
 
-<img src="https://img.shields.io/badge/Design Tool-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
-
+<img src="https://img.shields.io/badge/Design Tool-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"><img src="https://img.shields.io/badge/clip studio-1DB6EA?style=for-the-badge">
 <br><br>
 
 ## 📂 파일 구조 
