@@ -62,11 +62,12 @@
 
 |이성준|이승연|이시우|
 |:-----:|:-----:|:-----:|
+|![성준](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/6d4220e8-a1a4-46bd-82c1-42a258f579fb)|![승연](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/0cca97c1-36e9-417b-9c21-7b223d7e6c36)|![시우](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/099cc563-b7c1-4d46-ab8d-32f17b9f055c)|
 |동국대학교 <br>컴퓨터공학과 21학번|동국대학교<br> AI융합학부   22학번|동국대학교<br> 컴퓨터공학과 22학번|
 
 ### Backend
 
 |김지민|최예인|
 |:-----:|:-----:|
-|사진|사진|
+|![지민](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/50e2f95c-20e9-4849-98ad-4f1a4665b40d)|![예인](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/8496ba50-ab3a-4378-8903-41a6fd55e0a5)|
 |동국대학교<br> 컴퓨터공학과 22학번|동국대학교<br> 컴퓨터공학과 22학번|
