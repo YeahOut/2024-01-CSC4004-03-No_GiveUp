@@ -37,9 +37,9 @@ def main_2(request):
 
 def main_3(request):
     user = request.user
-    maxminAnalyze(user)
+    #maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
-    #userInfo는 max,min, mood, tmpo, energy 순으로 담긴 리스트
+    #userInfo는 max,min, user_key_string, tmpo, energy 순으로 담긴 리스트
     song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
     context = {
         'user' : user,
