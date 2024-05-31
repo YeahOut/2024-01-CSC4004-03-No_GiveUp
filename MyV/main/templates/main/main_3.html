@@ -55,17 +55,17 @@
                     <div class="album-form">
                         <div class="af">
                             <button class="album-cover1">
-                                <img src="{{ cover1 }}" width="120px" />
+                                <img id="c1" src="{{ cover1 }}" width="120px" />
                             </button>
                         </div>
                         <div class="af">
                             <button class="album-cover2">
-                                <img src="{{ cover2 }}" width="130px" />
+                                <img id="c2" src="{{ cover2 }}" width="130px" />
                             </button>
                         </div>
                         <div class="af">
                             <button class="album-cover3">
-                                <img src="{{ cover3 }}" width="120px" />
+                                <img id="c3" src="{{ cover3 }}" width="120px" />
                             </button>
                         </div>
                     </div>
@@ -135,12 +135,21 @@ function song_select(clicked_id) {
 
     if (clicked_id == "af1") {
         document.getElementById("audio").src = url;
+        document.getElementById("af1").style.backgroundColor = "rgba(0, 0, 0, 0)";
+        document.getElementById("af2").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
+        document.getElementById("af3").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
         cur_selected = 1;
     } else if (clicked_id == "af2") {
         document.getElementById("audio").src = url;
+        document.getElementById("af1").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
+        document.getElementById("af2").style.backgroundColor = "rgba(0, 0, 0, 0)";
+        document.getElementById("af3").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
         cur_selected = 2;
     } else if (clicked_id == "af3") {
         document.getElementById("audio").src = url;
+        document.getElementById("af1").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
+        document.getElementById("af2").style.backgroundColor = "rgba(215, 215, 215, 0.4)";
+        document.getElementById("af3").style.backgroundColor = "rgba(0, 0, 0, 0)";
         cur_selected = 3;
     }
 
