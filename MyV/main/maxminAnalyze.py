@@ -13,14 +13,16 @@ from .models import UserMaxMinNote
 from asgiref.sync import sync_to_async
 
 
-async def maxminAnalyze(user):
+def maxminAnalyze(user):
     #####download from s3
-    userInfo = await sync_to_async(UserMaxMinFile.objects.filter(user=user).order_by('-id').first())#db에서 정보 가져오기
+    # userInfo = await sync_to_async(UserMaxMinFile.objects.filter(user=user).order_by('-id').first())#db에서 정보 가져오기
+    userInfo = UserMaxMinFile.objects.filter(user=user).order_by('-id').first()
     min_file_name = userInfo.min_file_name
     max_file_name = userInfo.max_file_name
-    #print(min_file_name)
-    await sync_to_async(downloadFile(min_file_name,max_file_name))
-    #print("checkpoint")
+    print(min_file_name)
+    #await sync_to_async(downloadFile(min_file_name,max_file_name))
+    downloadFile(min_file_name, max_file_name)
+    print("checkpoint")
 
     #####analyze
     min_file_path = os.path.join(os.getcwd(),'media','maxminSrc',min_file_name)
@@ -39,15 +41,14 @@ async def maxminAnalyze(user):
     upload = UserMaxMinNote(user = user, 
                    max_note = max_note_fromMax,
                    min_note = min_note_fromMin)
-    await sync_to_async(upload.save())
+    #await sync_to_async(upload.save())
+    upload.save()
 
 
 
-async def usingLibrosa(min_file_name):
-    loop = asyncio.get_event_loop()
-    y, sr = await loop.run_in_executor(None,librosa.load,min_file_name)
-    # y = y[:len(y) // 2]
-    f0, voiced_flag, voiced_prob = await loop.run_in_executor(None, librosa.pyin, y, 60, 2000, sr)
+def usingLibrosa(min_file_name):
+    y, sr = librosa.load(min_file_name)
+    f0, voiced_flag, voiced_prob = librosa.pyin(y=y, fmin=60, fmax=2000, sr=sr)
 
     max_freq = -1
     min_freq = 3000
