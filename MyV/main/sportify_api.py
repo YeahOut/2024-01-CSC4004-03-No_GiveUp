@@ -163,7 +163,12 @@ def sportify(user):
     playlist_info.save()
 
     if len(song_names) < 3:
-        print("추천받은 곡 부족")
+        for i in range(3 - len(song_names)):
+            img_urls.append(".\static\main\images\tmp_img.png")
+            song_name.appned(" ")
+            song_url.append(" ")
+            artist.appned(" ")
+            preview_url.append(" ")
 
     for i in range(recommendation_songs_cnt - len(song_names)):
         img_urls.append(os.join.path(os.getcwd(), 'main', 'static', 'main', 'tmp_img.png'))
