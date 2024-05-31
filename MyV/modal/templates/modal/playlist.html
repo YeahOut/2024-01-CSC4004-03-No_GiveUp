@@ -59,7 +59,7 @@
                         <div class="playlist-contents">
                             {% if page_obj %}
                                 <button type="submit">삭제</button>
-                                <div class="retry" onclick="location.href='{% url 'main3' %}'">다시 추천 받기</div>
+                                <div class="retry" onclick="location.href='{% url 'loading' %}'">다시 추천 받기</div>
                                 {% for playlist in page_obj %}
                                     <div class="playlist-content" onclick="location.href='{{ playlist.song_url }}'">
                                         <hr />

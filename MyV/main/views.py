@@ -9,6 +9,8 @@ from asgiref.sync import sync_to_async
 import asyncio
 ##
 
+def css(request):
+    return render(request,'main/main_3.html')
 def main_1(request):
     return render(request, 'main/main_1.html')
 
