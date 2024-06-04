@@ -35,7 +35,6 @@ class CustomPasswordValidator:
     def validate(self, password, user=None):
         if (
                 len(password) < 8 or
-                not contains_uppercase_letter(password) or
                 not contains_lowercase_letter(password) or
                 not contains_number(password) or
                 not contains_special_character(password)

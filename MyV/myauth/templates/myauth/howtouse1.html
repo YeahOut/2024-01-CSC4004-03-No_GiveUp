@@ -12,6 +12,11 @@
       <div class="contents">
         <header>
           <div class="header-contents">
+            <img
+            class="backbutton"
+            src="{% static 'modal/images/backbutton.svg' %}"
+            onclick="location.href='{% url 'index' %}'"
+          />
           <img class="logo" src="{% static 'myauth/images/logo.svg' %}" onclick="location.href='{% url 'index' %}'"/>
           </div>
         </header>
