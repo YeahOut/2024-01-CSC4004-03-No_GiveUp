@@ -3,15 +3,8 @@ from django.http import HttpResponse
 from .awsInMain import upload_to_s3,downloadFile
 from .maxminAnalyze import maxminAnalyze
 from .sportify_api import sportify
-from .models import UserMaxMinNote
 
-##async
-from asgiref.sync import sync_to_async
-import asyncio
-##
 
-def css(request):
-    return render(request,'main/main_3.html')
 def main_1(request):
     return render(request, 'main/main_1.html')
 
@@ -30,10 +23,8 @@ def upload_max_min(request):
     return HttpResponse("Failed to upload files")
 
 def main_2(request):
-    # user = request.user
-    # # task1 = asyncio.ensure_future(maxminAnalyze(user))
-    # # await asyncio.wait([task1])
-    # maxminAnalyze(user)
+    user = request.user
+    maxminAnalyze(user)
     return render(request,'main/loading.html')
 
 def main_3(request):
@@ -44,7 +35,7 @@ def main_3(request):
     #     maxminAnalyze(user)
     maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
-    #userInfo는 max,min, user_key_string, tmpo, energy 순으로 담긴 리스트
+    #userInfo는 max,min, mood, tmpo, energy 순으로 담긴 리스트
     song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
     context = {
         'user' : user,

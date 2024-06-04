@@ -8,7 +8,7 @@ from main.models import PlaylistInfo
 
 def analyzePage(request):
     user = request.user
-    context = {'user': user.nickname }
+    context = {'user': user}
     return render(request, 'modal/analyze.html', context)
 
 def upload_analyze_file(request):
@@ -24,9 +24,6 @@ def upload_analyze_file(request):
     
     return HttpResponse("Failed to upload files")
 
-def loading(request):
-    return render(request, 'modal/loading.html')
-
 def vocalResult(request):
     downloaded = downloadFile()
     print("##전달 성공##")
@@ -34,7 +31,7 @@ def vocalResult(request):
     if downloaded == 1:
         max_note, min_note, start_t, best_st, best_ed, score = process_file()
         user = request.user
-        context = {'max': max_note, 'min': min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed': int(best_ed), 'score': score, 'user': user.nickname}
+        context = {'max': max_note, 'min': min_note, 'start_t': start_t, 'best_st': int(best_st), 'best_ed': int(best_ed), 'score': score, 'user': user}
         saveInfo = UserVocalInfo(user=user, max_note=max_note, min_note=min_note)
         saveInfo.save()
     else:
@@ -63,35 +60,25 @@ def playlistPage(request):
 
     context = {
         'page_obj': page_obj,
-        'user': user.nickname
+        'user': user
     }
     return render(request, 'modal/playlist.html', context)
 
 
 def howtoUse1(request):
-    user = request.user
-    context = {'user': user.nickname }
-    return render(request, 'modal/howtouse1.html',context)
+    return render(request, 'modal/howtouse1.html')
 
 def howtoUse2(request):
-    user = request.user
-    context = {'user': user.nickname }
-    return render(request, 'modal/howtouse2.html',context)
+    return render(request, 'modal/howtouse2.html')
 
 def howtoUse3(request):
-    user = request.user
-    context = {'user': user.nickname }
-    return render(request, 'modal/howtouse3.html', context)
+    return render(request, 'modal/howtouse3.html')
 
 def howtoUse4(request):
-    user = request.user
-    context = {'user': user.nickname }
-    return render(request, 'modal/howtouse4.html', context)
+    return render(request, 'modal/howtouse4.html')
 
 def team(request):
-    user = request.user
-    context = {'user': user.nickname }
-    return render(request, 'modal/team.html',context)
+    return render(request, 'modal/team.html')
 
 def delete_playlist(request):
     if request.method == 'POST':
@@ -99,4 +86,3 @@ def delete_playlist(request):
         if playlist_ids:
             SelectedPlaylist.objects.filter(id__in=playlist_ids, user=request.user).delete()
     return redirect('playlistPage')
-

@@ -167,3 +167,4 @@
 |![지민](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/50e2f95c-20e9-4849-98ad-4f1a4665b40d)|![예인](https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/8496ba50-ab3a-4378-8903-41a6fd55e0a5)|
 |[@J1miin](https://github.com/J1miin?tab=repositories)|[@Yeahout](https://github.com/YeahOut)|
 |동국대학교<br> 컴퓨터공학과 22학번|동국대학교<br> 컴퓨터공학과 22학번|
+
