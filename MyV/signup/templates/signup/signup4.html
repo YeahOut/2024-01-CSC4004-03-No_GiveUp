@@ -45,7 +45,7 @@
             class="back_btn"
             type="image"
             src="{% static 'signup/images/backbutton.svg' %}"
-            onclick="location.href='../account/logout/'"
+            onclick="location.href='{% url 'account_logout' %}'"
           />
           <div class="header-content">
             <img id="logo" src="{% static 'signup/images/logo.svg' %}" width="99px" height="40px" />
