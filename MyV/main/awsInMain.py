@@ -38,7 +38,7 @@ def downloadFile(min_file_name,max_file_name) :
     min_obj_file= 'userVoice/' + min_file_name #디렉토리 버킷 접근하기
     max_obj_file='userVoice/' + max_file_name
     print("###버킷 접근 성공###")
-    
+    print('##min file name:',min_obj_file)
     save_file = os.path.join(os.getcwd(), 'media', 'maxminSrc', min_file_name) #저장위치 및 파일 다른 이름으로 저장하기 but 이름변경 안할거임
     bucket.download_file(min_obj_file,save_file)
 
