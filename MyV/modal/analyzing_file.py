@@ -14,10 +14,8 @@ import math
 import plotly.graph_objects as go
 from pydub import AudioSegment
 from spleeter.separator import Separator
-import tensorflow as tf
 
 def process_file():
-    tf.compat.v1.disable_eager_execution()
     # 반주 & 보컬 분리
     org = "org"
     usr = "usr"
@@ -67,7 +65,7 @@ def process_file():
     print("###test###")
     best_st = t_usr[best_idx]
     best_ed = t_usr[best_idx + len(f0_usr) // 5]
-    score = min(int(score *100), 100)
+    score = int(score *100)
     remove_prefiles()
     
     print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
@@ -149,7 +147,7 @@ def accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr):
     max_note = librosa.hz_to_note(max_hz)
     cos_theta = (np.inner(f0_org, f0_usr) /
                  (math.sqrt(np.inner(f0_org, f0_org)) * math.sqrt(np.inner(f0_usr, f0_usr))))
-    score = (math.exp(cos_theta + 1) - 1) * 1.8 / (math.exp(2) - 1)
+    score = (math.exp(cos_theta + 1) - 1) / (math.exp(2) - 1)
 
     # get best term
     best_idx = 0
@@ -210,18 +208,15 @@ def usr_convert_format():
         org_audio.export(os.path.join(os.getcwd(), 'media','usr.mp3'), format="mp3")
 
 def remove_prefiles():
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.wav'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.wav'))
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.mp3'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.mp3'))
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','org.m4a'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','org.m4a'))
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.wav'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.wav'))
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.mp3'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.mp3'))
-    if (os.path.isfile(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.m4a'))):
-        os.remove(os.path.join(os.getcwd(),'media','vocalReportSrc','usr.m4a'))
-    
-    #shutil.rmtree(os.path.join(os.getcwd(), 'pretrained_models'))
-                           
+    if (os.path.isfile("org.wav")):
+        os.remove("org.wav")
+    if (os.path.isfile("org.mp3")):
+        os.remove("org.mp3")
+    if (os.path.isfile("org.m4a")):
+        os.remove("org.m4a")
+    if (os.path.isfile("usr.wav")):
+        os.remove("usr.wav")
+    if (os.path.isfile("usr.mp3")):
+        os.remove("usr.mp3")
+    if (os.path.isfile("usr.m4a")):
+        os.remove("usr.m4a")

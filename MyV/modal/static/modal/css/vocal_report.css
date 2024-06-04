@@ -73,6 +73,12 @@ body {
   height: 130px;
 }
 
+.header-contents {
+  position: relative;
+  left: 5%;
+  top: 30px;
+  margin-bottom: 80px;
+}
 .logo {
   width: 65px;
   padding-left: 15px;
@@ -80,35 +86,39 @@ body {
 
 /**modal css**/
 
-a{
-  text-decoration:none;
-  color:black;
+a {
+  text-decoration: none;
+  color: black;
 }
-.header-contents{
-  position: relative;
-  left: 5%;
-  top: 30px;
-}
-.mobile_btn{
-  position: relative;
+
+/**버튼 위치**/
+
+.mobile_btn {
+  position: absolute;
   top: 35px;
   left: 300px;
-  z-index:1;
-  width: 20px;
 }
-input[id="hamburger"]{
-  display:none;
+
+/****/
+
+input[id="hamburger"] {
+  display: none;
 }
-input[id="hamburger"]+label{
+
+/**버튼 사이즈**/
+
+input[id="hamburger"] + label {
   display: block;
   width: 30px;
   height: 20px;
   position: relative;
   left: 100%;
   cursor: pointer;
-  z-index: 2;
-  top: -40px;
 }
+
+/****/
+/**modal icon**/
+
 input[id="hamburger"] + label span {
   display: block;
   position: absolute;
@@ -147,29 +157,37 @@ input[id="hamburger"]:checked + label span:nth-child(3) {
   bottom: 55%;
   transform: translateY(50%) rotate(-150deg);
 }
+/****/
+
+/**modal**/
+
 div[class="sidebar"] {
   width: 166px;
-  height: 848px;
+  height: 844px;
   background: white;
   background-image: linear-gradient(to right, rgb(222, 222, 222), white 20%);
+  position: fixed;
   top: 0%;
   left: 200%;
+  z-index: 98;
   transition: all 0.35s;
   overflow: hidden;
-  position: absolute;
-  transform: translate(50px, -70px);
-  z-index: 1;
 }
+
+/****/
 
 input[id="hamburger"]:checked + label + div {
-  transform: translate(-110px, -70px);
+  left: 223px;
 }
 
-.nav_mobile{
+/** modal contents form**/
+.nav_mobile {
   position: absolute;
-  top:119px;
-  width:100%;
+  top: 119px;
+  width: 100%;
 }
+/****/
+/** modal contents text**/
 .sidebar .nav_mobile li {
   color: black;
   position: relative;
@@ -182,11 +200,14 @@ input[id="hamburger"]:checked + label + div {
   padding-top: 15px;
   text-align: right;
 }
-.sidebar a{
-  padding:0;
-  text-decoration:none;
-  display:inline;
+/****/
+
+.sidebar a {
+  padding: 0;
+  text-decoration: none;
+  display: inline;
 }
+
 .sidebar li a {
   display: inline;
   font-weight: bold;
@@ -198,6 +219,7 @@ input[id="hamburger"]:checked + label + div {
   text-decoration: none;
   transition: all 0.4s;
 }
+
 .sidebar li a:hover,
 .sidebar ul li:hover a {
   text-decoration: none;
@@ -206,30 +228,33 @@ input[id="hamburger"]:checked + label + div {
   margin: 0px;
   border: 0px;
 }
-.user-img{
-  position:relative;
-  left:50px;
-  top:10%;
+
+.user-img {
+  position: relative;
+  left: 50px;
+  top: 10%;
 }
-.user-info{
+
+.user-info {
   font-size: 20px;
   font-weight: bold;
   text-align: right;
   padding-right: 25px;
 }
-.info1
-.info2{
-  padding-top:10px;
+
+.info1,
+.info2 {
+  padding-top: 10px;
 }
-.modaltext{
-  position:relative;
-  top:10%;
+
+.modaltext {
+  position: relative;
+  top: 10%;
 }
-.wave{
+
+.wave {
   transform: translateY(50%) rotate(119deg);
   position: relative;
   left: 60%;
   top: 93.5px;
-  z-index: -1;
 }
-
