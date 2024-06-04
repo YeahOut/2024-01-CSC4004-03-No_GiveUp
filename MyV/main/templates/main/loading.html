@@ -21,7 +21,7 @@
           </div>
           <div class="text">
             <p class="analyzing">분석중 입니다.</p>
-            <p class="waiting">잠시만 기다려 주세요.</p>
+            <p class="waiting">잠시만 기다려 주세요.<br>최대 2분 정도 소요됩니다.</p>
           </div>
           <div class="textwithSpotify">
             <p>분석된 정보를 기반으로</p>
@@ -42,6 +42,6 @@
   window.onload = function() {
     setTimeout(function() {
       window.location.href = "{% url 'main3' %}";
-    }, 3000); // 3000 ms= 3sec
+    }, 1); // 3000 ms= 3sec
   };
 </script>

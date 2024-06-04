@@ -26,7 +26,7 @@
                         <div class="modaltext">
                             <div class="user-info">
                                 <p class="info1">MyV 회원</p>
-                                <p class="info2">{{ user.nickname }}</p>
+                                <p class="info2">{{ user }}</p>
                             </div>
                             <ul class="nav_mobile">
                                 <li><a href="{% url 'howtoUse1' %}">사용 방법</a></li>
@@ -48,7 +48,7 @@
                     <form id="playlistForm" method="post" action="{% url 'delete_playlist' %}" onsubmit="return confirmDelete()">
                         {% csrf_token %}
                         <div class="playlist-text">
-                            <span>{{ user.nickname }}</span> 님을 위한 플레이리스트입니다.🎵
+                            <span>{{ user }}</span> 님을 위한 플레이리스트입니다.🎵
                         </div>
                         <div class="playlist-text1">
                             <p> 곡을 누르면 
@@ -59,7 +59,7 @@
                         <div class="playlist-contents">
                             {% if page_obj %}
                                 <button type="submit">삭제</button>
-                                <div class="retry" onclick="location.href='{% url 'main3' %}'">다시 추천 받기</div>
+                                <div class="retry" onclick="location.href='{% url 'loading' %}'">다시 추천 받기</div>
                                 {% for playlist in page_obj %}
                                     <div class="playlist-content" onclick="location.href='{{ playlist.song_url }}'">
                                         <hr />
