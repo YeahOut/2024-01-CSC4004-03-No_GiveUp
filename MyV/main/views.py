@@ -39,9 +39,10 @@ def main_2(request):
 def main_3(request):
     user = request.user
     #다시 추천 받을 때, 만약 최고음 최저음 분석을 한 번 했더라면 그냥 바로 디비 정보로 sportify만 돌리게하기 (리브로사 안쓰고!)
-    userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first()  # 가장 마지막 정보만 가져오기
-    if userNoteInfo.min_note == False :
-        maxminAnalyze(user)
+    # #userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first()  # 가장 마지막 정보만 가져오기
+    # if UserMaxMinNote == 'NoneType':
+    #     maxminAnalyze(user)
+    maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
     #userInfo는 max,min, user_key_string, tmpo, energy 순으로 담긴 리스트
     song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
@@ -64,7 +65,7 @@ def main_3(request):
         'preview1' : preview_urls[0],
         'preview2' : preview_urls[1],
         'preview3' : preview_urls[2],
-    }   
+    }
     return render(request, 'main/main_3.html',context)
 
 #########test########
