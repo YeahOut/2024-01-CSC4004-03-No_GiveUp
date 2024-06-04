@@ -14,8 +14,10 @@ import math
 import plotly.graph_objects as go
 from pydub import AudioSegment
 from spleeter.separator import Separator
+import tensorflow as tf
 
 def process_file():
+    tf.compat.v1.disable_eager_execution()
     # 반주 & 보컬 분리
     org = "org"
     usr = "usr"
