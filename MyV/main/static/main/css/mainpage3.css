@@ -78,17 +78,17 @@
 .text {
   text-align: center;
   position: relative;
-  top: 55px;
+  top: 65px;
 }
 .spotify {
   position: relative;
-  top : 65px;
+  top : 80px;
   left : 10px;
 }
 .complete {
   font-size: 20px;
   font-weight: 500;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
 }
 .select {
   font-size: 16px;
@@ -124,7 +124,7 @@
   height: 120px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 332px;
+  bottom: 312px;
   left: 5.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -138,7 +138,7 @@
   height: 130px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 458px;
+  bottom: 438px;
   left: 130.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -152,7 +152,7 @@
   height: 120px;
   background-color: rgba(215, 215, 215, 0.315);
   position: relative;
-  bottom: 583px;
+  bottom: 562px;
   left: 264.5px;
   &:hover {
     background: rgba(0, 0, 0, 0);
@@ -165,7 +165,7 @@
   grid-template-rows: 1fr 1fr 1fr;
   text-align: center;
   position: relative;
-  top: -80px;
+  top: -60px;
 }
 
 #grid2 {
@@ -200,8 +200,8 @@
 
 .song-info1 {
   position: relative;
-  bottom: 575px;
-  left: 10px;
+  bottom: 545px;
+  left: 20px;
   width: 120px;
   height: 50px;
   overflow: scroll; 
@@ -209,7 +209,7 @@
 
 .song-info2 {
   position: relative;
-  bottom: 615px;
+  bottom: 595px;
   left: 135px;
   width: 120px;
   height: 50px;
@@ -218,8 +218,8 @@
 
 .song-info3 {
   position: relative;
-  bottom: 675px;
-  left: 273px;
+  bottom: 645px;
+  left: 280px;
   width: 120px;
   height: 30px;
   overflow: scroll;
@@ -239,21 +239,20 @@
 
 .audio {
   position: relative;
-  bottom: 625px;
+  bottom: 605px;
   left: 40px;
 }
 
 #grid {
-  justify-items: center;
   display: grid;
   font-family: "PyeongChang";
   font-size: 20px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  row-gap: 25px;
+  row-gap: 30px;
   text-align: center;
   position: relative;
-  bottom: 600px;
+  bottom: 580px;
 }
 
 #grid .feature {
@@ -272,14 +271,12 @@
   font-weight: 700;
   background-color: #5d5fef;
   color: #eeeeee;
+
   position: relative;
   left: 35px;
-  bottom: 580px;
+  bottom: 550px;
 }
 
-#yournote{
-  width:165px;
-}
 /**modal css**/
 
 a {
