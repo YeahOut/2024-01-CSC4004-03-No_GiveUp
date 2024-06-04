@@ -67,7 +67,7 @@ def process_file():
     print("###test###")
     best_st = t_usr[best_idx]
     best_ed = t_usr[best_idx + len(f0_usr) // 5]
-    score = int(score *100)
+    score = min(int(score *100), 100)
     remove_prefiles()
     
     print("사용자가 부른 부분은 음원의 {}초부터 입니다".format(int(t0)))
@@ -149,7 +149,7 @@ def accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr):
     max_note = librosa.hz_to_note(max_hz)
     cos_theta = (np.inner(f0_org, f0_usr) /
                  (math.sqrt(np.inner(f0_org, f0_org)) * math.sqrt(np.inner(f0_usr, f0_usr))))
-    score = (math.exp(cos_theta + 1) - 1) / (math.exp(2) - 1)
+    score = (math.exp(cos_theta + 1) - 1) * 1.8 / (math.exp(2) - 1)
 
     # get best term
     best_idx = 0
