@@ -39,7 +39,6 @@ def main_2(request):
 def main_3(request):
     user = request.user
     #다시 추천 받을 때, 만약 최고음 최저음 분석을 한 번 했더라면 그냥 바로 디비 정보로 sportify만 돌리게하기 (리브로사 안쓰고!)
-    
     userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first()  # 가장 마지막 정보만 가져오기
     if userNoteInfo.min_note == False :
         maxminAnalyze(user)
