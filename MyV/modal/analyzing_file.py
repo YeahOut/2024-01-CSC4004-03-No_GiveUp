@@ -178,12 +178,12 @@ def accuracy_analysis(t_org, t_usr, idx, f0_org, f0_usr):
 
     # plot update 0517
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=t_org, y=f0_org, fill='tozeroy', name='비교 음원'))
-    fig.add_trace(go.Scatter(x=t_usr, y=f0_usr, fill='tozeroy', name='사용자 음원'))
-    fig.add_hline(y=max_hz, line_dash="dash", label=dict(text="최고음"))
-    fig.add_hline(y=min_hz, line_dash="dash", label=dict(text="최저음"))
+    fig.add_trace(go.Scatter(x=t_org, y=f0_org, fill='tozeroy', name='compare'))
+    fig.add_trace(go.Scatter(x=t_usr, y=f0_usr, fill='tozeroy', name='user'))
+    fig.add_hline(y=max_hz, line_dash="dash", label=dict(text="max note"))
+    fig.add_hline(y=min_hz, line_dash="dash", label=dict(text="min note"))
     fig.add_vrect(x0=t_usr[best_idx], x1=t_usr[best_idx+term_len-1], fillcolor='green',
-                  opacity=0.25, line_width=0, label=dict(text="가장 정확한 구간"))
+                  opacity=0.25, line_width=0, label=dict(text="best accuracy term"))
     fig.update_layout(legend_yanchor='top', legend_y=0.99, legend_xanchor='left', legend_x=0.01,
                       margin_l=0, margin_r=0, margin_b=0, margin_t=0)
     fig.write_image(os.path.join(os.getcwd(),'modal','static','modal','images','vocal_report_graph.png'))
