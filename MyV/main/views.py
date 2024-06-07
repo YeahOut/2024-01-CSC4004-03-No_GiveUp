@@ -45,14 +45,16 @@ def main_3(request):
         maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
     #userInfo는 max,min, user_key_string, tmpo, energy 순으로 담긴 리스트
-    if sportify(user)[0]==1:
+    result = sportify(user)
+
+    if result[0]==1:
         context = {
             'user' : user,
-            'min' : sportify(user)[2],
-            'max' : sportify(user)[1],
-            'mood' : sportify(user)[3],
-            'tmpo' : sportify(user)[4],
-            'energy' : sportify(user)[5],
+            'min' : result[2],
+            'max' : result[1],
+            'mood' : result[3],
+            'tmpo' : result[4],
+            'energy' : result[5],
             'title1' : "추천된 곡이 없습니다.",
             'title2' : "추천된 곡이 없습니다.",
             'title3' : "추천된 곡이 없습니다.",
