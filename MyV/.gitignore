@@ -170,3 +170,4 @@ cython_debug/
 MyV_settings.py
 
 secret.json
+MyV.pem
