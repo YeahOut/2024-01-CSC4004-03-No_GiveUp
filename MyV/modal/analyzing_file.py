@@ -24,12 +24,12 @@ def process_file():
 
     #확장자 예외처리
     org_convert_format()
-    usr_convert_format()
+    #usr_convert_format()
     print("##확장자 예외처리 성공##")
 
     # 반주 & 보컬 분리
     spleet(org)
-    spleet(usr)
+    #spleet(usr)
     
     plt.figure(figsize=(12, 4))
     print("#################분리완#################")
