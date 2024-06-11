@@ -40,8 +40,9 @@ def sportify(user):
     input_energy = user_energy
     input_tmpo = user_tmpo
     min_key = key_dict[user_min_note[:len(user_min_note) - 1]]
-    print(min_key)
+    print('min key in integer type:', min_key)
     max_key = key_dict[user_max_note[:len(user_max_note) - 1]]
+    print('max key in integer type:', max_key)
     female_key = 502 #0530
     male_key = 405 #0530
     #키 값 = 옥타브 * 100 + key_dict, 0530
@@ -109,7 +110,7 @@ def sportify(user):
                                      min_tmpo=min_tmpo, max_tmpo=max_tmpo,
                                      min_key=min_key, max_key=max_key)
     tracks = recommended['tracks']
-
+    print('tracks',tracks)
     # 추천 결과
     song_names = []  # 곡명
     song_urls = []  # spotify 곡페이지 url
@@ -117,61 +118,68 @@ def sportify(user):
     img_dirs = []  # 이미지jpg 저장 경로
     preview_urls = []  # 미리듣기 url
     artists = []
+    
+    #트랙 추천이 없는 경우 
+    if len(tracks) > 0: 
+        cnt = 1
+        for track in tracks:
+            song_url = track['external_urls']['spotify']
+            song_name = track['name']
+            preview_url = track['preview_url']
+            img_url = track['album']['images'][0]['url']
+            artist = track['artists'][0]['name']
+            # img_save_loc = "./img" + str(cnt) + ".jpg"
+            # urllib.request.urlretrieve(img_url, img_save_loc)
+            # image = imread(img_save_loc)
 
-    cnt = 1
-    for track in tracks:
-        song_url = track['external_urls']['spotify']
-        song_name = track['name']
-        preview_url = track['preview_url']
-        img_url = track['album']['images'][0]['url']
-        artist = track['artists'][0]['name']
-        # img_save_loc = "./img" + str(cnt) + ".jpg"
-        # urllib.request.urlretrieve(img_url, img_save_loc)
-        # image = imread(img_save_loc)
+            song_names.append(song_name)
+            song_urls.append(song_url)
+            img_urls.append(img_url)
+            img_dirs.append(img_url)
+            preview_urls.append(preview_url)
+            artists.append(artist)
 
-        song_names.append(song_name)
-        song_urls.append(song_url)
-        img_urls.append(img_url)
-        img_dirs.append(img_url)
-        preview_urls.append(preview_url)
-        artists.append(artist)
+            print(cnt, "######################")
+            print(preview_url)
+            print(song_url)
+            print(img_url)
+            print(song_name)
+            print(artist)
+            cnt += 1
 
-        print(cnt, "######################")
-        print(preview_url)
-        print(song_url)
-        print(img_url)
-        print(song_name)
-        print(artist)
-        cnt += 1
+        print(song_names)
+        print(song_urls)
+        print(img_urls)
+        print(preview_urls)
+        print(artists)
+        print("#######" + artists[0])
 
-    print(song_names)
-    print(song_urls)
-    print(img_urls)
-    print(preview_urls)
-    print(artists)
-    print("#######" + artists[0])
+        ####db전달
+        playlist_info = PlaylistInfo(user=user)
 
-    ####db전달
-    playlist_info = PlaylistInfo(user=user)
+        for i in range(len(song_names)):
+            setattr(playlist_info, f'img{i + 1}', img_urls[i])
+            setattr(playlist_info, f'artist{i + 1}', artists[i])
+            setattr(playlist_info, f'title{i + 1}', song_names[i])
+            setattr(playlist_info, f'songurl{i + 1}', song_urls[i])
 
-    for i in range(len(song_names)):
-        setattr(playlist_info, f'img{i + 1}', img_urls[i])
-        setattr(playlist_info, f'artist{i + 1}', artists[i])
-        setattr(playlist_info, f'title{i + 1}', song_names[i])
-        setattr(playlist_info, f'songurl{i + 1}', song_urls[i])
+        playlist_info.save()
 
-    playlist_info.save()
+        if len(song_names) < 3:
+            for i in range(3 - len(song_names)):
+                img_urls.append(".\static\main\images\tmp_img.png")
+                song_name.append(" ")
+                song_url.append(" ")
+                artist.append(" ")
+                preview_url.append(" ")
 
-    if len(song_names) < 3:
-        for i in range(3 - len(song_names)):
-            img_urls.append(".\static\main\images\tmp_img.png")
-            song_name.append(" ")
-            song_url.append(" ")
-            artist.append(" ")
-            preview_url.append(" ")
+        for i in range(recommendation_songs_cnt - len(song_names)):
+            img_urls.append(os.join.path(os.getcwd(), 'main', 'static', 'main', 'tmp_img.png'))
 
-    for i in range(recommendation_songs_cnt - len(song_names)):
-        img_urls.append(os.join.path(os.getcwd(), 'main', 'static', 'main', 'tmp_img.png'))
+        return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, user_key_string,
+                                                                        tempo_string, energy_string]
 
-    return song_names, song_urls, img_urls, preview_urls, artists, [user_max_note, user_min_note, user_key_string,
-                                                                    tempo_string, energy_string]
+    else :
+        print("no track")
+        userInfo= [1,user_max_note, user_min_note, user_key_string, tempo_string, energy_string]
+        return userInfo
