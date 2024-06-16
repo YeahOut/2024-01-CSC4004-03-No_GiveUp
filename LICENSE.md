@@ -23,6 +23,7 @@ SOFTWARE.
 This project uses Django, Librosa, Spleeter, Pydub, and FFmpeg, which are licensed under the BSD 3-Clause License, MIT License, and LGPL License.
 
 ===================
+
 Django's license:
 
 Copyright (c) Django Software Foundation and individual contributors.
@@ -52,6 +53,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ===================
+
 Librosa's license:
 
 
@@ -82,6 +84,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ===================
+
 Spleeter's license:
 
 MIT License
@@ -107,6 +110,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===================
+
 Pydub's license:
 
 MIT License
@@ -133,11 +137,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===================
+
 FFmpeg's license:
 
 FFmpeg is licensed under the GNU Lesser General Public License (LGPL) version 2.1 or later. Some parts of FFmpeg are optionally licensed under the GNU General Public License (GPL) version 2 or later. The exact license details can be found at https://ffmpeg.org/legal.html.
 
 ===================
+
 FFmpeg's license details:
 
 FFmpeg is free software; you can redistribute it and/or modify
