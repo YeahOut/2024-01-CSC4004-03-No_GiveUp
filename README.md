@@ -5,26 +5,23 @@
 
 # 🎵 사용자 음역대 분석 및 노래 추천 웹 서비스, MyV
 
-- 배포 링크 :
-- Test ID :
-- Test PW :
+<img src ='https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/376ba7e7-bee8-4eb7-99ff-02abd3cdc4d1' width='600px' height='350px'>
 
-  <br>
----
+
+<br><br>
+
 ## 👩🏻‍🏫 프로젝트 소개
 -  LIBROSA 라이브러리 기반 **사용자** 최고음, 최저음, 음역대, **성향을 기반**으로 정보를 분석
 -  사용자의 목소리를 분석하여 사용자에게 어울리는 노래를 추천
 -  보컬 트레이닝보다 **시간적, 금전적으로 효율적인 효과**를 내는 서비스
 
+<br>
+
+  **MyV 배포 URL** : http://3.38.255.99:8000/
 
 <br><br>
 
-## ✅ 주요 기능
-- 사용자 음역대와 성향 분석과 그에 어울리는 **노래 추천**
-- 추천한 노래 **PlayList** 관리
-- 보컬 평가 및 피드백 **보고서 제공**
 
-<br><br>
 
 ## 🖱️ 개발 환경
 <img src="https://img.shields.io/badge/FrontEnd-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black">
@@ -37,6 +34,7 @@
 
 <img src="https://img.shields.io/badge/Design Tool-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"><img src="https://img.shields.io/badge/clip studio-1DB6EA?style=for-the-badge">
 <br><br>
+
 
 ## 📂 파일 구조 
 
@@ -83,6 +81,17 @@
 ├── db.sqlite3
 
 ```
+
+  <br><br>
+  
+## ✅ 주요 기능
+- 사용자 음역대와 성향 분석과 그에 어울리는 **노래 추천**
+- 추천한 노래 **PlayList** 관리
+- 보컬 평가 및 피드백 **보고서 제공**
+
+<br>
+
+**시연 영상** : https://www.youtube.com/watch?v=Ut4T77BXsFk
 
 <br><br>
 
@@ -144,7 +153,6 @@
 
 <img src="https://github.com/CSID-DGU/2024-01-CSC4004-03-No_GiveUp/assets/137425231/e4b1e110-af0b-489c-b2cd-df1299d54873" width="180">
 
-
 <br><br><br><br>
 
 
@@ -168,3 +176,13 @@
 |[@J1miin](https://github.com/J1miin?tab=repositories)|[@Yeahout](https://github.com/YeahOut)|
 |동국대학교<br> 컴퓨터공학과 22학번|동국대학교<br> 컴퓨터공학과 22학번|
 
+<br><br>
+## 🔲 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
+### Libraries Used
+
+This project uses the following libraries, each with their own licenses:
+
+- Librosa: BSD 3-Clause License. See the [LICENSE](LICENSE.md) file for details.
