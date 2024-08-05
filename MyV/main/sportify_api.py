@@ -119,7 +119,7 @@ def sportify(user):
     preview_urls = []  # 미리듣기 url
     artists = []
     
-    #트랙 추천이 없는 경우 
+    #트랙 추천이 있는 경우 
     if len(tracks) > 0: 
         cnt = 1
         for track in tracks:
@@ -165,14 +165,91 @@ def sportify(user):
 
         playlist_info.save()
 
+        # if len(song_names) < 3:
+        #     for i in range(3 - len(song_names)):
+        #         img_urls.append(".\static\main\images\tmp_img.png")
+        #         song_name.append(" ")
+        #         song_url.append(" ")
+        #         artist.append(" ")
+        #         preview_url.append(" ")
+        
+        #추천 받은 곡이 3곡 이하인 경우, 추천 범위 넓혀서 3곡 될 때까지 추천 받음
         if len(song_names) < 3:
-            for i in range(3 - len(song_names)):
-                img_urls.append(".\static\main\images\tmp_img.png")
-                song_name.append(" ")
-                song_url.append(" ")
-                artist.append(" ")
-                preview_url.append(" ")
+            while len(song_name) < 3:
+                min_mood = 0
+                max_mood = 1
+                min_energy = 0
+                max_energy = 1
+                min_tmpo = 0
+                max_tmpo = 1
+                min_key = 0
+                max_key = 11
+                min_popularity = 30 
+                recommendation_songs_cnt = 3
+                
+                recommended = sp.recommendations(limit=recommendation_songs_cnt, market='KR', seed_artists=seed_artist,
+                                        min_danceability=min_mood, max_danceability=max_mood,
+                                        min_energy=min_energy, max_energy=max_energy,
+                                        min_tmpo=min_tmpo, max_tmpo=max_tmpo,
+                                        min_key=min_key, max_key=max_key)
+                tracks = recommended['tracks']
+                print('tracks',tracks)
+                
+                if len(tracks) > 0: 
+                    cnt = 1
+                    for track in tracks:
+                        song_url = track['external_urls']['spotify']
+                        song_name = track['name']
+                        preview_url = track['preview_url']
+                        img_url = track['album']['images'][0]['url']
+                        artist = track['artists'][0]['name']
+                        # img_save_loc = "./img" + str(cnt) + ".jpg"
+                        # urllib.request.urlretrieve(img_url, img_save_loc)
+                        # image = imread(img_save_loc)
 
+                        song_names.append(song_name)
+                        song_urls.append(song_url)
+                        img_urls.append(img_url)
+                        img_dirs.append(img_url)
+                        preview_urls.append(preview_url)
+                        artists.append(artist)
+
+                        print(cnt, "######################")
+                        print(preview_url)
+                        print(song_url)
+                        print(img_url)
+                        print(song_name)
+                        print(artist)
+                        cnt += 1
+
+                    print(song_names)
+                    print(song_urls)
+                    print(img_urls)
+                    print(preview_urls)
+                    print(artists)
+                    print("#######" + artists[0])
+
+                    #3곡 넘은 경우 슬라이싱
+                    if len(song_names) > 3:
+                        song_names = song_names[:3]
+                        song_urls = song_urls[:3]
+                        img_urls = img_urls[:3]
+                        img_dirs = img_dirs[:3]
+                        preview_urls = preview_urls[:3]
+                        artists = artists[:3]
+                        
+                    ####db전달
+                    playlist_info = PlaylistInfo(user=user)
+
+                    for i in range(len(song_names)):
+                        setattr(playlist_info, f'img{i + 1}', img_urls[i])
+                        setattr(playlist_info, f'artist{i + 1}', artists[i])
+                        setattr(playlist_info, f'title{i + 1}', song_names[i])
+                        setattr(playlist_info, f'songurl{i + 1}', song_urls[i])
+
+                    playlist_info.save()
+            
+            
         for i in range(recommendation_songs_cnt - len(song_names)):
             img_urls.append(os.join.path(os.getcwd(), 'main', 'static', 'main', 'tmp_img.png'))
 
