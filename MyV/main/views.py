@@ -40,32 +40,50 @@ def main_3(request):
     user = request.user
     #다시 추천 받을 때, 만약 최고음 최저음 분석을 한 번 했더라면 그냥 바로 디비 정보로 sportify만 돌리게하기 (리브로사 안쓰고!)
     userNoteInfo = UserMaxMinNote.objects.filter(user=user).order_by('-id').first()  # 가장 마지막 정보만 가져오기
-    if userNoteInfo.min_note == False :
+
+    if userNoteInfo == None :
         maxminAnalyze(user)
     #song_names~preview_urls는 각각 리스트
     #userInfo는 max,min, user_key_string, tmpo, energy 순으로 담긴 리스트
-    song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
-    context = {
-        'user' : user,
-        'cover1' : img_urls[0],
-        'cover2' : img_urls[1],
-        'cover3' : img_urls[2],
-        'title1' : song_names[0],
-        'title2' : song_names[1],
-        'title3' : song_names[2],
-        'min' : userInfo[1],
-        'max' : userInfo[0],
-        'mood' : userInfo[2],
-        'tmpo' : userInfo[3],
-        'energy' : userInfo[4],
-        'artist1' : artist[0],
-        'artist2' : artist[1],
-        'artist3' : artist[2],
-        'preview1' : preview_urls[0],
-        'preview2' : preview_urls[1],
-        'preview3' : preview_urls[2],
-    }
-    return render(request, 'main/main_3.html',context)
+    result = sportify(user)
+
+    if result[0]==1:
+        context = {
+            'user' : user,
+            'min' : result[2],
+            'max' : result[1],
+            'mood' : result[3],
+            'tmpo' : result[4],
+            'energy' : result[5],
+            'title1' : "추천된 곡이 없습니다.",
+            'title2' : "추천된 곡이 없습니다.",
+            'title3' : "추천된 곡이 없습니다.",
+            }
+
+        return render(request, 'main/main_3.html', context)
+    else :
+        song_names, song_urls, img_urls, preview_urls, artist, userInfo = sportify(user) 
+        context = {
+            'user' : user,
+            'cover1' : img_urls[0],
+            'cover2' : img_urls[1],
+            'cover3' : img_urls[2],
+            'title1' : song_names[0],
+            'title2' : song_names[1],
+            'title3' : song_names[2],
+            'min' : userInfo[1],
+            'max' : userInfo[0],
+            'mood' : userInfo[2],
+            'tmpo' : userInfo[3],
+            'energy' : userInfo[4],
+            'artist1' : artist[0],
+            'artist2' : artist[1],
+            'artist3' : artist[2],
+            'preview1' : preview_urls[0],
+            'preview2' : preview_urls[1],
+            'preview3' : preview_urls[2],
+        }
+        return render(request, 'main/main_3.html',context)
 
 #########test########
 def test(request):
